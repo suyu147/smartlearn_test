@@ -1,0 +1,58 @@
+[
+  {
+    "id": "2cf1c3d10d49",
+    "action": "expand",
+    "instruction": "扩展一下",
+    "originalLength": 30,
+    "editedLength": 190,
+    "timestamp": "2026-07-19T16:06:00.204Z"
+  },
+  {
+    "id": "7d4815041ee5",
+    "action": "expand",
+    "instruction": "优化一下这段自我介绍",
+    "originalLength": 21,
+    "editedLength": 30,
+    "timestamp": "2026-07-19T16:05:44.111Z"
+  },
+  {
+    "id": "69758a04cae3",
+    "action": "expand",
+    "instruction": "优化一下这一段个人简历",
+    "originalLength": 20,
+    "editedLength": 80,
+    "timestamp": "2026-07-18T16:34:25.793Z"
+  },
+  {
+    "id": "269b50a3c677",
+    "action": "expand",
+    "instruction": "",
+    "originalLength": 27,
+    "editedLength": 113,
+    "timestamp": "2026-07-16T15:50:20.866Z"
+  },
+  {
+    "id": "1f659220802f",
+    "action": "summarize",
+    "instruction": "",
+    "originalLength": 12,
+    "editedLength": 3,
+    "timestamp": "2026-07-16T15:49:49.830Z"
+  },
+  {
+    "id": "",
+    "action": "rewrite",
+    "instruction": "把孙云浩该成浩浩",
+    "originalLength": 12,
+    "editedLength": 46,
+    "timestamp": "2026-07-16T15:40:22.926Z"
+  },
+  {
+    "id": "",
+    "action": "rewrite",
+    "instruction": "把这一段自我介绍优化一下",
+    "originalLength": 34,
+    "editedLength": 46,
+    "timestamp": "2026-07-16T01:57:40.940Z"
+  }
+]

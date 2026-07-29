@@ -1,0 +1,156 @@
+{
+  "id": "3cf0fb0939b4",
+  "status": "ready",
+  "proposal": {
+    "title": "Python基础入门教程：从零开始学编程",
+    "description": "本书专为编程零基础的学习者设计，系统讲解Python核心语法、数据结构、函数、文件操作和面向对象编程，并通过大量实例帮助读者快速掌握Python编程基础。",
+    "scope": "涵盖Python环境搭建、基本语法（变量、数据类型、运算符、流程控制）、字符串与列表操作、字典与集合、函数定义与作用域、文件读写与异常处理、面向对象编程（类、继承、封装、多态）、模块与包使用、常用内置模块简介（如math、random、datetime）。不涉及高级主题如装饰器、生成器、并发编程、网络编程、数据库操作、GUI开发、数据分析库（如NumPy、Pandas）等。",
+    "targetLevel": "beginner",
+    "estimatedChapters": 9,
+    "rationale": "Python基础是学习编程的第一站，采用循序渐进的结构（从环境搭建到面向对象）符合初学者的认知曲线。每章围绕一个核心主题展开，配合练习题和项目，确保理论理解与动手实践相结合，帮助学习者建立扎实的编程基础，为后续进阶学习铺平道路。"
+  },
+  "inputs": {
+    "userIntent": "python基础",
+    "chatSelections": [],
+    "notebookRefs": [],
+    "knowledgeBases": [],
+    "questionCategories": [],
+    "questionEntries": [],
+    "createdAt": "2026-07-16T15:12:38.530Z"
+  },
+  "spine": {
+    "title": "Python基础入门教程：从零开始学编程",
+    "chapters": [
+      {
+        "order": 0,
+        "title": "Chapter 1",
+        "learningObjectives": [
+          "Understand Python基础入门教程：从零开始学编程 concept 1"
+        ],
+        "contentType": "overview",
+        "sourceAnchors": [],
+        "prerequisites": [],
+        "pageIds": [
+          "pg_ed394af0"
+        ],
+        "summary": "Chapter 1 of Python基础入门教程：从零开始学编程"
+      },
+      {
+        "order": 1,
+        "title": "Chapter 2",
+        "learningObjectives": [
+          "Understand Python基础入门教程：从零开始学编程 concept 2"
+        ],
+        "contentType": "concept",
+        "sourceAnchors": [],
+        "prerequisites": [],
+        "pageIds": [
+          "pg_6740f6a9"
+        ],
+        "summary": "Chapter 2 of Python基础入门教程：从零开始学编程"
+      },
+      {
+        "order": 2,
+        "title": "Chapter 3",
+        "learningObjectives": [
+          "Understand Python基础入门教程：从零开始学编程 concept 3"
+        ],
+        "contentType": "concept",
+        "sourceAnchors": [],
+        "prerequisites": [],
+        "pageIds": [
+          "pg_648fc8d5"
+        ],
+        "summary": "Chapter 3 of Python基础入门教程：从零开始学编程"
+      },
+      {
+        "order": 3,
+        "title": "Chapter 4",
+        "learningObjectives": [
+          "Understand Python基础入门教程：从零开始学编程 concept 4"
+        ],
+        "contentType": "concept",
+        "sourceAnchors": [],
+        "prerequisites": [],
+        "pageIds": [
+          "pg_24c972d8"
+        ],
+        "summary": "Chapter 4 of Python基础入门教程：从零开始学编程"
+      },
+      {
+        "order": 4,
+        "title": "Chapter 5",
+        "learningObjectives": [
+          "Understand Python基础入门教程：从零开始学编程 concept 5"
+        ],
+        "contentType": "concept",
+        "sourceAnchors": [],
+        "prerequisites": [],
+        "pageIds": [
+          "pg_d1bc2d17"
+        ],
+        "summary": "Chapter 5 of Python基础入门教程：从零开始学编程"
+      },
+      {
+        "order": 5,
+        "title": "Chapter 6",
+        "learningObjectives": [
+          "Understand Python基础入门教程：从零开始学编程 concept 6"
+        ],
+        "contentType": "concept",
+        "sourceAnchors": [],
+        "prerequisites": [],
+        "pageIds": [
+          "pg_05640d08"
+        ],
+        "summary": "Chapter 6 of Python基础入门教程：从零开始学编程"
+      },
+      {
+        "order": 6,
+        "title": "Chapter 7",
+        "learningObjectives": [
+          "Understand Python基础入门教程：从零开始学编程 concept 7"
+        ],
+        "contentType": "concept",
+        "sourceAnchors": [],
+        "prerequisites": [],
+        "pageIds": [
+          "pg_6949b5f8"
+        ],
+        "summary": "Chapter 7 of Python基础入门教程：从零开始学编程"
+      },
+      {
+        "order": 7,
+        "title": "Chapter 8",
+        "learningObjectives": [
+          "Understand Python基础入门教程：从零开始学编程 concept 8"
+        ],
+        "contentType": "concept",
+        "sourceAnchors": [],
+        "prerequisites": [],
+        "pageIds": [
+          "pg_a886ac02"
+        ],
+        "summary": "Chapter 8 of Python基础入门教程：从零开始学编程"
+      }
+    ],
+    "conceptGraph": {
+      "nodes": [],
+      "edges": []
+    },
+    "explorationSummary": ""
+  },
+  "progress": {
+    "currentPageId": "",
+    "visitedPageIds": [],
+    "bookmarks": [],
+    "quizAttempts": [],
+    "weakChapters": [],
+    "score": 0
+  },
+  "kbFingerprints": [],
+  "stalePageIds": [],
+  "createdAt": "2026-07-16T15:12:42.492Z",
+  "updatedAt": "2026-07-16T15:13:37.781Z",
+  "metadata": {}
+}

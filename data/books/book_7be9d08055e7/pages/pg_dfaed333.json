@@ -1,0 +1,45 @@
+{
+  "id": "pg_dfaed333",
+  "chapterOrder": -1,
+  "title": "Overview",
+  "status": "ready",
+  "blocks": [
+    {
+      "id": "pg_4c5ae59e",
+      "type": "text",
+      "status": "ready",
+      "params": {},
+      "payload": {
+        "content": "# 机器学习\n\nWelcome to this book. Use the chapter navigation to explore each topic."
+      },
+      "sourceAnchors": [],
+      "metadata": {}
+    },
+    {
+      "id": "pg_deff5974",
+      "type": "concept_graph",
+      "status": "ready",
+      "params": {},
+      "payload": {
+        "mermaid": "graph TD\n",
+        "nodeCount": 0,
+        "edgeCount": 0
+      },
+      "sourceAnchors": [],
+      "metadata": {}
+    },
+    {
+      "id": "pg_b0a31906",
+      "type": "text",
+      "status": "ready",
+      "params": {},
+      "payload": {
+        "content": "## Chapters\n\n1. **Chapter 1** — Chapter 1 of 机器学习\n2. **Chapter 2** — Chapter 2 of 机器学习\n3. **Chapter 3** — Chapter 3 of 机器学习\n4. **Chapter 4** — Chapter 4 of 机器学习\n5. **Chapter 5** — Chapter 5 of 机器学习"
+      },
+      "sourceAnchors": [],
+      "metadata": {}
+    }
+  ],
+  "links": [],
+  "metadata": {}
+}

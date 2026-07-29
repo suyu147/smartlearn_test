@@ -1,0 +1,143 @@
+# =============================================================================
+# SmartLearn — Docker Compose
+# Phase 6: One-command deployment
+# =============================================================================
+# Usage:
+#   1. Copy .env.example to .env and fill in your API keys
+#   2. docker compose up -d
+#   3. curl http://localhost:3000/api/v1/health
+# =============================================================================
+
+services:
+  app:
+    build: .
+    ports:
+      - "${APP_PORT:-3000}:3000"
+    environment:
+      # -- Database --
+      DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@db:5432/${POSTGRES_DB:-smartlearn}
+
+      # -- AI Provider (primary) --
+      AI_PROVIDER: ${AI_PROVIDER:-spark}
+      AI_MODEL: ${AI_MODEL:-spark-4.0-turbo}
+      AI_API_KEY: ${AI_API_KEY:-}
+      AI_BASE_URL: ${AI_BASE_URL:-}
+
+      # -- AI Provider API Keys --
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}
+      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:-}
+      KIMI_API_KEY: ${KIMI_API_KEY:-}
+      GLM_API_KEY: ${GLM_API_KEY:-}
+      QWEN_API_KEY: ${QWEN_API_KEY:-}
+      MINIMAX_API_KEY: ${MINIMAX_API_KEY:-}
+      SILICONFLOW_API_KEY: ${SILICONFLOW_API_KEY:-}
+      DOUBAO_API_KEY: ${DOUBAO_API_KEY:-}
+      GROK_API_KEY: ${GROK_API_KEY:-}
+      SPARK_API_KEY: ${SPARK_API_KEY:-}
+
+      # -- Spark (iFlytek) --
+      SPARK_API_SECRET: ${SPARK_API_SECRET:-}
+      SPARK_BASE_URL: ${SPARK_BASE_URL:-https://spark-api-open.xf-yun.com/v1}
+
+      # -- Vision Proxy (fallback when main model lacks vision) --
+      VISION_PROVIDER: ${VISION_PROVIDER:-glm}
+      VISION_MODEL: ${VISION_MODEL:-glm-4.6v-flash}
+      VISION_API_KEY: ${VISION_API_KEY:-}
+      VISION_BASE_URL: ${VISION_BASE_URL:-}
+
+      # -- Image Generation --
+      IMAGE_GEN_PROVIDER: ${IMAGE_GEN_PROVIDER:-openai}
+      IMAGE_GEN_API_KEY: ${IMAGE_GEN_API_KEY:-}
+      IMAGE_GEN_BASE_URL: ${IMAGE_GEN_BASE_URL:-}
+      IMAGE_GEN_MODEL: ${IMAGE_GEN_MODEL:-}
+
+      # -- Doubao Image Generation --
+      DOUBAO_IMAGE_API_KEY: ${DOUBAO_IMAGE_API_KEY:-}
+      DOUBAO_IMAGE_BASE_URL: ${DOUBAO_IMAGE_BASE_URL:-}
+      DOUBAO_IMAGE_MODEL: ${DOUBAO_IMAGE_MODEL:-}
+
+      # -- Voice / TTS --
+      DT_VOICE_PROVIDER: ${DT_VOICE_PROVIDER:-openai}
+
+      # -- Video Generation --
+      DT_VIDEO_PROVIDER: ${DT_VIDEO_PROVIDER:-none}
+      RUNWAYML_API_SECRET: ${RUNWAYML_API_SECRET:-}
+      RUNWAYML_MODEL: ${RUNWAYML_MODEL:-}
+      RUNWAYML_BASE_URL: ${RUNWAYML_BASE_URL:-}
+
+      # -- Sandbox (Piston API) --
+      PISTON_API_URL: ${PISTON_API_URL:-http://sandbox:2000}
+      PISTON_API_KEY: ${PISTON_API_KEY:-}
+
+      # -- MCP Servers --
+      DT_MCP_SERVERS: ${DT_MCP_SERVERS:-}
+
+      # -- Web Search --
+      DT_SEARCH_PROVIDER: ${DT_SEARCH_PROVIDER:-tavily}
+      TAVILY_API_KEY: ${TAVILY_API_KEY:-}
+      BRAVE_API_KEY: ${BRAVE_API_KEY:-}
+
+      # -- Embedding (RAG vector retrieval) --
+      DT_EMBEDDING_PROVIDER: ${DT_EMBEDDING_PROVIDER:-siliconflow}
+      DT_EMBEDDING_API_KEY: ${DT_EMBEDDING_API_KEY:-}
+      DT_EMBEDDING_BASE_URL: ${DT_EMBEDDING_BASE_URL:-https://api.siliconflow.cn/v1}
+      DT_EMBEDDING_MODEL: ${DT_EMBEDDING_MODEL:-BAAI/bge-m3}
+
+      # -- Auth --
+      AUTH_MODE: ${AUTH_MODE:-disabled}
+      JWT_SECRET: ${JWT_SECRET:?Set JWT_SECRET to a random 32+ char string (e.g. openssl rand -hex 32)}
+      SINGLE_USER_NAME: ${SINGLE_USER_NAME:-admin}
+
+      # -- Encryption (AES-256 for API keys stored in DB) --
+      DT_ENCRYPTION_SECRET: ${DT_ENCRYPTION_SECRET:?Set DT_ENCRYPTION_SECRET to a random 32+ char string}
+
+      # -- Logging --
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      LLM_THINKING_DISABLED: ${LLM_THINKING_DISABLED:-true}
+
+      # -- Storage --
+      DT_DATA_DIR: /app/data
+    volumes:
+      - appdata:/app/data
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:3000/api/v1/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  db:
+    image: pgvector/pgvector:pg16
+    # pgvector/pgvector includes the vector extension required for RAG/knowledge base
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-smartlearn}
+    # ports:  # ⚠️ Don't expose DB to host in production; use `docker compose exec db` instead
+    #   - "${DB_PORT:-5432}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  sandbox:
+    image: ghcr.io/engineer-man/piston:latest
+    restart: unless-stopped
+    # Piston provides secure code execution for the code sandbox feature.
+    # Only exposed to the internal Docker network (not to the host).
+    expose:
+      - "2000"
+
+volumes:
+  pgdata:
+  appdata:

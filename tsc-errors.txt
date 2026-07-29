@@ -1,0 +1,210 @@
+﻿lib/action/engine.ts(12,33): error TS2307: Cannot find module '@/lib/api/stage-api' or its corresponding type declarations.
+lib/action/engine.ts(13,32): error TS2307: Cannot find module '@/lib/api/stage-api' or its corresponding type declarations.
+lib/action/engine.ts(15,43): error TS2307: Cannot find module '@/lib/store/whiteboard-history' or its corresponding type declarations.
+lib/action/engine.ts(16,61): error TS2307: Cannot find module '@/lib/store/media-generation' or its corresponding type declarations.
+lib/action/engine.ts(18,34): error TS2307: Cannot find module '@/lib/utils/audio-player' or its corresponding type declarations.
+lib/action/engine.ts(91,31): error TS2345: Argument of type 'Action' is not assignable to parameter of type 'SpotlightAction'.
+  Types of property 'type' are incompatible.
+    Type 'string' is not assignable to type '"spotlight"'.
+lib/action/engine.ts(94,27): error TS2345: Argument of type 'Action' is not assignable to parameter of type 'LaserAction'.
+  Types of property 'type' are incompatible.
+    Type 'string' is not assignable to type '"laser"'.
+lib/action/engine.ts(102,35): error TS2345: Argument of type 'Action' is not assignable to parameter of type 'SpeechAction'.
+  Types of property 'type' are incompatible.
+    Type 'string' is not assignable to type '"speech"'.
+lib/action/engine.ts(106,39): error TS2345: Argument of type 'Action' is not assignable to parameter of type 'WbDrawTextAction'.
+  Types of property 'type' are incompatible.
+    Type 'string' is not assignable to type '"wb-draw-text"'.
+lib/action/engine.ts(108,40): error TS2345: Argument of type 'Action' is not assignable to parameter of type 'WbDrawShapeAction'.
+  Types of property 'type' are incompatible.
+    Type 'string' is not assignable to type '"wb-draw-shape"'.
+lib/action/engine.ts(110,40): error TS2345: Argument of type 'Action' is not assignable to parameter of type 'WbDrawChartAction'.
+  Types of property 'type' are incompatible.
+    Type 'string' is not assignable to type '"wb-draw-chart"'.
+lib/action/engine.ts(112,40): error TS2345: Argument of type 'Action' is not assignable to parameter of type 'WbDrawLatexAction'.
+  Types of property 'type' are incompatible.
+    Type 'string' is not assignable to type '"wb-draw-latex"'.
+lib/action/engine.ts(114,40): error TS2345: Argument of type 'Action' is not assignable to parameter of type 'WbDrawTableAction'.
+  Types of property 'type' are incompatible.
+    Type 'string' is not assignable to type '"wb-draw-table"'.
+lib/action/engine.ts(135,31): error TS2339: Property 'clearAllEffects' does not exist on type 'CanvasState'.
+lib/action/engine.ts(144,33): error TS2339: Property 'clearAllEffects' does not exist on type 'CanvasState'.
+lib/action/engine.ts(152,31): error TS2339: Property 'setSpotlight' does not exist on type 'CanvasState'.
+lib/action/engine.ts(159,31): error TS2339: Property 'setLaser' does not exist on type 'CanvasState'.
+lib/action/engine.ts(160,21): error TS2339: Property 'color' does not exist on type 'LaserAction'.
+lib/action/engine.ts(172,37): error TS2339: Property 'audioId' does not exist on type 'SpeechAction'.
+lib/action/engine.ts(172,59): error TS2339: Property 'audioUrl' does not exist on type 'SpeechAction'.
+lib/action/engine.ts(173,16): error TS7006: Parameter 'audioStarted' implicitly has an 'any' type.
+lib/action/engine.ts(186,58): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+lib/action/engine.ts(193,66): error TS7006: Parameter 'state' implicitly has an 'any' type.
+lib/action/engine.ts(215,31): error TS2339: Property 'playVideo' does not exist on type 'CanvasState'.
+lib/action/engine.ts(228,19): error TS2339: Property 'playingVideoElementId' does not exist on type 'CanvasState'.
+lib/action/engine.ts(234,37): error TS2339: Property 'playingVideoElementId' does not exist on type 'CanvasState'.
+lib/action/engine.ts(254,24): error TS7006: Parameter 's' implicitly has an 'any' type.
+lib/action/engine.ts(255,29): error TS7006: Parameter 's' implicitly has an 'any' type.
+lib/action/engine.ts(296,29): error TS2339: Property 'fontSize' does not exist on type 'WbDrawTextAction'.
+lib/action/engine.ts(310,23): error TS2339: Property 'width' does not exist on type 'WbDrawTextAction'.
+lib/action/engine.ts(311,24): error TS2339: Property 'height' does not exist on type 'WbDrawTextAction'.
+lib/action/engine.ts(314,30): error TS2339: Property 'color' does not exist on type 'WbDrawTextAction'.
+lib/action/engine.ts(336,23): error TS2339: Property 'width' does not exist on type 'WbDrawShapeAction'.
+lib/action/engine.ts(337,24): error TS2339: Property 'height' does not exist on type 'WbDrawShapeAction'.
+lib/action/engine.ts(339,22): error TS2339: Property 'fillColor' does not exist on type 'WbDrawShapeAction'.
+lib/action/engine.ts(360,23): error TS2339: Property 'width' does not exist on type 'WbDrawChartAction'.
+lib/action/engine.ts(361,24): error TS2339: Property 'height' does not exist on type 'WbDrawChartAction'.
+lib/action/engine.ts(365,29): error TS2339: Property 'themeColors' does not exist on type 'WbDrawChartAction'.
+lib/action/engine.ts(391,25): error TS2339: Property 'width' does not exist on type 'WbDrawLatexAction'.
+lib/action/engine.ts(392,26): error TS2339: Property 'height' does not exist on type 'WbDrawLatexAction'.
+lib/action/engine.ts(396,25): error TS2339: Property 'color' does not exist on type 'WbDrawLatexAction'.
+lib/action/engine.ts(414,18): error TS18046: 'action.data' is of type 'unknown'.
+lib/action/engine.ts(415,29): error TS18046: 'action.data' is of type 'unknown'.
+lib/action/engine.ts(423,23): error TS18046: 'action.data' is of type 'unknown'.
+lib/action/engine.ts(423,40): error TS7006: Parameter 'row' implicitly has an 'any' type.
+lib/action/engine.ts(424,16): error TS7006: Parameter 'text' implicitly has an 'any' type.
+lib/action/engine.ts(438,23): error TS2339: Property 'width' does not exist on type 'WbDrawTableAction'.
+lib/action/engine.ts(439,24): error TS2339: Property 'height' does not exist on type 'WbDrawTableAction'.
+lib/action/engine.ts(444,25): error TS2339: Property 'outline' does not exist on type 'WbDrawTableAction'.
+lib/action/engine.ts(449,23): error TS2339: Property 'theme' does not exist on type 'WbDrawTableAction'.
+lib/action/engine.ts(451,29): error TS2339: Property 'theme' does not exist on type 'WbDrawTableAction'.
+lib/action/engine.ts(471,34): error TS2339: Property 'startX' does not exist on type 'WbDrawLineAction'.
+lib/action/engine.ts(471,49): error TS2339: Property 'endX' does not exist on type 'WbDrawLineAction'.
+lib/action/engine.ts(472,33): error TS2339: Property 'startY' does not exist on type 'WbDrawLineAction'.
+lib/action/engine.ts(472,48): error TS2339: Property 'endY' does not exist on type 'WbDrawLineAction'.
+lib/action/engine.ts(475,45): error TS2339: Property 'startX' does not exist on type 'WbDrawLineAction'.
+lib/action/engine.ts(475,67): error TS2339: Property 'startY' does not exist on type 'WbDrawLineAction'.
+lib/action/engine.ts(476,43): error TS2339: Property 'endX' does not exist on type 'WbDrawLineAction'.
+lib/action/engine.ts(476,63): error TS2339: Property 'endY' does not exist on type 'WbDrawLineAction'.
+lib/action/engine.ts(484,23): error TS2339: Property 'width' does not exist on type 'WbDrawLineAction'.
+lib/action/engine.ts(487,23): error TS2339: Property 'style' does not exist on type 'WbDrawLineAction'.
+lib/action/engine.ts(488,23): error TS2339: Property 'color' does not exist on type 'WbDrawLineAction'.
+lib/action/engine.ts(518,31): error TS2551: Property 'setWhiteboardClearing' does not exist on type 'CanvasState'. Did you mean 'setWhiteboardOpen'?
+lib/action/engine.ts(526,31): error TS2551: Property 'setWhiteboardClearing' does not exist on type 'CanvasState'. Did you mean 'setWhiteboardOpen'?
+lib/audio/asr-providers.ts(221,11): error TS2322: Type 'string | undefined' is not assignable to type 'JSONValue'.
+  Type 'undefined' is not assignable to type 'JSONValue'.
+lib/audio/asr-providers.ts(340,11): error TS2339: Property 'asrProviderId' does not exist on type 'SettingsState'.
+lib/audio/asr-providers.ts(340,26): error TS2339: Property 'asrLanguage' does not exist on type 'SettingsState'.
+lib/audio/asr-providers.ts(340,39): error TS2339: Property 'asrProvidersConfig' does not exist on type 'SettingsState'.
+lib/audio/asr-providers.ts(346,41): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type 'Record<ASRProviderId, ASRProviderConfig>'.
+lib/audio/tts-providers.ts(472,11): error TS2339: Property 'ttsProviderId' does not exist on type 'SettingsState'.
+lib/audio/tts-providers.ts(472,26): error TS2339: Property 'ttsVoice' does not exist on type 'SettingsState'.
+lib/audio/tts-providers.ts(472,36): error TS2339: Property 'ttsSpeed' does not exist on type 'SettingsState'.
+lib/audio/tts-providers.ts(472,46): error TS2339: Property 'ttsProvidersConfig' does not exist on type 'SettingsState'.
+lib/audio/tts-providers.ts(478,41): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type 'Record<TTSProviderId, TTSProviderConfig>'.
+lib/audio/tts-utils.ts(94,13): error TS2339: Property 'audioId' does not exist on type 'SpeechAction'.
+lib/audio/voice-resolver.ts(2,34): error TS2307: Cannot find module '@/lib/orchestration/registry/types' or its corresponding type declarations.
+lib/generation/action-parser.ts(12,23): error TS2305: Module '"@/lib/types/action"' has no exported member 'ActionType'.
+lib/generation/action-parser.ts(13,10): error TS2305: Module '"@/lib/types/action"' has no exported member 'SLIDE_ONLY_ACTIONS'.
+lib/generation/action-parser.ts(15,50): error TS2307: Cannot find module 'partial-json' or its corresponding type declarations.
+lib/generation/generation-pipeline.ts(26,8): error TS2307: Cannot find module './prompt-formatters' or its corresponding type declarations.
+lib/generation/generation-pipeline.ts(50,64): error TS2307: Cannot find module './pipeline-runner' or its corresponding type declarations.
+lib/generation/outline-generator.ts(7,58): error TS2307: Cannot find module '@/lib/constants/generation' or its corresponding type declarations.
+lib/generation/outline-generator.ts(13,8): error TS2307: Cannot find module '@/lib/types/generation' or its corresponding type declarations.
+lib/generation/outline-generator.ts(14,41): error TS2307: Cannot find module './prompts' or its corresponding type declarations.
+lib/generation/outline-generator.ts(15,64): error TS2307: Cannot find module './prompt-formatters' or its corresponding type declarations.
+lib/generation/pipeline-types.ts(5,41): error TS2307: Cannot find module '@/lib/types/generation' or its corresponding type declarations.
+lib/generation/scene-builder.ts(15,8): error TS2307: Cannot find module '@/lib/types/generation' or its corresponding type declarations.
+lib/generation/scene-builder.ts(17,15): error TS2305: Module '"@/lib/types/slides"' has no exported member 'Slide'.
+lib/generation/scene-builder.ts(17,22): error TS2305: Module '"@/lib/types/slides"' has no exported member 'SlideTheme'.
+lib/generation/scene-builder.ts(18,28): error TS2307: Cannot find module '@/lib/types/stage' or its corresponding type declarations.
+lib/generation/scene-builder.ts(55,55): error TS7006: Parameter 'mg' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(10,35): error TS2307: Cannot find module '@/lib/constants/generation' or its corresponding type declarations.
+lib/generation/scene-generator.ts(20,8): error TS2307: Cannot find module '@/lib/types/generation' or its corresponding type declarations.
+lib/generation/scene-generator.ts(22,33): error TS2307: Cannot find module '@/lib/api/stage-api' or its corresponding type declarations.
+lib/generation/scene-generator.ts(23,32): error TS2307: Cannot find module '@/lib/api/stage-api' or its corresponding type declarations.
+lib/generation/scene-generator.ts(24,36): error TS2307: Cannot find module '@/lib/pbl/generate-pbl' or its corresponding type declarations.
+lib/generation/scene-generator.ts(25,41): error TS2307: Cannot find module './prompts' or its corresponding type declarations.
+lib/generation/scene-generator.ts(35,8): error TS2307: Cannot find module './prompt-formatters' or its corresponding type declarations.
+lib/generation/scene-generator.ts(36,15): error TS2305: Module '"@/lib/types/slides"' has no exported member 'PPTElement'.
+lib/generation/scene-generator.ts(36,27): error TS2305: Module '"@/lib/types/slides"' has no exported member 'Slide'.
+lib/generation/scene-generator.ts(36,34): error TS2305: Module '"@/lib/types/slides"' has no exported member 'SlideBackground'.
+lib/generation/scene-generator.ts(36,51): error TS2305: Module '"@/lib/types/slides"' has no exported member 'SlideTheme'.
+lib/generation/scene-generator.ts(37,35): error TS2307: Cannot find module '@/lib/types/stage' or its corresponding type declarations.
+lib/generation/scene-generator.ts(506,16): error TS7006: Parameter 'mg' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(507,13): error TS7006: Parameter 'mg' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(510,16): error TS7006: Parameter 'mg' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(511,13): error TS7006: Parameter 'mg' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(541,47): error TS7006: Parameter 'p' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(541,50): error TS7006: Parameter 'i' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(645,47): error TS7006: Parameter 'p' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(645,50): error TS7006: Parameter 'i' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(749,49): error TS7006: Parameter 'p' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(749,52): error TS7006: Parameter 'i' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(792,47): error TS7006: Parameter 'p' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(792,50): error TS7006: Parameter 'i' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(854,22): error TS7006: Parameter 'msg' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(928,49): error TS7006: Parameter 'p' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(928,52): error TS7006: Parameter 'i' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(957,49): error TS7006: Parameter 'p' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(957,52): error TS7006: Parameter 'i' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(983,49): error TS7006: Parameter 'p' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(983,52): error TS7006: Parameter 'i' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(1010,49): error TS7006: Parameter 'p' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(1010,52): error TS7006: Parameter 'i' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(1043,7): error TS2353: Object literal may only specify known properties, and 'title' does not exist in type 'Action'.
+lib/generation/scene-generator.ts(1083,38): error TS7006: Parameter 'o' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(1153,7): error TS2353: Object literal may only specify known properties, and 'title' does not exist in type 'Action'.
+lib/generation/scene-generator.ts(1165,5): error TS2353: Object literal may only specify known properties, and 'title' does not exist in type 'Action'.
+lib/generation/scene-generator.ts(1180,7): error TS2353: Object literal may only specify known properties, and 'title' does not exist in type 'Action'.
+lib/generation/scene-generator.ts(1194,7): error TS2353: Object literal may only specify known properties, and 'title' does not exist in type 'Action'.
+lib/i18n/config.ts(3,32): error TS2307: Cannot find module 'i18next-resources-to-backend' or its corresponding type declarations.
+lib/orchestration/director-graph.ts(25,39): error TS2307: Cannot find module './ai-sdk-adapter' or its corresponding type declarations.
+lib/orchestration/director-graph.ts(29,34): error TS2307: Cannot find module '@/lib/orchestration/registry/types' or its corresponding type declarations.
+lib/orchestration/director-graph.ts(36,60): error TS2307: Cannot find module './director-prompt' or its corresponding type declarations.
+lib/orchestration/director-graph.ts(37,37): error TS2307: Cannot find module './tool-schemas' or its corresponding type declarations.
+lib/orchestration/director-graph.ts(38,63): error TS2307: Cannot find module './director-prompt' or its corresponding type declarations.
+lib/orchestration/director-graph.ts(39,10): error TS2305: Module '"./stateless-generate"' has no exported member 'parseStructuredChunk'.
+lib/orchestration/director-graph.ts(39,32): error TS2305: Module '"./stateless-generate"' has no exported member 'createParserState'.
+lib/orchestration/director-graph.ts(39,51): error TS2305: Module '"./stateless-generate"' has no exported member 'finalizeParser'.
+lib/orchestration/director-graph.ts(278,7): error TS18046: 'state.storeState.scenes' is of type 'unknown'.
+lib/orchestration/director-graph.ts(278,37): error TS7006: Parameter 's' implicitly has an 'any' type.
+lib/orchestration/director-graph.ts(331,103): error TS7006: Parameter 'e' implicitly has an 'any' type.
+lib/orchestration/director-graph.ts(510,22): error TS2339: Property 'agentConfigs' does not exist on type '{ agentIds: string[]; sessionType?: string | undefined; }'.
+lib/orchestration/director-graph.ts(511,38): error TS2339: Property 'agentConfigs' does not exist on type '{ agentIds: string[]; sessionType?: string | undefined; }'.
+lib/orchestration/director-graph.ts(521,44): error TS2339: Property 'discussionTopic' does not exist on type '{ agentIds: string[]; sessionType?: string | undefined; }'.
+lib/orchestration/director-graph.ts(523,31): error TS2339: Property 'discussionTopic' does not exist on type '{ agentIds: string[]; sessionType?: string | undefined; }'.
+lib/orchestration/director-graph.ts(524,32): error TS2339: Property 'discussionPrompt' does not exist on type '{ agentIds: string[]; sessionType?: string | undefined; }'.
+lib/orchestration/director-graph.ts(539,36): error TS2339: Property 'triggerAgentId' does not exist on type '{ agentIds: string[]; sessionType?: string | undefined; }'.
+lib/orchestration/director-graph.ts(540,26): error TS2339: Property 'userProfile' does not exist on type 'StatelessChatRequest'.
+lib/orchestration/director-graph.ts(544,31): error TS2339: Property 'agentResponses' does not exist on type 'DirectorState'.
+lib/orchestration/director-graph.ts(545,33): error TS2339: Property 'whiteboardLedger' does not exist on type 'DirectorState'.
+lib/orchestration/prompt-builder.ts(8,34): error TS2307: Cannot find module '@/lib/orchestration/registry/types' or its corresponding type declarations.
+lib/orchestration/prompt-builder.ts(9,63): error TS2307: Cannot find module './director-prompt' or its corresponding type declarations.
+lib/orchestration/prompt-builder.ts(10,60): error TS2307: Cannot find module './tool-schemas' or its corresponding type declarations.
+lib/orchestration/prompt-builder.ts(103,7): error TS18046: 'storeState.scenes' is of type 'unknown'.
+lib/orchestration/prompt-builder.ts(103,31): error TS7006: Parameter 's' implicitly has an 'any' type.
+lib/orchestration/prompt-builder.ts(167,44): error TS2339: Property 'language' does not exist on type '{}'.
+lib/orchestration/prompt-builder.ts(635,24): error TS2339: Property 'name' does not exist on type '{}'.
+lib/orchestration/prompt-builder.ts(635,51): error TS2339: Property 'description' does not exist on type '{}'.
+lib/orchestration/prompt-builder.ts(635,77): error TS2339: Property 'description' does not exist on type '{}'.
+lib/orchestration/prompt-builder.ts(640,31): error TS18046: 'scenes' is of type 'unknown'.
+lib/orchestration/prompt-builder.ts(643,26): error TS18046: 'scenes' is of type 'unknown'.
+lib/orchestration/prompt-builder.ts(643,39): error TS7006: Parameter 's' implicitly has an 'any' type.
+lib/orchestration/prompt-builder.ts(660,17): error TS7006: Parameter 'q' implicitly has an 'any' type.
+lib/orchestration/prompt-builder.ts(660,20): error TS7006: Parameter 'i' implicitly has an 'any' type.
+lib/orchestration/prompt-builder.ts(667,14): error TS18046: 'scenes' is of type 'unknown'.
+lib/orchestration/prompt-builder.ts(672,7): error TS18046: 'scenes' is of type 'unknown'.
+lib/orchestration/prompt-builder.ts(673,26): error TS18046: 'scenes' is of type 'unknown'.
+lib/orchestration/prompt-builder.ts(675,13): error TS7006: Parameter 's' implicitly has an 'any' type.
+lib/orchestration/prompt-builder.ts(675,16): error TS7006: Parameter 'i' implicitly has an 'any' type.
+lib/orchestration/prompt-builder.ts(678,34): error TS18046: 'scenes' is of type 'unknown'.
+lib/orchestration/prompt-builder.ts(678,69): error TS18046: 'scenes' is of type 'unknown'.
+lib/orchestration/prompt-builder.ts(683,14): error TS2339: Property 'whiteboard' does not exist on type '{}'.
+lib/orchestration/prompt-builder.ts(683,34): error TS2339: Property 'whiteboard' does not exist on type '{}'.
+lib/orchestration/prompt-builder.ts(684,26): error TS2339: Property 'whiteboard' does not exist on type '{}'.
+lib/orchestration/prompt-builder.ts(684,43): error TS2339: Property 'whiteboard' does not exist on type '{}'.
+lib/orchestration/prompt-builder.ts(687,36): error TS2339: Property 'whiteboard' does not exist on type '{}'.
+lib/orchestration/prompt-builder.ts(781,42): error TS2339: Property 'agentId' does not exist on type '{}'.
+lib/orchestration/prompt-builder.ts(786,43): error TS2339: Property 'senderName' does not exist on type '{}'.
+lib/orchestration/prompt-builder.ts(824,40): error TS2339: Property 'senderName' does not exist on type '{}'.
+lib/store/stage.ts(2,46): error TS2307: Cannot find module '@/lib/types/stage' or its corresponding type declarations.
+lib/store/stage.ts(5,35): error TS2307: Cannot find module '@/lib/types/generation' or its corresponding type declarations.
+lib/store/stage.ts(203,14): error TS2307: Cannot find module '@/lib/utils/database' or its corresponding type declarations.
+lib/store/stage.ts(258,46): error TS2307: Cannot find module '@/lib/utils/stage-storage' or its corresponding type declarations.
+lib/store/stage.ts(280,46): error TS2307: Cannot find module '@/lib/utils/stage-storage' or its corresponding type declarations.
+lib/store/stage.ts(284,35): error TS2307: Cannot find module '@/lib/utils/database' or its corresponding type declarations.
+lib/store/stage.ts(296,48): error TS7006: Parameter 'o' implicitly has an 'any' type.
+lib/store/stage.ts(296,73): error TS7006: Parameter 's' implicitly has an 'any' type.
+lib/types/action.ts(36,18): error TS2430: Interface 'SpeechAction' incorrectly extends interface 'Action'.
+  Types of property 'text' are incompatible.
+    Type 'string | undefined' is not assignable to type 'string'.
+      Type 'undefined' is not assignable to type 'string'.

@@ -1,0 +1,45 @@
+{
+  "id": "pg_9baca998",
+  "chapterOrder": -1,
+  "title": "Overview",
+  "status": "ready",
+  "blocks": [
+    {
+      "id": "pg_00a2062e",
+      "type": "text",
+      "status": "ready",
+      "params": {},
+      "payload": {
+        "content": "# 深度学习实战：从基础到应用\n\nWelcome to this book. Use the chapter navigation to explore each topic."
+      },
+      "sourceAnchors": [],
+      "metadata": {}
+    },
+    {
+      "id": "pg_8a2473f2",
+      "type": "concept_graph",
+      "status": "ready",
+      "params": {},
+      "payload": {
+        "mermaid": "graph TD\n  dl_overview[\"深度学习概念与工具\"]\n  perceptron[\"感知机与多层网络\"]\n  backprop[\"反向传播算法\"]\n  activation[\"激活函数\"]\n  loss_func[\"损失函数\"]\n  optimizer[\"优化器\"]\n  regularization[\"正则化与归一化\"]\n  convolution[\"卷积操作\"]\n  cnn_arch[\"CNN架构\"]\n  object_detection[\"目标检测\"]\n  transfer_learning[\"迁移学习\"]\n  rnn[\"循环神经网络\"]\n  lstm[\"LSTM与GRU\"]\n  autoencoder[\"自编码器\"]\n  gan[\"生成对抗网络\"]\n  rl_basics[\"强化学习基础\"]\n  dqn[\"深度Q网络\"]\n  dl_overview --> perceptron\n  perceptron --> backprop\n  perceptron -.-> activation\n  backprop --> loss_func\n  backprop --> optimizer\n  optimizer --- regularization\n  convolution --> cnn_arch\n  cnn_arch -.-> object_detection\n  cnn_arch --- transfer_learning\n  rnn -.-> lstm\n  autoencoder --- gan\n  rl_basics --> dqn\n  cnn_arch --> dqn\n  lstm --- rl_basics\n",
+        "nodeCount": 17,
+        "edgeCount": 14
+      },
+      "sourceAnchors": [],
+      "metadata": {}
+    },
+    {
+      "id": "pg_b4947d99",
+      "type": "text",
+      "status": "ready",
+      "params": {},
+      "payload": {
+        "content": "## Chapters\n\n1. **深度学习概览与环境搭建** — 本章作为开篇，介绍深度学习的基本概念、发展脉络和应用领域，并指导读者搭建PyTorch和TensorFlow开发环境，运行第一个简单的深度学习程序，为后续章节奠定基础。\n2. **神经网络基础：从感知机到反向传播** — 本章深入讲解神经网络的核心原理，从单层感知机开始，逐步引出多层网络与反向传播算法。同时介绍Sigmoid、ReLU、Tanh等激活函数的特性与选择策略，并通过代码实现一个简单的全连接网络。\n3. **模型训练与优化技巧** — 本章聚焦于深度学习的训练过程，涵盖常见损失函数（交叉熵、MSE等）、优化器（SGD、Adam等）以及防止过拟合的关键技术。通过实验对比不同超参数的影响，帮助读者掌握模型调优的实用技能。\n4. **卷积神经网络与图像识别** — 本章系统介绍卷积神经网络的核心组件，从边缘检测到特征提取，并解析LeNet、AlexNet、ResNet等经典模型的设计演进。通过实战项目，读者将学会构建CNN模型进行图像分类。\n5. **目标检测与图像分割实战** — 本章在图像识别基础上，深入目标检测与语义分割领域。讲解边界框回归、非极大值抑制等关键技术，并实践YOLO和Faster R-CNN等模型的训练与推理，同时介绍迁移学习在视觉任务中的应用。\n6. **循环神经网络与序列建模** — 本章从循环神经网络的基本结构出发，推导梯度消失问题的根源，并深入讲解LSTM和GRU的门控机制。通过文本生成和情感分析两个项目，展示RNN在序列建模中的实践能力。\n7. **生成模型：自编码器与生成对抗网络** — 本章探索深度学习在生成任务中的应用。先介绍自编码器与变分自编码器（VAE），然后深入生成对抗网络（GAN）的核心思想，包括生成器与判别器的博弈过程。通过实战项目，读者将训练出能够生成手写数字和人脸的模型。\n8. **强化学习入门与综合实战** — 本章作为收尾，介绍强化学习的基础概念与经典算法，重点讲解DQN如何结合深度学习处理高维状态空间。最后通过一个综合性项目（如游戏AI或推荐系统），将本书涵盖的神经网络、CNN、RNN、生成模型等技术融会贯通。"
+      },
+      "sourceAnchors": [],
+      "metadata": {}
+    }
+  ],
+  "links": [],
+  "metadata": {}
+}

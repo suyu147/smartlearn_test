@@ -1,0 +1,22 @@
+[
+  {
+    "id": "mrn3v1a3bsr1hh",
+    "name": "深度学习",
+    "description": "测试",
+    "color": "#3B82F6",
+    "icon": "book",
+    "recordCount": 0,
+    "createdAt": "2026-07-16T06:05:42.075Z",
+    "updatedAt": "2026-07-16T06:05:42.075Z"
+  },
+  {
+    "id": "mrn43g4ij6ieg3",
+    "name": "机器学习",
+    "description": "测试用",
+    "color": "#3B82F6",
+    "icon": "book",
+    "recordCount": 3,
+    "createdAt": "2026-07-16T06:12:14.563Z",
+    "updatedAt": "2026-07-16T06:17:02.498Z"
+  }
+]

@@ -1,0 +1,91 @@
+{
+  "id": "pg_648fc8d5",
+  "chapterOrder": 2,
+  "title": "Chapter 3",
+  "status": "ready",
+  "blocks": [
+    {
+      "id": "79aab7fd70f0",
+      "type": "section",
+      "status": "ready",
+      "params": {
+        "depth": "balanced",
+        "focus": "Core concept explanation"
+      },
+      "payload": {
+        "content": "[LLM not configured]",
+        "outline": {
+          "content": "[LLM not configured]"
+        }
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "wordCount": 20,
+        "sectionCount": 1
+      }
+    },
+    {
+      "id": "adf8ba1e9eae",
+      "type": "callout",
+      "status": "ready",
+      "params": {
+        "calloutType": "key_idea",
+        "focus": "Key idea"
+      },
+      "payload": {
+        "content": "[LLM not configured]",
+        "calloutType": "key_idea"
+      },
+      "sourceAnchors": [],
+      "metadata": {}
+    },
+    {
+      "id": "36116f45264c",
+      "type": "code",
+      "status": "ready",
+      "params": {
+        "focus": "Code illustration"
+      },
+      "payload": {
+        "language": "python",
+        "code": "# Code not generated",
+        "explanation": ""
+      },
+      "sourceAnchors": [],
+      "metadata": {}
+    },
+    {
+      "id": "949c28efae75",
+      "type": "text",
+      "status": "ready",
+      "params": {
+        "focus": "Connections and applications"
+      },
+      "payload": {
+        "content": "[LLM not configured]"
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "wordCount": 20
+      }
+    },
+    {
+      "id": "f4aff92f0c89",
+      "type": "quiz",
+      "status": "ready",
+      "params": {
+        "difficulty": "medium",
+        "focus": "Concept check"
+      },
+      "payload": {
+        "content": "[LLM not configured]"
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "difficulty": "medium"
+      }
+    }
+  ],
+  "links": [],
+  "metadata": {}
+}

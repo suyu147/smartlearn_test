@@ -1,0 +1,297 @@
+﻿components/chat/use-chat-sessions.ts(339,53): error TS2345: Argument of type 'UseBoundStore<StoreApi<StageState>>' is not assignable to parameter of type 'StageStore'.
+  The types returned by 'getState()' are incompatible between these types.
+    Type 'StageState' is not assignable to type '{ [key: string]: unknown; stage: Stage | null; scenes: Scene[]; currentSceneId: string | null; }'.
+      Index signature for type 'string' is missing in type 'StageState'.
+components/chat/use-chat-sessions.ts(1396,36): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+lib/action/engine.ts(91,31): error TS2345: Argument of type 'Action' is not assignable to parameter of type 'SpotlightAction'.
+  Types of property 'type' are incompatible.
+    Type 'ActionType' is not assignable to type '"spotlight"'.
+      Type '"discussion"' is not assignable to type '"spotlight"'.
+lib/action/engine.ts(94,27): error TS2345: Argument of type 'Action' is not assignable to parameter of type 'LaserAction'.
+  Types of property 'type' are incompatible.
+    Type 'ActionType' is not assignable to type '"laser"'.
+      Type '"discussion"' is not assignable to type '"laser"'.
+lib/action/engine.ts(102,35): error TS2345: Argument of type 'Action' is not assignable to parameter of type 'SpeechAction'.
+  Types of property 'type' are incompatible.
+    Type 'ActionType' is not assignable to type '"speech"'.
+      Type '"discussion"' is not assignable to type '"speech"'.
+lib/action/engine.ts(106,39): error TS2345: Argument of type 'Action' is not assignable to parameter of type 'WbDrawTextAction'.
+  Types of property 'type' are incompatible.
+    Type 'ActionType' is not assignable to type '"wb-draw-text" | "wb_draw_text"'.
+      Type '"discussion"' is not assignable to type '"wb-draw-text" | "wb_draw_text"'.
+lib/action/engine.ts(108,40): error TS2345: Argument of type 'Action' is not assignable to parameter of type 'WbDrawShapeAction'.
+  Type 'Action' is missing the following properties from type 'WbDrawShapeAction': width, height
+lib/action/engine.ts(110,40): error TS2345: Argument of type 'Action' is not assignable to parameter of type 'WbDrawChartAction'.
+  Type 'Action' is missing the following properties from type 'WbDrawChartAction': width, height
+lib/action/engine.ts(112,40): error TS2345: Argument of type 'Action' is not assignable to parameter of type 'WbDrawLatexAction'.
+  Types of property 'type' are incompatible.
+    Type 'ActionType' is not assignable to type '"wb-draw-latex" | "wb_draw_latex"'.
+      Type '"discussion"' is not assignable to type '"wb-draw-latex" | "wb_draw_latex"'.
+lib/action/engine.ts(114,40): error TS2345: Argument of type 'Action' is not assignable to parameter of type 'WbDrawTableAction'.
+  Type 'Action' is missing the following properties from type 'WbDrawTableAction': width, height
+lib/action/engine.ts(152,44): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+lib/action/engine.ts(159,40): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+lib/audio/asr-providers.ts(220,9): error TS2322: Type 'Record<string, unknown>' is not assignable to type 'Record<string, JSONValue>'.
+  'string' index signatures are incompatible.
+    Type 'unknown' is not assignable to type 'JSONValue'.
+lib/audio/voice-resolver.ts(27,36): error TS2339: Property 'modelId' does not exist on type 'VoiceConfig'.
+lib/audio/voice-resolver.ts(28,9): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+lib/audio/voice-resolver.ts(31,37): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'TTSProviderId'.
+  Type 'undefined' is not assignable to type 'TTSProviderId'.
+lib/audio/voice-resolver.ts(32,23): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+lib/audio/voice-resolver.ts(34,9): error TS2322: Type 'string | undefined' is not assignable to type 'TTSProviderId'.
+  Type 'undefined' is not assignable to type 'TTSProviderId'.
+lib/audio/voice-resolver.ts(35,36): error TS2339: Property 'modelId' does not exist on type 'VoiceConfig'.
+lib/audio/voice-resolver.ts(36,9): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+lib/generation/scene-builder.ts(150,7): error TS2322: Type '{ [key: string]: unknown; type: string; left: number; top: number; width: number; height: number; id?: string | undefined; rotate?: number | undefined; lock?: boolean | undefined; }[]' is not assignable to type 'PPTElement[]'.
+  Type '{ [key: string]: unknown; type: string; left: number; top: number; width: number; height: number; id?: string | undefined; rotate?: number | undefined; lock?: boolean | undefined; }' is not assignable to type 'PPTElement'.
+    Type '{ [key: string]: unknown; type: string; left: number; top: number; width: number; height: number; id?: string | undefined; rotate?: number | undefined; lock?: boolean | undefined; }' is not assignable to type 'PPTBaseElement'.
+      Types of property 'id' are incompatible.
+        Type 'string | undefined' is not assignable to type 'string'.
+          Type 'undefined' is not assignable to type 'string'.
+lib/generation/scene-generator.ts(196,58): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type '"zh-CN" | "en-US" | undefined'.
+  Type 'string' is not assignable to type '"zh-CN" | "en-US" | undefined'.
+lib/generation/scene-generator.ts(536,56): error TS2345: Argument of type 'AgentInfo[] | undefined' is not assignable to parameter of type 'string | undefined'.
+  Type 'AgentInfo[]' is not assignable to type 'string'.
+lib/generation/scene-generator.ts(541,42): error TS2339: Property 'map' does not exist on type '{}'.
+lib/generation/scene-generator.ts(541,47): error TS7006: Parameter 'p' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(541,50): error TS7006: Parameter 'i' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(624,5): error TS2322: Type 'SlideBackground | undefined' is not assignable to type '{ type: "solid" | "gradient"; color?: string | undefined; gradient?: { type: "linear" | "radial"; colors: { pos: number; color: string; }[]; rotate: number; } | undefined; } | undefined'.
+  Type 'SlideBackground' is not assignable to type '{ type: "solid" | "gradient"; color?: string | undefined; gradient?: { type: "linear" | "radial"; colors: { pos: number; color: string; }[]; rotate: number; } | undefined; }'.
+    Types of property 'type' are incompatible.
+      Type '"image" | "solid" | "gradient"' is not assignable to type '"solid" | "gradient"'.
+        Type '"image"' is not assignable to type '"solid" | "gradient"'.
+lib/generation/scene-generator.ts(645,42): error TS2339: Property 'map' does not exist on type '{}'.
+lib/generation/scene-generator.ts(645,47): error TS7006: Parameter 'p' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(645,50): error TS7006: Parameter 'i' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(646,31): error TS2339: Property 'questionCount' does not exist on type '{}'.
+lib/generation/scene-generator.ts(647,28): error TS2339: Property 'difficulty' does not exist on type '{}'.
+lib/generation/scene-generator.ts(648,31): error TS2339: Property 'questionTypes' does not exist on type '{}'.
+lib/generation/scene-generator.ts(749,44): error TS2339: Property 'map' does not exist on type '{}'.
+lib/generation/scene-generator.ts(749,49): error TS7006: Parameter 'p' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(749,52): error TS7006: Parameter 'i' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(773,66): error TS2339: Property 'join' does not exist on type 'string'.
+lib/generation/scene-generator.ts(776,59): error TS2339: Property 'join' does not exist on type 'string'.
+lib/generation/scene-generator.ts(779,60): error TS2339: Property 'join' does not exist on type 'string'.
+lib/generation/scene-generator.ts(782,72): error TS2339: Property 'join' does not exist on type 'string'.
+lib/generation/scene-generator.ts(792,42): error TS2339: Property 'map' does not exist on type '{}'.
+lib/generation/scene-generator.ts(792,47): error TS7006: Parameter 'p' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(792,50): error TS7006: Parameter 'i' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(853,7): error TS2554: Expected 2 arguments, but got 3.
+lib/generation/scene-generator.ts(854,22): error TS7006: Parameter 'msg' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(858,39): error TS2339: Property 'agents' does not exist on type 'GenerationResult<GeneratedPBLContent>'.
+lib/generation/scene-generator.ts(858,78): error TS2339: Property 'issueboard' does not exist on type 'GenerationResult<GeneratedPBLContent>'.
+lib/generation/scene-generator.ts(861,14): error TS2739: Type 'GenerationResult<GeneratedPBLContent>' is missing the following properties from type 'PBLProjectConfig': title, description, tasks
+lib/generation/scene-generator.ts(920,44): error TS2345: Argument of type 'AgentInfo[] | undefined' is not assignable to parameter of type 'AgentInfo[]'.
+  Type 'undefined' is not assignable to type 'AgentInfo[]'.
+lib/generation/scene-generator.ts(924,50): error TS2345: Argument of type '{ [key: string]: unknown; type: string; left: number; top: number; width: number; height: number; id?: string | undefined; rotate?: number | undefined; lock?: boolean | undefined; }[]' is not assignable to parameter of type 'PPTElement[]'.
+  Type '{ [key: string]: unknown; type: string; left: number; top: number; width: number; height: number; id?: string | undefined; rotate?: number | undefined; lock?: boolean | undefined; }' is not assignable to type 'PPTElement'.
+    Type '{ [key: string]: unknown; type: string; left: number; top: number; width: number; height: number; id?: string | undefined; rotate?: number | undefined; lock?: boolean | undefined; }' is not assignable to type 'PPTBaseElement'.
+      Types of property 'id' are incompatible.
+        Type 'string | undefined' is not assignable to type 'string'.
+          Type 'undefined' is not assignable to type 'string'.
+lib/generation/scene-generator.ts(928,44): error TS2339: Property 'map' does not exist on type '{}'.
+lib/generation/scene-generator.ts(928,49): error TS7006: Parameter 'p' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(928,52): error TS7006: Parameter 'i' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(931,22): error TS2554: Expected 2 arguments, but got 1.
+lib/generation/scene-generator.ts(937,51): error TS2345: Argument of type '{ [key: string]: unknown; type: string; left: number; top: number; width: number; height: number; id?: string | undefined; rotate?: number | undefined; lock?: boolean | undefined; }[]' is not assignable to parameter of type 'PPTElement[]'.
+  Type '{ [key: string]: unknown; type: string; left: number; top: number; width: number; height: number; id?: string | undefined; rotate?: number | undefined; lock?: boolean | undefined; }' is not assignable to type 'PPTElement'.
+    Type '{ [key: string]: unknown; type: string; left: number; top: number; width: number; height: number; id?: string | undefined; rotate?: number | undefined; lock?: boolean | undefined; }' is not assignable to type 'PPTBaseElement'.
+      Types of property 'id' are incompatible.
+        Type 'string | undefined' is not assignable to type 'string'.
+          Type 'undefined' is not assignable to type 'string'.
+lib/generation/scene-generator.ts(945,38): error TS2345: Argument of type '{ [key: string]: unknown; type: string; left: number; top: number; width: number; height: number; id?: string | undefined; rotate?: number | undefined; lock?: boolean | undefined; }[]' is not assignable to parameter of type 'PPTElement[]'.
+  Type '{ [key: string]: unknown; type: string; left: number; top: number; width: number; height: number; id?: string | undefined; rotate?: number | undefined; lock?: boolean | undefined; }' is not assignable to type 'PPTElement'.
+    Type '{ [key: string]: unknown; type: string; left: number; top: number; width: number; height: number; id?: string | undefined; rotate?: number | undefined; lock?: boolean | undefined; }' is not assignable to type 'PPTBaseElement'.
+      Types of property 'id' are incompatible.
+        Type 'string | undefined' is not assignable to type 'string'.
+          Type 'undefined' is not assignable to type 'string'.
+lib/generation/scene-generator.ts(948,49): error TS2345: Argument of type '{ [key: string]: unknown; type: string; left: number; top: number; width: number; height: number; id?: string | undefined; rotate?: number | undefined; lock?: boolean | undefined; }[]' is not assignable to parameter of type 'PPTElement[]'.
+  Type '{ [key: string]: unknown; type: string; left: number; top: number; width: number; height: number; id?: string | undefined; rotate?: number | undefined; lock?: boolean | undefined; }' is not assignable to type 'PPTElement'.
+    Type '{ [key: string]: unknown; type: string; left: number; top: number; width: number; height: number; id?: string | undefined; rotate?: number | undefined; lock?: boolean | undefined; }' is not assignable to type 'PPTBaseElement'.
+      Types of property 'id' are incompatible.
+        Type 'string | undefined' is not assignable to type 'string'.
+          Type 'undefined' is not assignable to type 'string'.
+lib/generation/scene-generator.ts(957,44): error TS2339: Property 'map' does not exist on type '{}'.
+lib/generation/scene-generator.ts(957,49): error TS7006: Parameter 'p' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(957,52): error TS7006: Parameter 'i' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(960,22): error TS2554: Expected 2 arguments, but got 1.
+lib/generation/scene-generator.ts(980,46): error TS2345: Argument of type 'AgentInfo[] | undefined' is not assignable to parameter of type 'AgentInfo[]'.
+  Type 'undefined' is not assignable to type 'AgentInfo[]'.
+lib/generation/scene-generator.ts(983,44): error TS2339: Property 'map' does not exist on type '{}'.
+lib/generation/scene-generator.ts(983,49): error TS7006: Parameter 'p' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(983,52): error TS7006: Parameter 'i' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(987,22): error TS2554: Expected 2 arguments, but got 1.
+lib/generation/scene-generator.ts(1007,46): error TS2345: Argument of type 'AgentInfo[] | undefined' is not assignable to parameter of type 'AgentInfo[]'.
+  Type 'undefined' is not assignable to type 'AgentInfo[]'.
+lib/generation/scene-generator.ts(1010,44): error TS2339: Property 'map' does not exist on type '{}'.
+lib/generation/scene-generator.ts(1010,49): error TS7006: Parameter 'p' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(1010,52): error TS7006: Parameter 'i' implicitly has an 'any' type.
+lib/generation/scene-generator.ts(1014,22): error TS2554: Expected 2 arguments, but got 1.
+lib/generation/scene-generator.ts(1083,49): error TS2551: Property 'value' does not exist on type 'string | { value: string; label: string; }'. Did you mean 'valueOf'?
+  Property 'value' does not exist on type 'string'.
+lib/generation/scene-generator.ts(1083,61): error TS2339: Property 'label' does not exist on type 'string | { value: string; label: string; }'.
+  Property 'label' does not exist on type 'string'.
+lib/generation/scene-generator.ts(1159,41): error TS2339: Property 'length' does not exist on type '{}'.
+lib/generation/scene-generator.ts(1160,25): error TS2339: Property 'join' does not exist on type '{}'.
+lib/generation/scene-generator.ts(1229,7): error TS2322: Type '{ [key: string]: unknown; type: string; left: number; top: number; width: number; height: number; id?: string | undefined; rotate?: number | undefined; lock?: boolean | undefined; }[]' is not assignable to type 'PPTElement[]'.
+  Type '{ [key: string]: unknown; type: string; left: number; top: number; width: number; height: number; id?: string | undefined; rotate?: number | undefined; lock?: boolean | undefined; }' is not assignable to type 'PPTElement'.
+    Type '{ [key: string]: unknown; type: string; left: number; top: number; width: number; height: number; id?: string | undefined; rotate?: number | undefined; lock?: boolean | undefined; }' is not assignable to type 'PPTBaseElement'.
+      Types of property 'id' are incompatible.
+        Type 'string | undefined' is not assignable to type 'string'.
+          Type 'undefined' is not assignable to type 'string'.
+lib/generation/scene-generator.ts(1233,42): error TS2345: Argument of type '{ type: "slide"; title: string; order: number; content: { type: "slide"; canvas: Slide; }; actions: Action[]; }' is not assignable to parameter of type 'Omit<Scene, "id">'.
+  Type '{ type: "slide"; title: string; order: number; content: { type: "slide"; canvas: Slide; }; actions: Action[]; }' is missing the following properties from type 'Omit<Scene, "id">': createdAt, stageId, updatedAt
+lib/generation/scene-generator.ts(1244,24): error TS2339: Property 'success' does not exist on type 'Scene'.
+lib/generation/scene-generator.ts(1244,47): error TS2339: Property 'data' does not exist on type 'Scene'.
+lib/generation/scene-generator.ts(1248,42): error TS2345: Argument of type '{ type: "quiz"; title: string; order: number; content: { type: "quiz"; questions: QuizQuestion[]; }; actions: Action[]; }' is not assignable to parameter of type 'Omit<Scene, "id">'.
+  Type '{ type: "quiz"; title: string; order: number; content: { type: "quiz"; questions: QuizQuestion[]; }; actions: Action[]; }' is missing the following properties from type 'Omit<Scene, "id">': createdAt, stageId, updatedAt
+lib/generation/scene-generator.ts(1259,24): error TS2339: Property 'success' does not exist on type 'Scene'.
+lib/generation/scene-generator.ts(1259,47): error TS2339: Property 'data' does not exist on type 'Scene'.
+lib/generation/scene-generator.ts(1263,42): error TS2345: Argument of type '{ type: "interactive"; title: string; order: number; content: { type: "interactive"; url: string; html: string; }; actions: Action[]; }' is not assignable to parameter of type 'Omit<Scene, "id">'.
+  Type '{ type: "interactive"; title: string; order: number; content: { type: "interactive"; url: string; html: string; }; actions: Action[]; }' is missing the following properties from type 'Omit<Scene, "id">': createdAt, stageId, updatedAt
+lib/generation/scene-generator.ts(1275,24): error TS2339: Property 'success' does not exist on type 'Scene'.
+lib/generation/scene-generator.ts(1275,47): error TS2339: Property 'data' does not exist on type 'Scene'.
+lib/generation/scene-generator.ts(1279,42): error TS2345: Argument of type '{ type: "pbl"; title: string; order: number; content: { type: "pbl"; projectConfig: PBLProjectConfig; }; actions: Action[]; }' is not assignable to parameter of type 'Omit<Scene, "id">'.
+  Type '{ type: "pbl"; title: string; order: number; content: { type: "pbl"; projectConfig: PBLProjectConfig; }; actions: Action[]; }' is missing the following properties from type 'Omit<Scene, "id">': createdAt, stageId, updatedAt
+lib/generation/scene-generator.ts(1290,24): error TS2339: Property 'success' does not exist on type 'Scene'.
+lib/generation/scene-generator.ts(1290,47): error TS2339: Property 'data' does not exist on type 'Scene'.
+lib/orchestration/director-graph.ts(171,5): error TS2554: Expected 1 arguments, but got 9.
+lib/orchestration/director-graph.ts(181,66): error TS2554: Expected 1 arguments, but got 2.
+lib/orchestration/director-graph.ts(185,8): error TS2322: Type 'SystemMessage' is not assignable to type 'Record<string, unknown>'.
+  Index signature for type 'string' is missing in type 'SystemMessage'.
+lib/orchestration/director-graph.ts(185,35): error TS2322: Type 'HumanMessage' is not assignable to type 'Record<string, unknown>'.
+  Index signature for type 'string' is missing in type 'HumanMessage'.
+lib/orchestration/director-graph.ts(189,28): error TS2339: Property 'generations' does not exist on type 'AsyncGenerator<string, any, any>'.
+lib/orchestration/director-graph.ts(194,9): error TS18047: 'decision' is possibly 'null'.
+lib/orchestration/director-graph.ts(194,32): error TS18047: 'decision' is possibly 'null'.
+lib/orchestration/director-graph.ts(199,9): error TS18047: 'decision' is possibly 'null'.
+lib/orchestration/director-graph.ts(208,53): error TS18047: 'decision' is possibly 'null'.
+lib/orchestration/director-graph.ts(210,45): error TS18047: 'decision' is possibly 'null'.
+lib/orchestration/director-graph.ts(216,48): error TS18047: 'decision' is possibly 'null'.
+lib/orchestration/director-graph.ts(219,54): error TS18047: 'decision' is possibly 'null'.
+lib/orchestration/director-graph.ts(221,23): error TS18047: 'decision' is possibly 'null'.
+lib/orchestration/director-graph.ts(278,7): error TS18046: 'state.storeState.scenes' is of type 'unknown'.
+lib/orchestration/director-graph.ts(278,37): error TS7006: Parameter 's' implicitly has an 'any' type.
+lib/orchestration/director-graph.ts(281,48): error TS2345: Argument of type 'string[] | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+lib/orchestration/director-graph.ts(293,66): error TS2554: Expected 1 arguments, but got 2.
+lib/orchestration/director-graph.ts(319,54): error TS2345: Argument of type '(SystemMessage | HumanMessage | AIMessage)[]' is not assignable to parameter of type 'Record<string, unknown>[]'.
+  Type 'SystemMessage | HumanMessage | AIMessage' is not assignable to type 'Record<string, unknown>'.
+    Type 'SystemMessage' is not assignable to type 'Record<string, unknown>'.
+      Index signature for type 'string' is missing in type 'SystemMessage'.
+lib/orchestration/director-graph.ts(322,17): error TS2339: Property 'type' does not exist on type 'string'.
+lib/orchestration/director-graph.ts(323,56): error TS2339: Property 'content' does not exist on type 'string'.
+lib/orchestration/director-graph.ts(329,25): error TS2339: Property 'ordered' does not exist on type 'StatelessEvent[]'.
+lib/orchestration/director-graph.ts(329,59): error TS2339: Property 'textChunks' does not exist on type 'StatelessEvent[]'.
+lib/orchestration/director-graph.ts(331,59): error TS2339: Property 'ordered' does not exist on type 'StatelessEvent[]'.
+lib/orchestration/director-graph.ts(331,90): error TS2339: Property 'ordered' does not exist on type 'StatelessEvent[]'.
+lib/orchestration/director-graph.ts(331,103): error TS7006: Parameter 'e' implicitly has an 'any' type.
+lib/orchestration/director-graph.ts(331,155): error TS2339: Property 'textChunks' does not exist on type 'StatelessEvent[]'.
+lib/orchestration/director-graph.ts(331,197): error TS2339: Property 'actions' does not exist on type 'StatelessEvent[]'.
+lib/orchestration/director-graph.ts(331,233): error TS2339: Property 'isDone' does not exist on type 'StatelessEvent[]'.
+lib/orchestration/director-graph.ts(334,41): error TS2339: Property 'ordered' does not exist on type 'StatelessEvent[]'.
+lib/orchestration/director-graph.ts(336,41): error TS2339: Property 'textChunks' does not exist on type 'StatelessEvent[]'.
+lib/orchestration/director-graph.ts(352,36): error TS2339: Property 'actions' does not exist on type 'StatelessEvent[]'.
+lib/orchestration/director-graph.ts(363,38): error TS2345: Argument of type '{ actionName: WhiteboardActionRecord["actionName"]; agentId: string; agentName: string; params: any; }' is not assignable to parameter of type 'WhiteboardActionRecord'.
+  Type '{ actionName: string | undefined; agentId: string; agentName: string; params: any; }' is missing the following properties from type 'WhiteboardActionRecord': actionType, description, timestamp
+lib/orchestration/director-graph.ts(384,56): error TS2339: Property 'textChunks' does not exist on type 'StatelessEvent[]'.
+lib/orchestration/director-graph.ts(385,39): error TS2339: Property 'textChunks' does not exist on type 'StatelessEvent[]'.
+lib/orchestration/director-graph.ts(400,37): error TS2339: Property 'ordered' does not exist on type 'StatelessEvent[]'.
+lib/orchestration/director-graph.ts(402,37): error TS2339: Property 'textChunks' does not exist on type 'StatelessEvent[]'.
+lib/orchestration/director-graph.ts(465,9): error TS2353: Object literal may only specify known properties, and 'actionCount' does not exist in type 'AgentTurnSummary'.
+lib/orchestration/director-graph.ts(515,9): error TS2322: Type 'Date' is not assignable to type 'string'.
+lib/orchestration/director-graph.ts(516,9): error TS2322: Type 'Date' is not assignable to type 'string'.
+lib/orchestration/director-graph.ts(540,5): error TS2322: Type 'string | null' is not assignable to type '{ nickname?: string | undefined; bio?: string | undefined; } | null'.
+  Type 'string' has no properties in common with type '{ nickname?: string | undefined; bio?: string | undefined; }'.
+lib/orchestration/director-graph.ts(544,5): error TS2322: Type 'Record<string, string> | never[]' is not assignable to type 'AgentTurnSummary[]'.
+  Type 'Record<string, string>' is missing the following properties from type 'AgentTurnSummary[]': length, pop, push, concat, and 35 more.
+lib/orchestration/prompt-builder.ts(103,7): error TS18046: 'storeState.scenes' is of type 'unknown'.
+lib/orchestration/prompt-builder.ts(103,31): error TS7006: Parameter 's' implicitly has an 'any' type.
+lib/orchestration/prompt-builder.ts(108,48): error TS2345: Argument of type 'string[] | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+lib/orchestration/prompt-builder.ts(164,41): error TS2538: Type 'undefined' cannot be used as an index type.
+lib/orchestration/prompt-builder.ts(167,44): error TS2339: Property 'language' does not exist on type '{}'.
+lib/orchestration/prompt-builder.ts(207,25): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+lib/orchestration/prompt-builder.ts(220,29): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+lib/orchestration/prompt-builder.ts(510,33): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(516,32): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(517,19): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(518,19): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(519,19): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(520,19): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(522,11): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+lib/orchestration/prompt-builder.ts(528,27): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(528,49): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(529,19): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(530,19): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(531,19): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(532,19): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(534,11): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+lib/orchestration/prompt-builder.ts(540,27): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(540,54): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(541,38): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(542,13): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(543,14): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(544,19): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(545,19): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(546,19): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(547,19): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(549,11): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+lib/orchestration/prompt-builder.ts(555,30): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(556,19): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(557,19): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(558,19): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(560,19): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(562,11): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+lib/orchestration/prompt-builder.ts(568,22): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(571,19): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(572,19): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(573,19): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(574,19): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(576,11): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+lib/orchestration/prompt-builder.ts(582,20): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(583,20): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(584,20): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(585,20): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(586,21): error TS18048: 'record.params' is possibly 'undefined'.
+lib/orchestration/prompt-builder.ts(589,11): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+lib/orchestration/prompt-builder.ts(635,24): error TS2339: Property 'name' does not exist on type '{}'.
+lib/orchestration/prompt-builder.ts(635,51): error TS2339: Property 'description' does not exist on type '{}'.
+lib/orchestration/prompt-builder.ts(635,77): error TS2339: Property 'description' does not exist on type '{}'.
+lib/orchestration/prompt-builder.ts(640,31): error TS18046: 'scenes' is of type 'unknown'.
+lib/orchestration/prompt-builder.ts(643,26): error TS18046: 'scenes' is of type 'unknown'.
+lib/orchestration/prompt-builder.ts(643,39): error TS7006: Parameter 's' implicitly has an 'any' type.
+lib/orchestration/prompt-builder.ts(660,17): error TS7006: Parameter 'q' implicitly has an 'any' type.
+lib/orchestration/prompt-builder.ts(660,20): error TS7006: Parameter 'i' implicitly has an 'any' type.
+lib/orchestration/prompt-builder.ts(667,14): error TS18046: 'scenes' is of type 'unknown'.
+lib/orchestration/prompt-builder.ts(672,7): error TS18046: 'scenes' is of type 'unknown'.
+lib/orchestration/prompt-builder.ts(673,26): error TS18046: 'scenes' is of type 'unknown'.
+lib/orchestration/prompt-builder.ts(675,13): error TS7006: Parameter 's' implicitly has an 'any' type.
+lib/orchestration/prompt-builder.ts(675,16): error TS7006: Parameter 'i' implicitly has an 'any' type.
+lib/orchestration/prompt-builder.ts(678,34): error TS18046: 'scenes' is of type 'unknown'.
+lib/orchestration/prompt-builder.ts(678,69): error TS18046: 'scenes' is of type 'unknown'.
+lib/orchestration/prompt-builder.ts(683,14): error TS2339: Property 'whiteboard' does not exist on type '{}'.
+lib/orchestration/prompt-builder.ts(683,34): error TS2339: Property 'whiteboard' does not exist on type '{}'.
+lib/orchestration/prompt-builder.ts(684,26): error TS2339: Property 'whiteboard' does not exist on type '{}'.
+lib/orchestration/prompt-builder.ts(684,43): error TS2339: Property 'whiteboard' does not exist on type '{}'.
+lib/orchestration/prompt-builder.ts(687,36): error TS2339: Property 'whiteboard' does not exist on type '{}'.
+lib/orchestration/prompt-builder.ts(781,42): error TS2339: Property 'agentId' does not exist on type '{}'.
+lib/orchestration/prompt-builder.ts(786,43): error TS2339: Property 'senderName' does not exist on type '{}'.
+lib/orchestration/prompt-builder.ts(824,40): error TS2339: Property 'senderName' does not exist on type '{}'.
+lib/store/stage.ts(286,40): error TS2339: Property 'outlines' does not exist on type 'never'.
+lib/store/stage.ts(296,48): error TS7006: Parameter 'o' implicitly has an 'any' type.

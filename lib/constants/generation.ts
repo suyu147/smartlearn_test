@@ -1,0 +1,9 @@
+export const MAX_PDF_CONTENT_CHARS = 50000;
+
+export const MAX_VISION_IMAGES = 5;
+
+export const MAX_SCENE_TITLE_LENGTH = 100;
+
+export const DEFAULT_VIEWPORT_SIZE = 1000;
+
+export const DEFAULT_VIEWPORT_RATIO = 0.5625;

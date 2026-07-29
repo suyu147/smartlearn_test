@@ -1,0 +1,91 @@
+{
+  "id": "pg_98bb7b10",
+  "chapterOrder": 0,
+  "title": "Chapter 1",
+  "status": "ready",
+  "blocks": [
+    {
+      "id": "aeef7ade4471",
+      "type": "text",
+      "status": "ready",
+      "params": {
+        "focus": "Chapter overview and learning goals"
+      },
+      "payload": {
+        "content": "[LLM not configured]"
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "wordCount": 20
+      }
+    },
+    {
+      "id": "476f957581eb",
+      "type": "concept_graph",
+      "status": "ready",
+      "params": {
+        "focus": "Key concept relationships"
+      },
+      "payload": {
+        "mermaid": "graph TD\n  A[\"No concepts defined\"]\n",
+        "nodeCount": 0,
+        "edgeCount": 0
+      },
+      "sourceAnchors": [],
+      "metadata": {}
+    },
+    {
+      "id": "0d0a672fa827",
+      "type": "section",
+      "status": "ready",
+      "params": {
+        "depth": "introductory",
+        "focus": "Core concepts"
+      },
+      "payload": {
+        "content": "[LLM not configured]",
+        "outline": {
+          "content": "[LLM not configured]"
+        }
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "wordCount": 20,
+        "sectionCount": 1
+      }
+    },
+    {
+      "id": "f2c82682d153",
+      "type": "callout",
+      "status": "ready",
+      "params": {
+        "calloutType": "summary",
+        "focus": "Key takeaway"
+      },
+      "payload": {
+        "content": "[LLM not configured]",
+        "calloutType": "summary"
+      },
+      "sourceAnchors": [],
+      "metadata": {}
+    },
+    {
+      "id": "29c4c72f99c9",
+      "type": "quiz",
+      "status": "ready",
+      "params": {
+        "difficulty": "easy",
+        "focus": "Comprehension check"
+      },
+      "payload": {
+        "content": "[LLM not configured]"
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "difficulty": "easy"
+      }
+    }
+  ],
+  "links": [],
+  "metadata": {}
+}

@@ -1,0 +1,45 @@
+{
+  "id": "pg_c849dc25",
+  "chapterOrder": -1,
+  "title": "Overview",
+  "status": "ready",
+  "blocks": [
+    {
+      "id": "pg_d08cb9b3",
+      "type": "text",
+      "status": "ready",
+      "params": {},
+      "payload": {
+        "content": "# 深度学习：从原理到实践\n\nWelcome to this book. Use the chapter navigation to explore each topic."
+      },
+      "sourceAnchors": [],
+      "metadata": {}
+    },
+    {
+      "id": "pg_f73baae8",
+      "type": "concept_graph",
+      "status": "ready",
+      "params": {},
+      "payload": {
+        "mermaid": "graph TD\n",
+        "nodeCount": 0,
+        "edgeCount": 0
+      },
+      "sourceAnchors": [],
+      "metadata": {}
+    },
+    {
+      "id": "pg_540b2411",
+      "type": "text",
+      "status": "ready",
+      "params": {},
+      "payload": {
+        "content": "## Chapters\n\n1. **Chapter 1** — Chapter 1 of 深度学习：从原理到实践\n2. **Chapter 2** — Chapter 2 of 深度学习：从原理到实践\n3. **Chapter 3** — Chapter 3 of 深度学习：从原理到实践\n4. **Chapter 4** — Chapter 4 of 深度学习：从原理到实践\n5. **Chapter 5** — Chapter 5 of 深度学习：从原理到实践\n6. **Chapter 6** — Chapter 6 of 深度学习：从原理到实践\n7. **Chapter 7** — Chapter 7 of 深度学习：从原理到实践\n8. **Chapter 8** — Chapter 8 of 深度学习：从原理到实践"
+      },
+      "sourceAnchors": [],
+      "metadata": {}
+    }
+  ],
+  "links": [],
+  "metadata": {}
+}

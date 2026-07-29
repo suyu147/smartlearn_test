@@ -1,0 +1,3 @@
+# SmartLearn - AI-Powered Personalized Learning Platform
+User-agent: *
+Allow: /

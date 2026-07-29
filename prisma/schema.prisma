@@ -1,0 +1,614 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String?  @unique
+  avatar    String?
+  nickname  String?
+  bio       String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  profileCompletedAt DateTime? @map("profile_completed_at")
+
+  profiles        LearningProfile[]
+  masteryEntries  LearningSkillMastery[]
+  masterySessions LearningMasterySession[]
+  quizAttempts    LearningQuizAttempt[]
+  scheduleEntries LearningScheduleEntry[]
+  resources       Resource[]
+  learningPaths   LearningPath[]
+  chatSessions    ChatSession[]
+  quizResults     QuizResult[]
+  dtSessions      DtSession[]
+  dtMessages      DtMessage[]
+  dtApiKeys       DtApiKey[]
+  knowledgeBases  DtKnowledgeBase[]
+  settings        UserSettings?
+  memoryEntries   MemoryEntry[]
+  books           Book[]
+  cowriterDocs    CowriterDocument[]
+  agentActivities AgentActivity[]
+  dtModelCatalogs DtModelCatalog[]
+}
+
+model LearningProfile {
+  id          String    @id @default(cuid())
+  userId      String
+  version     Int       @default(1)
+  dimensions  Json
+  lastSource  String?   @map("last_source")
+  completedAt DateTime? @map("completed_at")
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@unique([userId])
+}
+
+model LearningSkillMastery {
+  id             String    @id @default(cuid())
+  userId         String    @map("user_id")
+  topic          String
+  mastery        Float
+  lastReviewedAt DateTime? @map("last_reviewed_at")
+  reviewCount    Int       @default(0) @map("review_count")
+  streak         Int       @default(0)
+  nextReviewAt   DateTime? @map("next_review_at")
+  difficulty     Float?
+  metadata       Json?
+  createdAt      DateTime  @default(now()) @map("created_at")
+  updatedAt      DateTime  @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, topic])
+  @@index([userId])
+  @@index([userId, nextReviewAt])
+  @@map("learning_skill_mastery")
+}
+
+model LearningMasterySession {
+  id          String    @id @default(cuid())
+  userId      String    @map("user_id")
+  title       String    @default("")
+  topics      Json
+  evaluation  Json?
+  metadata    Json?
+  startedAt   DateTime  @default(now()) @map("started_at")
+  completedAt DateTime? @map("completed_at")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  user         User                  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  quizAttempts LearningQuizAttempt[]
+
+  @@index([userId])
+  @@index([userId, startedAt(sort: Desc)])
+  @@map("learning_mastery_sessions")
+}
+
+model LearningQuizAttempt {
+  id               String   @id @default(cuid())
+  masterySessionId String?  @map("mastery_session_id")
+  userId           String   @map("user_id")
+  topic            String
+  question         String
+  userAnswer       String?  @map("user_answer")
+  correctAnswer    String?  @map("correct_answer")
+  explanation      String?
+  correct          Boolean
+  difficulty       Float?
+  metadata         Json?
+  createdAt        DateTime @default(now()) @map("created_at")
+
+  masterySession LearningMasterySession? @relation(fields: [masterySessionId], references: [id], onDelete: SetNull)
+  user           User                    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([userId, topic])
+  @@index([masterySessionId])
+  @@map("learning_quiz_attempts")
+}
+
+model LearningScheduleEntry {
+  id        String   @id @default(cuid())
+  userId    String   @map("user_id")
+  topic     String
+  dueAt     DateTime @map("due_at")
+  priority  Int      @default(0)
+  status    String   @default("pending")
+  metadata  Json?
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([userId, dueAt])
+  @@map("learning_schedule_entries")
+}
+
+model Resource {
+  id          String         @id @default(cuid())
+  userId      String
+  type        ResourceType
+  title       String
+  content     String
+  metadata    Json?
+  sourceAgent String
+  status      ResourceStatus @default(generating)
+  createdAt   DateTime       @default(now())
+
+  user          User              @relation(fields: [userId], references: [id])
+  pathNodes     PathNodeResource[]
+
+  @@index([userId, type])
+  @@index([userId, status])
+}
+
+enum ResourceType {
+  document
+  mindmap
+  quiz
+  video
+  code
+  reading
+  ppt
+}
+
+enum ResourceStatus {
+  generating
+  ready
+  failed
+}
+
+model LearningPath {
+  id        String     @id @default(cuid())
+  userId    String
+  goal      String
+  nodes     Json
+  edges     Json
+  status    PathStatus @default(active)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  user User @relation(fields: [userId], references: [id])
+  pathNodeResources PathNodeResource[]
+
+  @@index([userId])
+}
+
+enum PathStatus {
+  active
+  completed
+  archived
+}
+
+model ChatSession {
+  id        String      @id @default(cuid())
+  userId    String
+  type      SessionType
+  messages  Json
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([userId, createdAt(sort: Desc)])
+}
+
+enum SessionType {
+  profile_build
+  tutor
+  resource_request
+}
+
+model QuizResult {
+  id          String   @id @default(cuid())
+  userId      String
+  quizId      String
+  answers     Json
+  score       Float
+  feedback    String?
+  completedAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+}
+
+model PathNodeResource {
+  id         String @id @default(cuid())
+  pathId     String
+  nodeId     String
+  resourceId String
+
+  resource Resource     @relation(fields: [resourceId], references: [id])
+  path     LearningPath @relation(fields: [pathId], references: [id], onDelete: Cascade)
+
+  @@unique([pathId, nodeId, resourceId])
+}
+
+model StageOutline {
+  stageId   String @id
+  outlines  Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ===========================================================================
+// Phase 1: DeepTutor Migration — Session/Turn/Message/Auth/Config
+// ===========================================================================
+
+enum DtTurnStatus {
+  running
+  completed
+  failed
+  cancelled
+}
+
+enum DtMessageRole {
+  user
+  assistant
+  system
+  tool
+}
+
+/// DeepTutor conversation session — one per chat thread.
+/// Maps to DeepTutor's sessions table with title, summary, and preferences.
+model DtSession {
+  id                  String   @id @default(cuid())
+  userId              String
+  title               String   @default("New Chat")
+  capability          String?
+  compressedSummary   String?  @map("compressed_summary")
+  summaryUpToMsgId    Int?     @map("summary_up_to_msg_id")
+  preferences         Json?
+  metadata            Json?
+  createdAt           DateTime @default(now()) @map("created_at")
+  updatedAt           DateTime @updatedAt @map("updated_at")
+
+  user     User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  turns    DtTurn[]
+  messages DtMessage[]
+
+  @@index([userId])
+  @@index([userId, createdAt(sort: Desc)])
+  @@map("dt_sessions")
+}
+
+/// A single LLM turn within a session (one user message → one full response cycle).
+model DtTurn {
+  id          String       @id @default(cuid())
+  sessionId   String       @map("session_id")
+  capability  String?
+  status      DtTurnStatus @default(running)
+  error       String?
+  tokenUsage  Json?        @map("token_usage")
+  createdAt   DateTime     @default(now()) @map("created_at")
+  updatedAt   DateTime     @updatedAt @map("updated_at")
+  finishedAt  DateTime?    @map("finished_at")
+
+  session  DtSession    @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  events   DtTurnEvent[]
+  messages DtMessage[]
+
+  @@index([sessionId])
+  @@index([sessionId, status])
+  @@map("dt_turns")
+}
+
+/// A message in the conversation history.
+/// Supports edit-branching via parentMessageId (messages form a tree).
+model DtMessage {
+  id               Int             @id @default(autoincrement())
+  sessionId        String          @map("session_id")
+  role             DtMessageRole
+  content          String
+  capability       String?
+  turnId           String?         @map("turn_id")
+  attachments      Json?
+  metadata         Json?
+  parentMessageId  Int?            @map("parent_message_id")
+  createdAt        DateTime        @default(now()) @map("created_at")
+
+  user           User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId         String      @map("user_id")
+  session        DtSession   @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  parentMessage  DtMessage?  @relation("MessageTree", fields: [parentMessageId], references: [id])
+  childMessages  DtMessage[] @relation("MessageTree")
+  turn           DtTurn?     @relation(fields: [turnId], references: [id], onDelete: SetNull)
+
+  @@index([sessionId])
+  @@index([sessionId, createdAt])
+  @@index([userId])
+  @@map("dt_messages")
+}
+
+/// Persisted streaming events for a turn (enables replay and late subscription).
+model DtTurnEvent {
+  id        Int      @id @default(autoincrement())
+  turnId    String   @map("turn_id")
+  seq       Int
+  type      String
+  source    String   @default("")
+  stage     String   @default("")
+  content   String   @default("")
+  metadata  Json?
+  timestamp Float    @default(0)
+
+  turn DtTurn @relation(fields: [turnId], references: [id], onDelete: Cascade)
+
+  @@index([turnId])
+  @@index([turnId, seq])
+  @@map("dt_turn_events")
+}
+
+/// Server-side encrypted API keys (so keys never live in the browser).
+model DtApiKey {
+  id          String   @id @default(cuid())
+  userId      String   @map("user_id")
+  provider    String
+  apiKey      String   // AES-256 encrypted; decrypted at runtime
+  label       String   @default("")
+  isActive    Boolean  @default(true) @map("is_active")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, provider])
+  @@index([userId])
+  @@map("dt_api_keys")
+}
+
+/// Model catalog: stores provider profiles and model lists for LLM/embedding/search.
+model DtModelCatalog {
+  id        String   @id @default(cuid())
+  userId    String   @map("user_id")
+  service   String   // "llm" | "embedding" | "search"
+  catalog   Json     // Full catalog JSON (profiles, active_profile_id, etc.)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, service])
+  @@index([userId])
+  @@map("dt_model_catalogs")
+}
+
+// ===========================================================================
+// Phase 2b: Knowledge Base / RAG System
+// ===========================================================================
+
+enum DtKbStatus {
+  initializing
+  processing
+  ready
+  error
+  needs_reindex
+}
+
+enum DtDocStatus {
+  pending
+  parsing
+  chunking
+  embedding
+  ready
+  error
+}
+
+model DtKnowledgeBase {
+  id              String     @id @default(cuid())
+  userId          String     @map("user_id")
+  name            String
+  description     String     @default("")
+  status          DtKbStatus @default(initializing)
+  documentCount   Int        @default(0) @map("document_count")
+  totalChunks     Int        @default(0) @map("total_chunks")
+  embeddingModel  String     @default("") @map("embedding_model")
+  embeddingDim    Int        @default(0)  @map("embedding_dim")
+  progress        Json?      // { stage, message, percent }
+  metadata        Json?
+  lastIndexedAt   DateTime?  @map("last_indexed_at")
+  createdAt       DateTime   @default(now()) @map("created_at")
+  updatedAt       DateTime   @updatedAt @map("updated_at")
+
+  user       User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  documents  DtDocument[]
+
+  @@unique([userId, name])
+  @@index([userId])
+  @@map("dt_knowledge_bases")
+}
+
+model DtDocument {
+  id           String      @id @default(cuid())
+  kbId         String      @map("kb_id")
+  title        String
+  filePath     String      @map("file_path")
+  fileSize     Int         @default(0)  @map("file_size")
+  mimeType     String      @default("") @map("mime_type")
+  chunkCount   Int         @default(0)  @map("chunk_count")
+  status       DtDocStatus @default(pending)
+  fileHash     String      @default("") @map("file_hash")
+  errorMessage String?     @map("error_message")
+  metadata     Json?
+  createdAt    DateTime    @default(now()) @map("created_at")
+  updatedAt    DateTime    @updatedAt @map("updated_at")
+
+  kb      DtKnowledgeBase   @relation(fields: [kbId], references: [id], onDelete: Cascade)
+  chunks  DtDocumentChunk[]
+
+  @@index([kbId])
+  @@map("dt_documents")
+}
+
+model DtDocumentChunk {
+  id         String   @id @default(cuid())
+  documentId String   @map("document_id")
+  content    String
+  /// Native pgvector column: vector(1024) for bge-m3 embedding model.
+  /// Requires CREATE EXTENSION vector; — see prisma/migrations.
+  /// Use $executeRaw / $queryRaw for reads and writes (cast with ::vector).
+  embedding  Unsupported("vector(1024)")?
+  chunkIndex Int      @map("chunk_index")
+  metadata   Json?    // { page, source, title, charCount }
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  document DtDocument @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  @@index([documentId])
+  @@map("dt_document_chunks")
+}
+
+// =============================================================================
+// Phase 7 — Store persistence models
+// =============================================================================
+
+/// Server-side user settings (synced from Zustand stores)
+model UserSettings {
+  id        String   @id @default(cuid())
+  userId    String   @map("user_id")
+
+  // Core LLM settings
+  provider         String?  // default LLM provider
+  model            String?  // default model ID
+  temperature      Float    @default(0.7)
+  maxTokens        Int      @default(4096) @map("max_tokens")
+  thinkingMode     Boolean  @default(false) @map("thinking_mode")
+
+  // UI preferences
+  theme            String   @default("system")
+  language         String   @default("zh")
+
+  // SmartLearn-specific
+  smartlearnProviderId  String?  @map("smartlearn_provider_id")
+  smartlearnModelId     String?  @map("smartlearn_model_id")
+  smartlearnBaseUrl     String?  @map("smartlearn_base_url")
+  generatePptImages     Boolean  @default(false) @map("generate_ppt_images")
+  maxTurns              Int      @default(40) @map("max_turns")
+  maxResourceConcurrency Int     @default(3) @map("max_resource_concurrency")
+
+  // Audio settings
+  ttsProviderId    String?  @map("tts_provider_id")
+  ttsVoice         String?  @map("tts_voice")
+  ttsSpeed         Float    @default(1.0) @map("tts_speed")
+  ttsProvidersConfig Json?  @map("tts_providers_config")
+  asrProviderId    String?  @map("asr_provider_id")
+  asrLanguage      String?  @map("asr_language")
+  asrProvidersConfig Json?  @map("asr_providers_config")
+
+  // Agent settings
+  selectedAgentIds  String[] @default([]) @map("selected_agent_ids")
+  disabledAgentIds  String[] @default([]) @map("disabled_agent_ids")
+
+  // Context window
+  autoContextWindow       Boolean @default(true) @map("auto_context_window")
+  contextWindowThreshold  Float   @default(0.75) @map("context_window_threshold")
+  rateLimitEnabled        Boolean @default(true) @map("rate_limit_enabled")
+
+  // Extra (for future fields)
+  extra        Json?
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId])
+  @@map("user_settings")
+}
+
+/// Memory entries (L1 trace, L2 summary, L3 synthesis)
+model MemoryEntry {
+  id        String   @id @default(cuid())
+  userId    String   @map("user_id")
+  layer     String   // 'L1' | 'L2' | 'L3'
+  surface   String?  // 'chat' | 'notebook' | 'quiz' | 'kb' | 'book' | 'cowriter'
+  slot      String?  // For L3: 'recent' | 'profile' | 'scope' | 'preferences'
+  kind      String?  // For L1: event kind
+  content   String   // Text content (L2/L3) or JSON string (L1)
+  payload   Json?    // L1 trace payload
+  tags      String[] @default([])
+  sessionId String?  @map("session_id")
+  turnId    String?  @map("turn_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, layer])
+  @@index([userId, layer, surface])
+  @@map("memory_entries")
+}
+
+/// Book compilation records
+model Book {
+  id            String   @id @default(cuid())
+  userId        String   @map("user_id")
+  title         String
+  subtitle      String?
+  pageCount     Int      @default(0) @map("page_count")
+  status        String   @default("draft") // draft | compiling | compiled | error
+  coverGradient String?  @map("cover_gradient")
+  spine         Json?    // Book spine structure
+  pages         Json?    // All page data
+  metadata      Json?
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([userId, status])
+  @@map("books")
+}
+
+/// Co-writer documents
+model CowriterDocument {
+  id         String   @id @default(cuid())
+  userId     String   @map("user_id")
+  title      String
+  content    String   @default("")
+  version    Int      @default(1)
+  status     String   @default("saved") // saved | editing | ai-generating
+  lastEdited DateTime @default(now()) @map("last_edited")
+  metadata   Json?
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([userId, status])
+  @@map("cowriter_documents")
+}
+
+/// Agent activity log
+model AgentActivity {
+  id           String   @id @default(cuid())
+  userId       String   @map("user_id")
+  sessionId    String?  @map("session_id")
+  agentId      String   @map("agent_id")
+  agentName    String   @map("agent_name")
+  status       String   // running | completed | failed
+  resourceType String?  @map("resource_type")
+  metadata     Json?
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, sessionId])
+  @@map("agent_activities")
+}

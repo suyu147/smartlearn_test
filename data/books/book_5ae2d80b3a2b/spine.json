@@ -1,0 +1,311 @@
+{
+  "title": "深度学习实战：从基础到应用",
+  "chapters": [
+    {
+      "order": 0,
+      "title": "深度学习概览与环境搭建",
+      "learningObjectives": [
+        "了解深度学习的发展历程与核心概念",
+        "掌握深度学习与传统机器学习的区别",
+        "能够搭建PyTorch/TensorFlow开发环境并运行第一个示例"
+      ],
+      "contentType": "overview",
+      "sourceAnchors": [],
+      "prerequisites": [],
+      "pageIds": [
+        "pg_a7280daf"
+      ],
+      "summary": "本章作为开篇，介绍深度学习的基本概念、发展脉络和应用领域，并指导读者搭建PyTorch和TensorFlow开发环境，运行第一个简单的深度学习程序，为后续章节奠定基础。"
+    },
+    {
+      "order": 1,
+      "title": "神经网络基础：从感知机到反向传播",
+      "learningObjectives": [
+        "理解感知机模型与多层神经网络的结构",
+        "掌握反向传播算法的推导与实现",
+        "熟悉常见激活函数及其适用场景"
+      ],
+      "contentType": "theory",
+      "sourceAnchors": [],
+      "prerequisites": [
+        "深度学习概览与环境搭建"
+      ],
+      "pageIds": [
+        "pg_9e90e2ba"
+      ],
+      "summary": "本章深入讲解神经网络的核心原理，从单层感知机开始，逐步引出多层网络与反向传播算法。同时介绍Sigmoid、ReLU、Tanh等激活函数的特性与选择策略，并通过代码实现一个简单的全连接网络。"
+    },
+    {
+      "order": 2,
+      "title": "模型训练与优化技巧",
+      "learningObjectives": [
+        "掌握损失函数的选择与梯度下降变体",
+        "理解正则化、批量归一化与Dropout的作用",
+        "学会超参数调优的基本方法"
+      ],
+      "contentType": "concept",
+      "sourceAnchors": [],
+      "prerequisites": [
+        "神经网络基础：从感知机到反向传播"
+      ],
+      "pageIds": [
+        "pg_0785334a"
+      ],
+      "summary": "本章聚焦于深度学习的训练过程，涵盖常见损失函数（交叉熵、MSE等）、优化器（SGD、Adam等）以及防止过拟合的关键技术。通过实验对比不同超参数的影响，帮助读者掌握模型调优的实用技能。"
+    },
+    {
+      "order": 3,
+      "title": "卷积神经网络与图像识别",
+      "learningObjectives": [
+        "理解卷积、池化与全连接层的运作机制",
+        "掌握经典CNN架构（LeNet、AlexNet、ResNet）的设计思想",
+        "能够使用CNN完成图像分类任务"
+      ],
+      "contentType": "practice",
+      "sourceAnchors": [],
+      "prerequisites": [
+        "模型训练与优化技巧"
+      ],
+      "pageIds": [
+        "pg_4274b7f1"
+      ],
+      "summary": "本章系统介绍卷积神经网络的核心组件，从边缘检测到特征提取，并解析LeNet、AlexNet、ResNet等经典模型的设计演进。通过实战项目，读者将学会构建CNN模型进行图像分类。"
+    },
+    {
+      "order": 4,
+      "title": "目标检测与图像分割实战",
+      "learningObjectives": [
+        "了解目标检测的基本范式（两阶段与单阶段）",
+        "掌握YOLO、SSD等主流检测器的原理",
+        "学会使用预训练模型进行迁移学习"
+      ],
+      "contentType": "practice",
+      "sourceAnchors": [],
+      "prerequisites": [
+        "卷积神经网络与图像识别"
+      ],
+      "pageIds": [
+        "pg_de8661cf"
+      ],
+      "summary": "本章在图像识别基础上，深入目标检测与语义分割领域。讲解边界框回归、非极大值抑制等关键技术，并实践YOLO和Faster R-CNN等模型的训练与推理，同时介绍迁移学习在视觉任务中的应用。"
+    },
+    {
+      "order": 5,
+      "title": "循环神经网络与序列建模",
+      "learningObjectives": [
+        "理解RNN、LSTM与GRU的时序建模原理",
+        "掌握序列数据的处理与编码方法",
+        "能够实现文本生成与情感分析任务"
+      ],
+      "contentType": "derivation",
+      "sourceAnchors": [],
+      "prerequisites": [
+        "模型训练与优化技巧"
+      ],
+      "pageIds": [
+        "pg_74150b89"
+      ],
+      "summary": "本章从循环神经网络的基本结构出发，推导梯度消失问题的根源，并深入讲解LSTM和GRU的门控机制。通过文本生成和情感分析两个项目，展示RNN在序列建模中的实践能力。"
+    },
+    {
+      "order": 6,
+      "title": "生成模型：自编码器与生成对抗网络",
+      "learningObjectives": [
+        "理解自编码器的降维与重构原理",
+        "掌握GAN的对抗训练机制与纳什均衡",
+        "能够训练简单的VAE和DCGAN模型"
+      ],
+      "contentType": "concept",
+      "sourceAnchors": [],
+      "prerequisites": [
+        "模型训练与优化技巧"
+      ],
+      "pageIds": [
+        "pg_0968e736"
+      ],
+      "summary": "本章探索深度学习在生成任务中的应用。先介绍自编码器与变分自编码器（VAE），然后深入生成对抗网络（GAN）的核心思想，包括生成器与判别器的博弈过程。通过实战项目，读者将训练出能够生成手写数字和人脸的模型。"
+    },
+    {
+      "order": 7,
+      "title": "强化学习入门与综合实战",
+      "learningObjectives": [
+        "理解强化学习的基本框架（智能体、环境、奖励）",
+        "掌握Q学习与深度Q网络（DQN）的原理",
+        "结合所学完成一个完整的应用项目"
+      ],
+      "contentType": "overview",
+      "sourceAnchors": [],
+      "prerequisites": [
+        "卷积神经网络与图像识别",
+        "循环神经网络与序列建模",
+        "生成模型：自编码器与生成对抗网络"
+      ],
+      "pageIds": [
+        "pg_0f87b8a0"
+      ],
+      "summary": "本章作为收尾，介绍强化学习的基础概念与经典算法，重点讲解DQN如何结合深度学习处理高维状态空间。最后通过一个综合性项目（如游戏AI或推荐系统），将本书涵盖的神经网络、CNN、RNN、生成模型等技术融会贯通。"
+    }
+  ],
+  "conceptGraph": {
+    "nodes": [
+      {
+        "id": "dl_overview",
+        "label": "深度学习概念与工具",
+        "chapter": 0
+      },
+      {
+        "id": "perceptron",
+        "label": "感知机与多层网络",
+        "chapter": 1
+      },
+      {
+        "id": "backprop",
+        "label": "反向传播算法",
+        "chapter": 1
+      },
+      {
+        "id": "activation",
+        "label": "激活函数",
+        "chapter": 1
+      },
+      {
+        "id": "loss_func",
+        "label": "损失函数",
+        "chapter": 2
+      },
+      {
+        "id": "optimizer",
+        "label": "优化器",
+        "chapter": 2
+      },
+      {
+        "id": "regularization",
+        "label": "正则化与归一化",
+        "chapter": 2
+      },
+      {
+        "id": "convolution",
+        "label": "卷积操作",
+        "chapter": 3
+      },
+      {
+        "id": "cnn_arch",
+        "label": "CNN架构",
+        "chapter": 3
+      },
+      {
+        "id": "object_detection",
+        "label": "目标检测",
+        "chapter": 4
+      },
+      {
+        "id": "transfer_learning",
+        "label": "迁移学习",
+        "chapter": 4
+      },
+      {
+        "id": "rnn",
+        "label": "循环神经网络",
+        "chapter": 5
+      },
+      {
+        "id": "lstm",
+        "label": "LSTM与GRU",
+        "chapter": 5
+      },
+      {
+        "id": "autoencoder",
+        "label": "自编码器",
+        "chapter": 6
+      },
+      {
+        "id": "gan",
+        "label": "生成对抗网络",
+        "chapter": 6
+      },
+      {
+        "id": "rl_basics",
+        "label": "强化学习基础",
+        "chapter": 7
+      },
+      {
+        "id": "dqn",
+        "label": "深度Q网络",
+        "chapter": 7
+      }
+    ],
+    "edges": [
+      {
+        "source": "dl_overview",
+        "target": "perceptron",
+        "relation": "depends_on"
+      },
+      {
+        "source": "perceptron",
+        "target": "backprop",
+        "relation": "depends_on"
+      },
+      {
+        "source": "perceptron",
+        "target": "activation",
+        "relation": "extends"
+      },
+      {
+        "source": "backprop",
+        "target": "loss_func",
+        "relation": "depends_on"
+      },
+      {
+        "source": "backprop",
+        "target": "optimizer",
+        "relation": "depends_on"
+      },
+      {
+        "source": "optimizer",
+        "target": "regularization",
+        "relation": "related"
+      },
+      {
+        "source": "convolution",
+        "target": "cnn_arch",
+        "relation": "depends_on"
+      },
+      {
+        "source": "cnn_arch",
+        "target": "object_detection",
+        "relation": "extends"
+      },
+      {
+        "source": "cnn_arch",
+        "target": "transfer_learning",
+        "relation": "related"
+      },
+      {
+        "source": "rnn",
+        "target": "lstm",
+        "relation": "extends"
+      },
+      {
+        "source": "autoencoder",
+        "target": "gan",
+        "relation": "related"
+      },
+      {
+        "source": "rl_basics",
+        "target": "dqn",
+        "relation": "depends_on"
+      },
+      {
+        "source": "cnn_arch",
+        "target": "dqn",
+        "relation": "depends_on"
+      },
+      {
+        "source": "lstm",
+        "target": "rl_basics",
+        "relation": "related"
+      }
+    ]
+  },
+  "explorationSummary": ""
+}

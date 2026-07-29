@@ -1,0 +1,72 @@
+{
+  "id": "1048cd939742",
+  "status": "ready",
+  "proposal": {
+    "title": "机器学习入门：从原理到实践",
+    "description": "本书为零基础读者设计，系统介绍机器学习核心概念、经典算法及其Python实现，帮助读者快速掌握机器学习的基本流程和常用工具。",
+    "scope": "涵盖监督学习（线性回归、逻辑回归、决策树、支持向量机、朴素贝叶斯）、无监督学习（K均值聚类、主成分分析）、模型评估与选择（交叉验证、过拟合与欠拟合、混淆矩阵、ROC曲线）、特征工程（特征缩放、特征选择）以及简单神经网络入门。不涉及深度学习、强化学习、自然语言处理或计算机视觉等高级主题。",
+    "targetLevel": "beginner",
+    "estimatedChapters": 8,
+    "rationale": "针对初学者，需要从基础概念逐步过渡到实践。8章逐一覆盖核心算法与评估方法，每章均包含理论解释与代码示例，避免过早引入复杂主题，确保学习者能够建立扎实的机器学习基础。"
+  },
+  "inputs": {
+    "userIntent": "机器学习",
+    "chatSelections": [],
+    "notebookRefs": [],
+    "knowledgeBases": [],
+    "questionCategories": [],
+    "questionEntries": [],
+    "createdAt": "2026-07-16T03:13:49.752Z"
+  },
+  "spine": {
+    "title": "机器学习入门：从原理到实践",
+    "chapters": [
+      {
+        "order": 0,
+        "title": "Chapter 1",
+        "learningObjectives": [],
+        "contentType": "concept",
+        "sourceAnchors": [],
+        "prerequisites": [],
+        "pageIds": [
+          "pg_0e15d1ec",
+          "pg_ad6bf6fd"
+        ],
+        "summary": ""
+      },
+      {
+        "order": 1,
+        "title": "Chapter 2",
+        "learningObjectives": [
+          "Understand core concepts"
+        ],
+        "contentType": "concept",
+        "sourceAnchors": [],
+        "prerequisites": [],
+        "pageIds": [
+          "pg_0752dcd2",
+          "pg_456a9746"
+        ],
+        "summary": "Additional chapter"
+      }
+    ],
+    "conceptGraph": {
+      "nodes": [],
+      "edges": []
+    },
+    "explorationSummary": ""
+  },
+  "progress": {
+    "currentPageId": "",
+    "visitedPageIds": [],
+    "bookmarks": [],
+    "quizAttempts": [],
+    "weakChapters": [],
+    "score": 0
+  },
+  "kbFingerprints": [],
+  "stalePageIds": [],
+  "createdAt": "2026-07-16T03:13:52.785Z",
+  "updatedAt": "2026-07-16T03:17:35.318Z",
+  "metadata": {}
+}

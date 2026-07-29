@@ -1,0 +1,45 @@
+{
+  "id": "pg_9b323e2b",
+  "chapterOrder": -1,
+  "title": "Overview",
+  "status": "ready",
+  "blocks": [
+    {
+      "id": "pg_2f476d63",
+      "type": "text",
+      "status": "ready",
+      "params": {},
+      "payload": {
+        "content": "# 机器学习入门：从原理到实践\n\nWelcome to this book. Use the chapter navigation to explore each topic."
+      },
+      "sourceAnchors": [],
+      "metadata": {}
+    },
+    {
+      "id": "pg_8548f5ae",
+      "type": "concept_graph",
+      "status": "ready",
+      "params": {},
+      "payload": {
+        "mermaid": "graph TD\n",
+        "nodeCount": 0,
+        "edgeCount": 0
+      },
+      "sourceAnchors": [],
+      "metadata": {}
+    },
+    {
+      "id": "pg_79ddd6c0",
+      "type": "text",
+      "status": "ready",
+      "params": {},
+      "payload": {
+        "content": "## Chapters\n\n1. **Chapter 1** — \n2. **Chapter 2** — Additional chapter"
+      },
+      "sourceAnchors": [],
+      "metadata": {}
+    }
+  ],
+  "links": [],
+  "metadata": {}
+}

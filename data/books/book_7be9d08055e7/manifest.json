@@ -1,0 +1,114 @@
+{
+  "id": "7be9d08055e7",
+  "status": "ready",
+  "proposal": {
+    "title": "机器学习",
+    "description": "Auto-generated proposal (LLM not configured)",
+    "scope": "机器学习",
+    "targetLevel": "intermediate",
+    "estimatedChapters": 5,
+    "rationale": "Default proposal — configure API key for AI-generated proposals"
+  },
+  "inputs": {
+    "userIntent": "机器学习",
+    "chatSelections": [],
+    "notebookRefs": [],
+    "knowledgeBases": [],
+    "questionCategories": [],
+    "questionEntries": [],
+    "createdAt": "2026-07-16T14:56:40.827Z"
+  },
+  "spine": {
+    "title": "机器学习",
+    "chapters": [
+      {
+        "order": 0,
+        "title": "Chapter 1",
+        "learningObjectives": [
+          "Understand 机器学习 concept 1"
+        ],
+        "contentType": "overview",
+        "sourceAnchors": [],
+        "prerequisites": [],
+        "pageIds": [
+          "pg_e2808c3c"
+        ],
+        "summary": "Chapter 1 of 机器学习"
+      },
+      {
+        "order": 1,
+        "title": "Chapter 2",
+        "learningObjectives": [
+          "Understand 机器学习 concept 2"
+        ],
+        "contentType": "concept",
+        "sourceAnchors": [],
+        "prerequisites": [],
+        "pageIds": [
+          "pg_57809f19"
+        ],
+        "summary": "Chapter 2 of 机器学习"
+      },
+      {
+        "order": 2,
+        "title": "Chapter 3",
+        "learningObjectives": [
+          "Understand 机器学习 concept 3"
+        ],
+        "contentType": "concept",
+        "sourceAnchors": [],
+        "prerequisites": [],
+        "pageIds": [
+          "pg_f324fd0b"
+        ],
+        "summary": "Chapter 3 of 机器学习"
+      },
+      {
+        "order": 3,
+        "title": "Chapter 4",
+        "learningObjectives": [
+          "Understand 机器学习 concept 4"
+        ],
+        "contentType": "concept",
+        "sourceAnchors": [],
+        "prerequisites": [],
+        "pageIds": [
+          "pg_eab464c2"
+        ],
+        "summary": "Chapter 4 of 机器学习"
+      },
+      {
+        "order": 4,
+        "title": "Chapter 5",
+        "learningObjectives": [
+          "Understand 机器学习 concept 5"
+        ],
+        "contentType": "concept",
+        "sourceAnchors": [],
+        "prerequisites": [],
+        "pageIds": [
+          "pg_327fa84a"
+        ],
+        "summary": "Chapter 5 of 机器学习"
+      }
+    ],
+    "conceptGraph": {
+      "nodes": [],
+      "edges": []
+    },
+    "explorationSummary": ""
+  },
+  "progress": {
+    "currentPageId": "",
+    "visitedPageIds": [],
+    "bookmarks": [],
+    "quizAttempts": [],
+    "weakChapters": [],
+    "score": 0
+  },
+  "kbFingerprints": [],
+  "stalePageIds": [],
+  "createdAt": "2026-07-16T14:56:41.387Z",
+  "updatedAt": "2026-07-16T14:58:23.933Z",
+  "metadata": {}
+}

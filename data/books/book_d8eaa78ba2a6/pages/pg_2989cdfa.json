@@ -1,0 +1,163 @@
+{
+  "id": "pg_2989cdfa",
+  "chapterOrder": 0,
+  "title": "Python环境搭建与第一个程序",
+  "status": "ready",
+  "blocks": [
+    {
+      "id": "dc96bf32a275",
+      "type": "section",
+      "status": "ready",
+      "params": {
+        "title": "本章概述",
+        "focus": "章节概览与学习目标"
+      },
+      "payload": {
+        "content": "## 章节概览与学习目标\n\n本章是Python学习的起点，旨在帮助你从零开始搭建Python开发环境，并编写出你的第一个Python程序。Python作为一门简单易学但功能强大的编程语言，广泛应用于数据分析、人工智能、Web开发、自动化脚本等领域。在这一章中，你将了解Python语言的基本特点——例如清晰的语法、丰富的标准库、跨平台特性等，同时还会看到它在不同行业的实际用例，从而建立对Python的初步认知。\n\n首先，我们需要在你的计算机上安装Python开发环境。本章将介绍几种常见的工具：IDLE是Python自带的轻量级集成开发环境，适合初学者快速上手；Anaconda提供了完整的科学计算包管理工具，尤其适合数据科学方向；VS Code则是流行的代码编辑器，配合Python扩展可以胜任从入门到项目开发的各种场景。你将学会如何下载、安装并验证环境是否配置成功。\n\n除了图形化界面，命令行或终端也是运行Python的重要方式。我们将学习如何打开命令行窗口，输入`python`命令进入交互式解释器，以及如何执行以`.py`结尾的脚本文件。理解这一过程有助于你掌握Python程序的运行机制。\n\n接着，我们将编写并执行你的第一个Python程序——“Hello, World!”。这是编程界的传统，也是检验环境是否搭建成功的标志。你只需要一行代码`print(\"Hello, World!\")`就能在屏幕上看到输出。这个简短的例子将让你直观地感受到代码到输出的转换过程。\n\n最后，本章还会介绍Python中的基本输入输出操作：使用`print()`输出信息，使用`input()`获取用户的键盘输入。同时，你将了解一些简单的调试方法，例如通过打印变量的值来检查程序运行情况，或者利用Python的错误提示信息定位问题。这些基础技能将为后续章节的深入学习奠定扎实的基础。",
+        "outline": {
+          "sections": [
+            {
+              "heading": "章节概览与学习目标",
+              "points": [
+                "了解Python编程语言的特点与应用领域",
+                "掌握Python开发环境（如IDLE、Anaconda或VS Code）的安装与配置",
+                "学习使用命令行或终端运行Python解释器",
+                "编写并执行第一个Python程序（“Hello, World!”）",
+                "熟悉基本的输入输出操作与调试方法"
+              ]
+            }
+          ]
+        }
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "wordCount": 788,
+        "sectionCount": 1,
+        "transitionIn": "让我们开始Python编程之旅！"
+      }
+    },
+    {
+      "id": "55ad95ad35ce",
+      "type": "text",
+      "status": "ready",
+      "params": {
+        "include_platforms": [
+          "Windows",
+          "macOS",
+          "Linux"
+        ],
+        "focus": "安装Python解释器（Windows/macOS/Linux）"
+      },
+      "payload": {
+        "content": "搭建Python开发环境是学习编程的第一步，也是至关重要的一步。无论你使用的是Windows、macOS还是Linux系统，安装Python解释器的过程都相对简单，但具体操作略有不同。下面我们将分别介绍三种主流操作系统下的安装步骤，并带你编写并运行第一个Python程序，感受代码的魅力。\n\n### Windows系统安装Python解释器\n\n1. **下载安装包**  \n   访问Python官方网站（python.org），点击“Downloads”，选择Windows版本。推荐下载最新的稳定版本，例如Python 3.x.x。注意根据系统位数（32位或64位）选择对应的安装包。\n\n2. **运行安装程序**  \n   双击下载的.exe文件，在安装界面中，**务必勾选“Add Python to PATH”**（将Python添加到环境变量），这一步能让你在命令提示符中直接使用`python`命令。然后点击“Install Now”开始安装。\n\n3. **验证安装**  \n   打开命令提示符（Win+R，输入cmd），输入`python --version`，如果显示类似“Python 3.10.4”的版本号，说明安装成功。同时输入`pip --version`确认包管理工具pip也正常工作。\n\n### macOS系统安装Python解释器\n\nmacOS通常自带Python 2.x版本，但建议安装最新的Python 3.x。\n\n1. **使用官方安装包**  \n   在Python官网下载macOS的.pkg安装文件。双击打开，按照向导完成安装。安装程序会自动将Python添加到系统路径。\n\n2. **使用Homebrew（推荐）**  \n   如果你安装了Homebrew（一个包管理器），在终端输入`brew install python3`即可一键安装。Homebrew会自动处理依赖和路径配置。\n\n3. **验证安装**  \n   打开终端（Applications/Utilities/Terminal），输入`python3 --version`，确认版本号。注意macOS中默认`python`可能指向Python 2，所以使用`python3`命令调用Python 3。\n\n### Linux系统安装Python解释器\n\n大多数Linux发行版预装了Python，但可能不是最新版本。建议通过包管理器安装或升级。\n\n1. **Ubuntu/Debian系**  \n   打开终端，执行：\n   ```bash\n   sudo apt update\n   sudo apt install python3 python3-pip\n   ```\n   如果需要安装特定版本（如Python 3.9），可以使用`python3.9`作为包名。\n\n2. **CentOS/RHEL/Fedora**  \n   Fedora：`sudo dnf install python3`  \n   CentOS 8+：`sudo dnf install python3`  \n   较老版本：可能需要先启用EPEL仓库，然后`sudo yum install python3`。\n\n3. **验证安装**  \n   输入`python3 --version`，确认输出。同时可用`pip3 --version`检查pip。\n\n### 编写并运行第一个Python程序\n\n无论使用哪种操作系统，创建并运行第一个程序的方式都类似。\n\n1. **在交互式环境尝试**  \n   打开终端（或命令提示符），输入`python3`（Windows下可直接输入`python`），进入Python交互式shell。输入：\n   ```python\n   print(\"Hello, World!\")\n   ```\n   按下回车，屏幕上就会输出`Hello, World!`。输入`exit()`退出交互模式。\n\n2. **创建脚本文件**  \n   使用文本编辑器（如VS Code、Notepad++、Sublime Text，甚至系统自带的记事本）新建一个文件，输入以下内容：\n   ```python\n   print(\"Hello, World!\")\n   ```\n   保存为`hello.py`（注意扩展名为.py）。\n\n3. **运行脚本**  \n   在终端中，切换到文件所在目录，输入：\n   - Windows: `python hello.py`\n   - macOS/Linux: `python3 hello.py`  \n   如果一切正常，你将在屏幕上看到`Hello, World!`。\n\n恭喜你！你已经成功搭建了Python开发环境，并运行了第一个程序。从此，你将开启一段充满创造力的编程之旅。"
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "wordCount": 2022,
+        "transitionIn": "首先，我们需要在计算机上安装Python。"
+      }
+    },
+    {
+      "id": "1c880f84060e",
+      "type": "callout",
+      "status": "ready",
+      "params": {
+        "calloutType": "tip",
+        "focus": "安装注意事项（版本选择、环境变量配置）"
+      },
+      "payload": {
+        "content": "💡 **安装小贴士**：建议下载官方最新的稳定版Python（如3.12），避免使用过旧版本导致库不兼容。配置环境变量时勾选“Add Python to PATH”，即可在命令行直接运行 `python` 和 `pip`，省去手动添加路径的麻烦。",
+        "calloutType": "tip"
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "transitionIn": "安装过程中有几个关键点需要注意："
+      }
+    },
+    {
+      "id": "8c20f2fc7467",
+      "type": "text",
+      "status": "ready",
+      "params": {
+        "demo": "打开IDLE并输入表达式",
+        "focus": "使用IDLE交互式环境执行代码"
+      },
+      "payload": {
+        "content": "Python环境搭建与第一个程序：使用IDLE交互式环境执行代码\n\n当你安装好Python后，一个名为IDLE的集成开发环境会一同出现在你的电脑上。IDLE是Python官方自带的轻量级编辑器与交互式环境，它的界面简洁，操作直观，非常适合初学者用来体验“即时反馈”的编程乐趣。打开IDLE，你会看到一个带有“>>>”提示符的窗口——这就是交互式模式。在这里，你每输入一行代码，按下回车，Python都会立刻执行并显示结果，仿佛在和你对话。\n\n让我们开始第一个程序。在“>>>”后输入：\n```python\nprint(\"Hello, world!\")\n```\n按下回车，屏幕上立即输出：\n```\nHello, world!\n```\n恭喜你！你已经完成了第一个Python程序。这行简单的代码让计算机向你问好，而交互式环境让你无需创建文件、保存、运行等繁琐步骤，就能立刻看到代码的效果。你可以继续尝试其他表达式，例如：\n```python\n>>> 3 + 5\n8\n>>> \"Python\" * 3\n'PythonPythonPython'\n```\n在交互式环境中，你可以自由探索、试错，甚至把IDLE当成一个超级计算器。这些即时的反馈能帮你快速理解代码的行为，为后续编写更复杂的程序打下扎实的基础。现在，就在IDLE中输入你的第一行代码吧，编程的世界已经为你敞开。"
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "wordCount": 581,
+        "transitionIn": "安装完成后，让我们打开IDLE探索交互式环境。"
+      }
+    },
+    {
+      "id": "697d0c257afa",
+      "type": "code",
+      "status": "ready",
+      "params": {
+        "language": "python",
+        "code": "print('Hello, World!')",
+        "description": "在文件中输入代码并运行",
+        "focus": "编写并运行第一个Python程序——Hello World"
+      },
+      "payload": {
+        "language": "python",
+        "code": "# 第一个Python程序：打印Hello World\nprint(\"Hello, World!\")",
+        "explanation": "这是一个最简单的Python程序，使用print函数在控制台输出字符串\"Hello, World!\"。这是学习任何编程语言的第一步，用于验证Python环境是否正确安装并能成功运行代码。"
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "transitionIn": "现在，我们来创建第一个Python文件。"
+      }
+    },
+    {
+      "id": "87eddb67e793",
+      "type": "text",
+      "status": "ready",
+      "params": {
+        "examples": [
+          "print('姓名：', name)",
+          "name = input('请输入你的名字：')"
+        ],
+        "focus": "print()和input()函数的基本用法"
+      },
+      "payload": {
+        "content": "在学习编程的旅程中，搭建好Python环境是第一步。你只需访问Python官网，下载适合你操作系统的安装包，安装时记得勾选“Add Python to PATH”，然后打开命令行输入`python --version`，看到版本号就表示成功啦！接下来，我们通过两个最常用的函数——`print()`和`input()`——来编写人生第一个程序。\n\n`print()`用于向屏幕输出信息。你可以直接写`print(\"你好，世界！\")`，运行后就会看到这行文字。它还能输出数字和计算结果，比如`print(3 + 5)`会显示`8`。如果你想一次输出多个内容，用逗号分隔：`print(\"我的年龄是\", 18, \"岁\")`，输出时逗号会自动变成空格。\n\n`input()`则负责从键盘获取用户输入。例如`name = input(\"请输入你的名字：\")`，程序会暂停等待你打字，按回车后你输入的内容就存入了变量`name`里。注意，`input()`得到的数据永远是字符串类型，所以如果你要输入数字做运算，需要用`int()`或`float()`转换，像这样：`age = int(input(\"请输入你的年龄：\"))`。\n\n把两者结合起来：`name = input(\"你是谁？\")`和`print(\"你好，\", name)`，就能让程序和你对话了。试试运行下面这个完整的例子：\n\n```python\nname = input(\"请输入你的名字：\")\nprint(\"欢迎你，\", name)\n```\n\n当你输入“小明”并按回车，屏幕上就会显示“欢迎你， 小明”。这就是程序设计中最基础的交互——输入与输出。掌握了它们，你就迈出了Python编程的第一步！"
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "wordCount": 726,
+        "transitionIn": "接下来学习如何输出和输入。"
+      }
+    },
+    {
+      "id": "489e9e2dc65b",
+      "type": "quiz",
+      "status": "ready",
+      "params": {
+        "questionCount": 3,
+        "difficulty": "easy",
+        "focus": "检查对安装和基本I/O的理解"
+      },
+      "payload": {
+        "question": "在Python中，要在屏幕上显示'Hello, World!'，正确的语句是？",
+        "options": [
+          "A) print \"Hello, World!\"",
+          "B) print(\"Hello, World!\")",
+          "C) echo \"Hello, World!\"",
+          "D) printf(\"Hello, World!\")"
+        ],
+        "correctIndex": 1,
+        "explanation": "在Python 3中，print是一个函数，必须使用括号。选项A是Python 2的语法，选项C和D是其他编程语言的语法。"
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "difficulty": "easy",
+        "transitionIn": "检验一下你的学习成果："
+      }
+    }
+  ],
+  "links": [],
+  "metadata": {}
+}

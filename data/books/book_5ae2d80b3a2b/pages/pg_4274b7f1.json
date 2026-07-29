@@ -1,0 +1,260 @@
+{
+  "id": "pg_4274b7f1",
+  "chapterOrder": 3,
+  "title": "卷积神经网络与图像识别",
+  "status": "ready",
+  "blocks": [
+    {
+      "id": "0fdb0a40a203",
+      "type": "section",
+      "status": "ready",
+      "params": {
+        "depth": "balanced",
+        "focus": "Core content"
+      },
+      "payload": {
+        "content": "## 卷积神经网络基础\n\n卷积神经网络（CNN）是图像识别领域最核心的深度学习模型，其设计灵感来源于生物视觉皮层的感受野结构。CNN通过一系列特殊的层结构，能够自动从图像中学习层次化的特征表示。\n\n### 卷积层：卷积核运算、特征图提取与参数共享\n\n卷积层是CNN的核心组件，通过卷积核（也称为滤波器）在输入图像上滑动进行点积运算，从而提取局部特征。每个卷积核是一个小型权重矩阵，例如3×3或5×5，它在图像上逐像素移动，计算每个位置与卷积核的加权和，生成一张特征图。\n\n卷积层的三个关键特性使其在图像处理中极为高效：\n- **局部连接**：每个神经元只与输入图像的局部区域连接，这符合图像中像素的空间相关性。\n- **参数共享**：同一个卷积核在整个图像上滑动时使用相同的权重，大大减少了参数量。\n- **特征图提取**：多个卷积核可以并行学习不同的特征，例如边缘、纹理、形状等，形成多通道特征图。\n\n通过堆叠多个卷积层，网络能够从低级特征（如边缘）逐步组合成高级特征（如物体部件）。\n\n### 池化层：最大池化与平均池化的作用与效果\n\n池化层通常紧跟卷积层之后，主要作用是对特征图进行下采样，降低空间维度，从而减少计算量并增强特征的平移不变性。常见的池化方式有两种：\n\n- **最大池化**：在池化窗口内取最大值，能够保留最显著的特征，例如边缘和纹理。它更适用于提取纹理和边缘特征，在图像分类任务中表现较好。\n- **平均池化**：取窗口内所有值的平均值，能够保留整体特征信息，常用于深层网络最后的全局平均池化操作。\n\n池化操作为每个池化窗口返回一个值，因此特征图大小减小，但通道数保持不变。这种降维有助于防止过拟合，同时使网络对小的图像变换具有鲁棒性。\n\n### 激活函数：ReLU、Sigmoid、Tanh在CNN中的选择\n\n激活函数为神经网络引入非线性，使其能够学习复杂模式。在CNN中，常用的激活函数包括：\n\n- **ReLU（修正线性单元）**：f(x)=max(0,x)，是目前CNN中最常用的激活函数。它的计算简单，梯度不饱和，有效缓解了梯度消失问题，并加速收敛。\n- **Sigmoid**：将输出映射到(0,1)区间，适合二分类输出层，但在深层网络中容易导致梯度饱和，导致训练困难。\n- **Tanh**：将输出映射到(-1,1)区间，具有零中心化特性，但仍存在梯度饱和问题。\n\n在实际应用中，隐藏层几乎全部采用ReLU及其变体（如Leaky ReLU），而Sigmoid和Tanh更多用于特定任务（如二分类输出或循环神经网络）。\n\n### 全连接层与分类输出\n\n经过多个卷积和池化层后，图像特征被压缩成高维特征向量。全连接层将这些特征整合，并进行分类决策。全连接层中的每个神经元都与上一层的所有神经元连接，因此参数量较大。在图像分类任务中，最后的全连接层使用Softmax激活函数，将输出转换为类别概率分布，实现分类输出。\n\n## 经典CNN架构\n\n随着深度学习的发展，研究人员提出了一系列经典的CNN架构，每一代都在性能或设计思想上有所突破。\n\n### LeNet-5：早期手写数字识别的里程碑\n\nLeNet-5由Yann LeCun在1998年提出，是卷积神经网络的奠基之作。它专为手写数字识别（如MNIST数据集）设计，包含两个卷积层、两个池化层和三个全连接层。LeNet-5的核心贡献是确立了“卷积-池化-全连接”的基本架构，并成功应用于银行支票识别等实际场景，证明了CNN在图像处理中的有效性。\n\n### AlexNet：深度学习在图像识别中的突破\n\n2012年，AlexNet在ImageNet图像识别竞赛中以巨大的优势夺冠，标志着深度学习时代的到来。相比LeNet，AlexNet更深（8层）、更宽，采用了以下创新：\n- 使用ReLU激活函数加速训练\n- 使用Dropout防止过拟合\n- 利用多GPU并行训练\n- 大量数据增强（如随机裁剪、翻转）\n- 局部响应归一化（LRN）增强泛化能力\n\nAlexNet的成功证明了深度网络在大规模图像识别中的潜力。\n\n### VGGNet：小卷积核堆叠与深度网络设计\n\nVGGNet由牛津大学视觉几何组（VGG）在2014年提出，其核心思想是使用非常小的3×3卷积核，通过堆叠多个小卷积核来获得与单个大卷积核相同的感受野。VGGNet提供了16层和19层两种版本（VGG-16、VGG-19），其设计简洁统一，参数量较大但结构规整，易于理解和实现。VGGNet在ImageNet上取得了优异性能，并成为后续许多模型的基础。\n\n### ResNet：残差学习解决梯度消失问题\n\n随着网络深度增加，训练变得困难，梯度消失问题严重。2015年，何恺明等人提出ResNet，通过引入残差块（Residual Block）解决了深度网络的退化问题。残差块的核心是**跳跃连接（Skip Connection）**，允许输入直接绕过部分层传递到输出，学习残差映射F(x)=H(x)-x。这种设计使得网络可以轻松扩展到数百层甚至上千层（如ResNet-152），同时保持训练稳定。ResNet在ImageNet上取得了当时的最高成绩，并成为最广泛使用的骨干网络之一。\n\n### 其他变体：GoogLeNet（Inception）、DenseNet\n\n除了上述架构，还有其他重要变体：\n- **GoogLeNet（Inception）**：提出Inception模块，在同一层中使用不同尺寸的卷积核（1×1、3×3、5×5）并行处理，并利用1×1卷积进行降维，大幅减少参数量。其网络深度达到22层，但参数量只有AlexNet的1/12。\n- **DenseNet**：提出密集连接机制，每一层都与之前的所有层直接连接，实现特征重用。这种设计减少了参数量，缓解了梯度消失问题，并增强了特征传播。\n\n## 图像识别核心流程\n\n构建成功的图像识别模型需要遵循系统化的流程，从数据准备到模型评估，每个环节都至关重要。\n\n### 数据预处理：归一化、数据增强（旋转、翻转、裁剪）\n\n图像数据预处理是训练的第一步，直接影响模型性能：\n- **归一化**：将像素值缩放到[0,1]或[-1,1]区间，使网络训练更稳定。通常还包括均值减法（减去数据集的平均像素值）。\n- **数据增强**：通过对训练图像进行随机变换，增加数据多样性，提升模型泛化能力。常见技术包括随机旋转、水平翻转、随机裁剪、色彩抖动、添加噪声等。数据增强可有效防止过拟合，尤其是在数据量较少时。\n\n### 模型训练：损失函数（交叉熵）、优化器（SGD、Adam）\n\n训练过程需要选择合适的损失函数和优化器：\n- **损失函数**：对于多分类任务，最常用的是**交叉熵损失**，它衡量预测概率分布与真实标签之间的差异。交叉熵能有效惩罚错误分类，训练收敛较快。\n- **优化器**：随机梯度下降（SGD）是经典选择，配合动量（Momentum）可加速收敛。自适应学习率优化器如**Adam**更为流行，它结合了动量和自适应学习率，能够在大多数任务中快速、稳定地收敛。\n\n训练时需设置适当的超参数：学习率（通常从0.01或0.001开始）、批次大小（如32、64）、迭代轮数等。\n\n### 过拟合处理：Dropout、正则化、早停法\n\n模型在训练集上表现好但在测试集上差，说明存在过拟合。常用抑制方法包括：\n- **Dropout**：训练过程中随机丢弃一部分神经元（如0.5比例），迫使网络学到更鲁棒的特征。AlexNet和VGGNet中都使用了Dropout。\n- **正则化**：在损失函数中加入L1或L2范数惩罚项，限制权重的大小，防止模型过度拟合训练数据。\n- **早停法**：监控验证集上的性能，当性能不再提升（或开始下降）时停止训练，避免过度训练。\n\n### 评估指标：准确率、精确率、召回率、F1分数、混淆矩阵\n\n模型评估需要多维度指标：\n- **准确率**：正确预测样本数占总样本数的比例，适合平衡数据集。\n- **精确率**：预测为正类中实际为正类的比例，衡量模型对正类的“准确度”。\n- **召回率**：实际为正类中被正确预测的比例，衡量模型对正类的“覆盖率”。\n- **F1分数**：精确率和召回率的调和平均值，综合反映模型性能。\n- **混淆矩阵**：直观显示各类别的正确与错误预测情况，是分析分类器性能的基础工具。\n\n对于不平衡数据集，应重点关注精确率、召回率和F1分数，而非仅仅准确率。\n\n## 应用与挑战\n\n卷积神经网络在图像识别领域已取得巨大成功，并扩展到众多实际应用，但仍面临诸多挑战。\n\n### 常见应用：人脸识别、物体检测、医学影像分析\n\nCNN的应用覆盖了视觉感知的方方面面：\n- **人脸识别**：如智能手机解锁、安防监控、社交平台标签。模型需要从海量人脸中识别身份，对尺度、光照、姿态变化具有鲁棒性。\n- **物体检测**：识别并定位图像中的物体，如自动驾驶中的行人、车辆检测。主流算法包括Faster R-CNN、YOLO、SSD等，均基于CNN骨干网络。\n- **医学影像分析**：如肺部CT的结节检测、眼底图像的糖尿病视网膜病变筛查。CNN能够自动从医学图像中提取病变特征，辅助医生诊断。\n\n### 常见挑战：小样本学习、类别不平衡、计算资源需求\n\n尽管CNN性能强大，实际部署中仍面临诸多难题：\n- **小样本学习**：在某些专业领域（如罕见病诊断），标注数据极其稀少，传统CNN难以泛化。需要借助迁移学习、元学习或数据增强技术。\n- **类别不平衡**：医学图像中正样本（病变）远少于负样本（正常），导致模型偏向多数类。常用方法包括重采样、代价敏感学习、Focal Loss等。\n- **计算资源需求**：大型CNN（如ResNet-152）参数量巨大，训练和推理需要高性能GPU，在移动设备上难以部署。\n\n### 发展趋势：轻量化网络（MobileNet）、注意力机制（Transformer）\n\n为应对上述挑战，新技术不断涌现：\n- **轻量化网络**：如MobileNet使用深度可分离卷积大幅减少参数量，使得CNN可在手机、嵌入式设备上实时运行。其他轻量化架构包括ShuffleNet、EfficientNet。\n- **注意力机制**：2017年Transformer架构在自然语言处理中取得成功，近年来被引入视觉任务（Vision Transformer, ViT）。ViT将图像分割为块（patch），利用自注意力机制捕获全局依赖，在大型数据集上表现优于CNN。混合模型（如CNN+Transformer）成为研究热点。\n\n未来，CNN与Transformer的融合、自监督学习、以及更高效的新型架构将持续推动图像识别技术的进步。",
+        "outline": {
+          "sections": [
+            {
+              "heading": "卷积神经网络基础",
+              "points": [
+                "卷积层：卷积核运算、特征图提取与参数共享",
+                "池化层：最大池化与平均池化的作用与效果",
+                "激活函数：ReLU、Sigmoid、Tanh在CNN中的选择",
+                "全连接层与分类输出"
+              ]
+            },
+            {
+              "heading": "经典CNN架构",
+              "points": [
+                "LeNet-5：早期手写数字识别的里程碑",
+                "AlexNet：深度学习在图像识别中的突破",
+                "VGGNet：小卷积核堆叠与深度网络设计",
+                "ResNet：残差学习解决梯度消失问题",
+                "其他变体：GoogLeNet（Inception）、DenseNet"
+              ]
+            },
+            {
+              "heading": "图像识别核心流程",
+              "points": [
+                "数据预处理：归一化、数据增强（旋转、翻转、裁剪）",
+                "模型训练：损失函数（交叉熵）、优化器（SGD、Adam）",
+                "过拟合处理：Dropout、正则化、早停法",
+                "评估指标：准确率、精确率、召回率、F1分数、混淆矩阵"
+              ]
+            },
+            {
+              "heading": "应用与挑战",
+              "points": [
+                "常见应用：人脸识别、物体检测、医学影像分析",
+                "常见挑战：小样本学习、类别不平衡、计算资源需求",
+                "发展趋势：轻量化网络（MobileNet）、注意力机制（Transformer）"
+              ]
+            }
+          ]
+        }
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "wordCount": 4455,
+        "sectionCount": 4
+      }
+    },
+    {
+      "id": "ae137cd5c108",
+      "type": "callout",
+      "status": "ready",
+      "params": {
+        "calloutType": "learning-goals",
+        "difficulty": "intermediate",
+        "focus": "本章学习目标与学习路径概览。强调动手实践，提示读者准备好Python环境和深度学习框架（如PyTorch/TensorFlow）。"
+      },
+      "payload": {
+        "content": "> **学习目标**  \n本章将带你掌握卷积神经网络的核心原理与图像识别应用。通过动手实践，你将搭建并训练一个图像分类模型。**请提前准备好Python环境及PyTorch/TensorFlow框架**，跟随代码示例操作，效果更佳！",
+        "calloutType": "learning-goals"
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "transitionIn": "欢迎来到卷积神经网络实战章节！在开始编程之前，先明确今天要攻克的三大任务。"
+      }
+    },
+    {
+      "id": "dc9d9a20584a",
+      "type": "text",
+      "status": "ready",
+      "params": {
+        "depth": "concise",
+        "include_computation_example": true,
+        "focus": "快速回顾卷积、池化、全连接层的核心公式与作用，并配以简单的计算示例（如3×3卷积核在5×5输入上的输出尺寸）。"
+      },
+      "payload": {
+        "content": "**卷积神经网络（CNN）快速回顾：核心层与计算示例**\n\n卷积神经网络是图像识别的主力模型，其设计灵感来源于生物视觉系统。它通过三个核心操作——卷积、池化和全连接——逐层提取并整合图像特征，最终完成分类或识别任务。\n\n**1. 卷积层：提取局部特征**\n\n卷积层使用可学习的“卷积核”（也称滤波器）在输入图像上滑动，计算每个局部区域的内积。这一操作能捕捉到边缘、纹理、颜色斑块等低级特征，并在深层组合成更高级的语义信息。\n\n**核心公式（输出特征图尺寸）：**\n设输入尺寸为 \\(H_{in} \\times W_{in}\\)，卷积核尺寸为 \\(K\\)，步长（stride）为 \\(S\\)，填充（padding）为 \\(P\\)，则输出尺寸 \\(H_{out} \\times W_{out}\\) 为：\n\\[\nH_{out} = \\left\\lfloor \\frac{H_{in} + 2P - K}{S} \\right\\rfloor + 1\n\\]\n\\[\nW_{out} = \\left\\lfloor \\frac{W_{in} + 2P - K}{S} \\right\\rfloor + 1\n\\]\n\n**计算示例：3×3卷积在5×5输入上的输出**\n假设输入为5×5灰度图像（单通道），使用一个3×3的卷积核，步长S=1，填充P=0（即无填充）。\n代入公式：\n\\[\nH_{out} = \\frac{5 + 2\\cdot0 - 3}{1} + 1 = 3, \\quad W_{out} = \\frac{5 + 0 - 3}{1} + 1 = 3\n\\]\n因此输出是一个3×3的特征图。这直观体现了卷积是否能“看到”图像边缘：如果不填充，边缘像素的卷积操作次数更少，导致输出尺寸缩小。\n\n**2. 池化层：降采样与特征压缩**\n\n池化层对特征图进行下采样，减少数据量，同时增强模型的平移不变性（对微小位移不敏感）和感受野。最常用的是最大池化（取区域内最大值）和平均池化（取均值）。\n\n**作用：**\n- 降低计算量，防止过拟合。\n- 提取区域内的最强/平均响应，保留关键信息。\n\n**计算示例（最大池化）：**\n假设输入是4×4特征图，池化窗口2×2，步长S=2，无填充。将特征图划分为4个不重叠的2×2区域：\n\\[\n\\begin{bmatrix}\n1 & 3 & 2 & 4 \\\\\n5 & 6 & 7 & 8 \\\\\n9 & 1 & 2 & 0 \\\\\n3 & 4 & 5 & 6\n\\end{bmatrix}\n\\]\n每个区域取最大值：区域1（左上）：max(1,3,5,6)=6；区域2（右上）：max(2,4,7,8)=8；区域3（左下）：max(9,1,3,4)=9；区域4（右下）：max(2,0,5,6)=6。输出为2×2矩阵：\n\\[\n\\begin{bmatrix}\n6 & 8 \\\\\n9 & 6\n\\end{bmatrix}\n\\]\n尺寸从4×4缩小到2×2，保留最强响应。\n\n**3. 全连接层：整合特征与分类**\n\n在卷积和池化层提取到高层次特征后，全连接层将这些二维或三维特征图展平为一维向量，并通过密集连接进行线性变换（加上激活函数），最终输出类别概率（通过Softmax）。\n\n**作用：**\n- 将局部特征组合成全局表示。\n- 作为分类器，输出预测结果。\n\n**核心公式（简单线性变换）：**\n\\[\ny = W \\cdot x + b\n\\]\n其中 \\(x\\) 是输入向量（展平后的特征图），\\(W\\) 是权重矩阵，\\(b\\) 是偏置，\\(y\\) 是输出（常经过激活函数如ReLU或Softmax）。\n\n---\n\n**小结：**\n- 卷积层通过滑动核提取局部模式，输出尺寸由公式决定。\n- 池化层通过下采样压缩数据，增强鲁棒性。\n- 全连接层将特征整合并分类，是网络的“决策者”。\n\n这三个核心层相互配合，构成了CNN从感知到决策的完整通路，使其在图像识别任务中表现出色。"
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "wordCount": 1637,
+        "transitionIn": "首先，让我们用五分钟快速过一遍CNN的三大基础构件，这对后面的编码至关重要。"
+      }
+    },
+    {
+      "id": "063035c05e22",
+      "type": "code",
+      "status": "ready",
+      "params": {
+        "framework": "pytorch",
+        "task": "image_classification",
+        "dataset": "MNIST",
+        "completion_type": "fill-in-the-blanks",
+        "difficulty": "easy",
+        "focus": "用PyTorch实现一个微型CNN（含Conv2d、ReLU、MaxPool2d和Linear层），用于MNIST手写数字分类。要求学员填空/补全网络结构代码。"
+      },
+      "payload": {
+        "language": "python",
+        "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\n\nclass MiniCNN(nn.Module):\n    def __init__(self):\n        super(MiniCNN, self).__init__()\n        # 第一个卷积层：输入通道1，输出通道16，卷积核3x3\n        self.conv1 = nn.Conv2d(1, 16, kernel_size=3, padding=1)\n        # 第二个卷积层：输入通道16，输出通道32，卷积核3x3\n        self.conv2 = nn.Conv2d(16, 32, kernel_size=3, padding=1)\n        # 池化层：2x2最大池化，步长为2\n        self.pool = nn.MaxPool2d(2, 2)\n        # 全连接层：输入特征32*7*7（经过两次池化后尺寸为7x7），输出10类\n        self.fc = nn.Linear(32 * 7 * 7, 10)\n        # 注意：ReLU作为激活函数，在forward中直接使用F.relu\n\n    def forward(self, x):\n        # 第一层：卷积 -> ReLU -> 池化\n        x = self.pool(F.relu(self.conv1(x)))\n        # 第二层：卷积 -> ReLU -> 池化\n        x = self.pool(F.relu(self.conv2(x)))\n        # 展平操作：将特征图转换为一维向量\n        x = x.view(-1, 32 * 7 * 7)\n        # 全连接层输出\n        x = self.fc(x)\n        return x\n\n# 测试网络结构\nif __name__ == \"__main__\":\n    # 创建一个随机输入（批大小1，单通道，28x28）\n    dummy_input = torch.randn(1, 1, 28, 28)\n    model = MiniCNN()\n    output = model(dummy_input)\n    print(\"输入形状：\", dummy_input.shape)\n    print(\"输出形状：\", output.shape)  # 应该是[1, 10]\n    print(\"网络结构：\\n\", model)\n\n    # 提示：学员可以尝试修改卷积核数量或添加dropout层来改善模型",
+        "explanation": "该代码实现了一个用于MNIST手写数字识别的微型卷积神经网络。网络包含两个卷积层（Conv2d），每个卷积层后接ReLU激活函数和MaxPool2d池化层，最后通过全连接层输出10个类别的概率。代码注释清晰，学员可以通过填空方式理解CNN的核心组件：卷积、激活、池化和展平操作。前向传播过程直观展示了特征提取和分类的完整流程。"
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "transitionIn": "理论清晰了吗？现在我们打开编辑器，挑战第一个实战：从零搭建一个能识别手写数字的CNN。"
+      }
+    },
+    {
+      "id": "ca9269e3b6c7",
+      "type": "callout",
+      "status": "ready",
+      "params": {
+        "calloutType": "pitfall",
+        "difficulty": "intermediate",
+        "focus": "指出实战中常见的梯度消失/爆炸原因（深层网络中ReLU/初始化的重要性）、过拟合信号及解决办法（Dropout、数据增强）。"
+      },
+      "payload": {
+        "content": "⚠️ **常见陷阱：梯度消失/爆炸与过拟合**  \n深层网络中若使用Sigmoid或Tanh激活函数，易导致梯度消失；而初始化不当（如全零初始化）会引发梯度爆炸。务必改用ReLU等非饱和激活函数，并采用He或Glorot初始化。  \n过拟合的典型信号是训练集准确率远高于验证集——此时应添加Dropout层（如0.5丢弃率），并利用数据增强（旋转、裁剪、翻转）扩充样本多样性。",
+        "calloutType": "pitfall"
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "transitionIn": "跑通了第一个模型？恭喜！但你可能遇到了训练不收敛或过拟合。别急，这是CNN新手必经之路——让我们来排查常见陷阱。"
+      }
+    },
+    {
+      "id": "e2b11ddbbced",
+      "type": "flash_cards",
+      "status": "ready",
+      "params": {
+        "card_count": 6,
+        "content_focus": "architectural_innovation",
+        "difficulty": "medium",
+        "focus": "考察LeNet（卷积→池化→全连接）、AlexNet（更大更深+双GPU+ReLU）、ResNet（残差连接解决退化问题）的核心设计差异。每个卡片正面写架构名，背面写创新点。"
+      },
+      "payload": {
+        "cards": [
+          {
+            "front": "LeNet",
+            "back": "LeNet由Yann LeCun在1998年提出，是卷积神经网络的开创者。核心结构为：卷积层→池化层（下采样）→全连接层。使用Sigmoid/tanh激活函数。针对手写数字识别（如MNIST）优化，参数量小，计算效率高，奠定了现代CNN的基本框架。",
+            "hint": "最早用于银行支票识别"
+          },
+          {
+            "front": "AlexNet",
+            "back": "AlexNet由Alex Krizhevsky在2012年提出，深度更大（8层：5卷积+3全连接），采用两块GPU并行训练以加速。关键创新是使用ReLU激活函数解决梯度消失问题，加速训练；引入局部响应归一化（LRN）和重叠池化（Overlapping Pooling）以提升泛化能力；使用Dropout和大量数据增广（如平移、翻转）防止过拟合。在ImageNet上大幅领先传统方法，开启了深度学习热潮。",
+            "hint": "激活函数和训练方式的两大革新"
+          },
+          {
+            "front": "ResNet",
+            "back": "ResNet（残差网络）由何恺明在2015年提出，主要解决深层网络退化问题（即层数增加但准确率饱和甚至下降）。核心创新是引入残差连接（skip connection），让层学习残差映射（F(x)=H(x)-x）而非直接拟合H(x)，从而使得网络可轻易堆叠至100层以上（如ResNet-152）。残差模块通过恒等映射缓解梯度弥散，促进信息流通，在ImageNet分类、检测、分割任务上均创下当时最好成绩。",
+            "hint": "‘短路’机制解决退化"
+          },
+          {
+            "front": "LeNet vs AlexNet 核心差异",
+            "back": "1. 深度：LeNet约5层（3卷积+2全连接），AlexNet 8层。2. 激活函数：LeNet用sigmoid/tanh，AlexNet用ReLU且更快。3. 训练方式：LeNet单CPU，AlexNet双GPU并行。4. 正则化：AlexNet采用Dropout和LRN，LeNet没有。5. 数据增广：AlexNet大量使用，LeNet较少。6. 池化方式：AlexNet用重叠池化，LeNet用平均池化。",
+            "hint": "从激活到训练，全面升级"
+          },
+          {
+            "front": "ResNet 相比 AlexNet 的改进",
+            "back": "1. 残差连接：ResNet引入跳跃连接，使梯度直传，可训练超深网络（100+层），AlexNet仅8层。2. 解决退化：ResNet避免层数加深时性能下降，AlexNet深度增加会导致退化。3. 结构模块：ResNet使用瓶颈层（1×1卷积降维再升维）降低计算量，AlexNet无此设计。4. 激活与归一化：ResNet广泛采用批归一化（BN）加速训练，AlexNet用LRN。5. 性能：ResNet在ImageNet上top-5错误率约3.57%（152层），远优于AlexNet的15.3%。",
+            "hint": "深度的革命与梯度畅通"
+          }
+        ]
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "cardCount": 5,
+        "transitionIn": "经典之所以经典，是因为它们解决了特定时代的痛点。用闪卡梳理三大里程碑网络的设计精髓。"
+      }
+    },
+    {
+      "id": "200dcf12b000",
+      "type": "code",
+      "status": "ready",
+      "params": {
+        "framework": "pytorch",
+        "model": "resnet18",
+        "dataset": "cifar10",
+        "transfer_learning": true,
+        "difficulty": "hard",
+        "completion_type": "partial_code",
+        "focus": "利用预训练ResNet18在CIFAR-10数据集上进行迁移学习，冻结特征提取层并微调分类头。提供骨架代码，让学员自行实现数据加载、冻结操作与训练循环。"
+      },
+      "payload": {
+        "language": "python",
+        "code": "import torch\nimport torch.nn as nn\nimport torch.optim as optim\nimport torchvision\nimport torchvision.transforms as transforms\nfrom torchvision import models\n\n# 1. 数据加载与预处理（学员需自行实现具体细节）\ndef load_cifar10_data(batch_size=64):\n    # 定义数据变换：标准化（ImageNet均值标准差）\n    transform = transforms.Compose([\n        transforms.Resize(224),  # ResNet18要求输入224x224\n        transforms.ToTensor(),\n        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])\n    ])\n    # 下载/加载训练集和测试集\n    trainset = torchvision.datasets.CIFAR10(root='./data', train=True, download=True, transform=transform)\n    testset = torchvision.datasets.CIFAR10(root='./data', train=False, download=True, transform=transform)\n    # 创建数据加载器\n    trainloader = torch.utils.data.DataLoader(trainset, batch_size=batch_size, shuffle=True, num_workers=2)\n    testloader = torch.utils.data.DataLoader(testset, batch_size=batch_size, shuffle=False, num_workers=2)\n    return trainloader, testloader\n\n# 2. 加载预训练ResNet18并修改分类头\ndef get_resnet18_model(num_classes=10):\n    # 加载预训练模型（权重在ImageNet上训练）\n    model = models.resnet18(pretrained=True)\n    # 冻结特征提取层（所有参数不更新）\n    for param in model.parameters():\n        param.requires_grad = False\n    # 替换全连接层（分类头），使其适应CIFAR-10的10个类别\n    num_features = model.fc.in_features\n    model.fc = nn.Linear(num_features, num_classes)\n    # 只让分类头参数可训练\n    for param in model.fc.parameters():\n        param.requires_grad = True\n    return model\n\n# 3. 训练循环（学员需自行实现具体循环细节）\ndef train_model(model, trainloader, criterion, optimizer, num_epochs=5):\n    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')\n    model.to(device)\n    model.train()\n    for epoch in range(num_epochs):\n        running_loss = 0.0\n        for i, data in enumerate(trainloader, 0):\n            inputs, labels = data\n            inputs, labels = inputs.to(device), labels.to(device)\n\n            # 梯度清零\n            optimizer.zero_grad()\n            # 前向传播\n            outputs = model(inputs)\n            loss = criterion(outputs, labels)\n            # 反向传播与优化\n            loss.backward()\n            optimizer.step()\n\n            # 统计损失\n            running_loss += loss.item()\n            if i % 100 == 99:  # 每100个batch打印一次\n                print(f'Epoch [{epoch+1}/{num_epochs}], Step [{i+1}/{len(trainloader)}], Loss: {running_loss/100:.4f}')\n                running_loss = 0.0\n    print('训练完成')\n\n# 4. 主函数（学员需组织完整流程）\nif __name__ == '__main__':\n    # 设置超参数\n    batch_size = 64\n    num_epochs = 5\n    learning_rate = 0.001\n\n    # 加载数据\n    trainloader, testloader = load_cifar10_data(batch_size)\n    # 获取模型\n    model = get_resnet18_model(num_classes=10)\n    # 定义损失函数和优化器（仅更新分类头参数）\n    criterion = nn.CrossEntropyLoss()\n    optimizer = optim.Adam(model.fc.parameters(), lr=learning_rate)  # 只传入fc参数\n\n    # 训练\n    train_model(model, trainloader, criterion, optimizer, num_epochs)\n\n    # 测试（可选，学员可自行扩展）\n    print('迁移学习示例代码完成。')\n",
+        "explanation": "此代码展示了利用预训练ResNet18在CIFAR-10数据集上进行迁移学习的完整骨架。它包含了数据加载（调整尺寸至224x224并使用ImageNet标准化）、模型加载（冻结特征提取层、替换分类头为10类）、以及训练循环的基本结构。学员需要理解冻结操作如何固定预训练权重，仅让分类头更新，并自行实现更完整的训练流程（如验证、准确率计算等）。注释用中文解释了关键步骤，帮助学员掌握迁移学习的核心思想。"
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "transitionIn": "了解经典还不够，接下来我们站在巨人肩上：基于预训练ResNet18快速搞定CIFAR-10分类。"
+      }
+    },
+    {
+      "id": "a094d0f9f70b",
+      "type": "quiz",
+      "status": "ready",
+      "params": {
+        "question_count": 5,
+        "question_types": [
+          "mcq",
+          "computation"
+        ],
+        "include_explanation": true,
+        "difficulty": "mixed",
+        "focus": "综合选择题：涵盖卷积核感受野计算、池化作用、ResNet残差块结构推导、迁移学习适用场景。共5题，每题给出解析。"
+      },
+      "payload": {
+        "question": "在ResNet中，一个残差块（Bottleneck结构）由三个卷积层组成，其卷积核大小分别为1×1、3×3、1×1，且所有卷积层的步长均为1。若该残差块的输入特征图尺寸为H×W×C，输出特征图通道数为4C，则该残差块中第二层（3×3卷积）的输入通道数和输出通道数分别是多少？",
+        "options": [
+          "A) 输入通道数C，输出通道数C",
+          "B) 输入通道数C，输出通道数4C",
+          "C) 输入通道数C，输出通道数C/4（假设C能被4整除）",
+          "D) 输入通道数C/4，输出通道数C/4"
+        ],
+        "correctIndex": 0,
+        "explanation": "Bottleneck结构旨在降低计算量：第一层1×1卷积将通道数从C压缩到C（通常为输入通道数，但实际常用C/4输出，但此处题目要求输出4C，故第二层输入应为C，输出也应为C，然后第三层1×1卷积将通道数扩展到4C。因此，若输入为C，第一层输出为C，第二层（3×3）输入输出均为C，第三层输出4C。所以第二层输入和输出通道数均为C。"
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "difficulty": "mixed",
+        "transitionIn": "学练结合，现在是检验理解深度的时刻。以下5道题覆盖了本章所有核心知识点。"
+      }
+    },
+    {
+      "id": "816a07639021",
+      "type": "callout",
+      "status": "ready",
+      "params": {
+        "calloutType": "key-takeaway",
+        "difficulty": "easy",
+        "focus": "总结本章知识图谱：从基本层到经典架构再到实战技巧。推荐进阶资源（如d2l.ai、CS231n作业）。"
+      },
+      "payload": {
+        "content": "**本章知识图谱总结：** 从卷积、池化等基本层构建网络，到LeNet、AlexNet等经典架构的演进，再到数据增强、迁移学习等实战技巧，构成了图像识别的完整链路。  \n**进阶推荐：** 动手实践可参考《动手学深度学习》(d2l.ai)的配套代码，深入理论可完成CS231n课程的所有编程作业。",
+        "calloutType": "key-takeaway"
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "transitionIn": "通过以上练习，你已经掌握了CNN从理论到实战的核心链条。最后，把它装进你的能力地图里。"
+      }
+    }
+  ],
+  "links": [],
+  "metadata": {}
+}

@@ -1,0 +1,45 @@
+{
+  "id": "pg_efa24b40",
+  "chapterOrder": -1,
+  "title": "Overview",
+  "status": "ready",
+  "blocks": [
+    {
+      "id": "pg_ff2bad88",
+      "type": "text",
+      "status": "ready",
+      "params": {},
+      "payload": {
+        "content": "# Python基础入门教程：从零开始学编程\n\nWelcome to this book. Use the chapter navigation to explore each topic."
+      },
+      "sourceAnchors": [],
+      "metadata": {}
+    },
+    {
+      "id": "pg_f1a6bcf5",
+      "type": "concept_graph",
+      "status": "ready",
+      "params": {},
+      "payload": {
+        "mermaid": "graph TD\n",
+        "nodeCount": 0,
+        "edgeCount": 0
+      },
+      "sourceAnchors": [],
+      "metadata": {}
+    },
+    {
+      "id": "pg_e10d5125",
+      "type": "text",
+      "status": "ready",
+      "params": {},
+      "payload": {
+        "content": "## Chapters\n\n1. **Chapter 1** — Chapter 1 of Python基础入门教程：从零开始学编程\n2. **Chapter 2** — Chapter 2 of Python基础入门教程：从零开始学编程\n3. **Chapter 3** — Chapter 3 of Python基础入门教程：从零开始学编程\n4. **Chapter 4** — Chapter 4 of Python基础入门教程：从零开始学编程\n5. **Chapter 5** — Chapter 5 of Python基础入门教程：从零开始学编程\n6. **Chapter 6** — Chapter 6 of Python基础入门教程：从零开始学编程\n7. **Chapter 7** — Chapter 7 of Python基础入门教程：从零开始学编程\n8. **Chapter 8** — Chapter 8 of Python基础入门教程：从零开始学编程"
+      },
+      "sourceAnchors": [],
+      "metadata": {}
+    }
+  ],
+  "links": [],
+  "metadata": {}
+}

@@ -1,0 +1,189 @@
+{
+  "id": "pg_6b6f0094",
+  "chapterOrder": 4,
+  "title": "列表与元组",
+  "status": "ready",
+  "blocks": [
+    {
+      "id": "8bbfca0b08a1",
+      "type": "section",
+      "status": "ready",
+      "params": {
+        "title": "序列入门：列表与元组",
+        "focus": "介绍列表和元组的基本概念，说明它们都是序列类型，以及在有序列数据时的作用。"
+      },
+      "payload": {
+        "content": "## 序列类型概述\n\n在Python中，序列（Sequence）是一种基本的数据结构，用于存储一组有序的元素。这些元素按照一定的顺序排列，每个元素都有一个对应的索引（从0开始）。序列的核心价值在于：它允许我们按顺序访问每个元素，并且支持一系列通用的操作，如索引（通过位置获取元素）、切片（提取子序列）、长度计算（使用 `len()` 函数）、成员检查（使用 `in` 运算符）等。常见的序列类型包括列表（list）、元组（tuple）和字符串（string）。虽然这三种类型各自有着不同的特性（比如字符串只能包含字符，列表和元组可以包含任意类型的对象），但它们都遵循序列的通用协议。当我们需要存储一组数据，并且数据之间的先后顺序很重要时（例如学生的成绩列表、一周的天气数据、一个点的坐标），序列就是最自然的选择。\n\n## 列表（List）\n\n列表是Python中最灵活、最常用的序列类型之一。它是一个**可变**的序列，这意味着我们可以随时修改列表的内容：添加新元素、删除现有元素、或者修改某个位置的元素。列表使用方括号 `[]` 表示，元素之间用逗号分隔，元素可以是任何类型（数字、字符串、甚至其他列表）。例如：\n```python\nnumbers = [1, 2, 3, 4, 5]\nmixed = [42, \"hello\", 3.14, True]\n```\n列表提供了丰富的方法来操作数据。常见的添加操作有 `append()`（在末尾添加一个元素）、`insert()`（在指定位置插入元素）；删除操作有 `remove()`（删除第一个匹配的元素）、`pop()`（删除并返回指定位置的元素）；修改操作则可以直接通过索引赋值。比如：\n```python\nnumbers.append(6)        # 变为 [1,2,3,4,5,6]\nnumbers.insert(0, 0)     # 变为 [0,1,2,3,4,5,6]\nnumbers.remove(3)        # 删除第一个3，变为 [0,1,2,4,5,6]\nnumbers[0] = 100         # 修改第一个元素为100\n```\n因为列表可变，它非常适合处理需要频繁增删改的数据集合。例如，在动态管理用户输入、记录不断变化的日志、或者实现一个待办事项列表时，列表都是绝佳的选择。需要注意的是，列表的可变性也带来了一些风险：当列表被多个变量引用时，修改一个变量可能会意外影响其他变量（因为它们是同一个对象的引用），这一点在使用时需小心。\n\n## 元组（Tuple）\n\n元组与列表非常相似，它们都属于序列，也支持索引、切片、长度计算等操作，使用圆括号 `()` 表示，元素之间也用逗号分隔。例如：\n```python\npoint = (3, 5)\ncolors = (\"red\", \"green\", \"blue\")\n```\n但元组与列表最根本的区别在于：元组是**不可变**的。一旦创建，我们就不能修改元组中的元素（不能增加、删除或改变它们的值）。这种不可变性带来了一些独特的优势。首先，元组常用于存储那些你不希望被修改的数据，例如一个点的坐标(x, y)、一个函数的多个返回值、或者一组固定的配置参数。其次，因为不可变，元组是**可哈希的**（hashable），这意味着它可以作为字典的键（字典的键必须是不可变类型），而列表则不行。例如：\n```python\nlocations = {(40.7128, -74.0060): \"New York\", (34.0522, -118.2437): \"Los Angeles\"}\n```\n此外，元组经常用于函数返回多个值时，自动打包成一个元组（实际上Python中的多返回值就是通过元组实现的）。例如：\n```python\ndef min_max(lst):\n    return min(lst), max(lst)  # 返回一个元组\nresult = min_max([3,1,4,1,5])  # result = (1, 5)\n```\n\n## 列表与元组的选择\n\n在实际编程中，我们经常需要在列表和元组之间做出选择。最关键的决定因素就是**数据是否需要被修改**。如果数据在创建后需要不断地添加、删除或更新元素，那么列表是唯一合理的选择。反之，如果数据是一组固定不变的信息（例如一周的天数、数学常数、函数的参数列表），元组更为合适。元组不仅提供了“防意外修改”的安全性，让代码意图更清晰，而且在性能上通常略优于列表（因为元组更简单，没有为可变性预留额外的内存开销）。此外，当我们需要将序列用作字典的键时（例如构建一个缓存或映射表），必须使用元组。而在需要存储同类数据且频繁修改的场景（如动态数组、队列、栈）中，列表更加灵活。概括来说，遵循“能不变则不变”的原则：如果数据将来不会变化，优先考虑元组；只有当需要修改时才使用列表。这种选择习惯会让代码更稳健、更高效。",
+        "outline": {
+          "sections": [
+            {
+              "heading": "序列类型概述",
+              "points": [
+                "序列是Python中一种基本的数据结构，用于存储一组有序的元素。",
+                "常见的序列类型包括列表、元组和字符串，它们都支持索引、切片、长度计算等操作。",
+                "序列的核心作用在于能够按顺序访问数据，适用于需要保持元素顺序的场景。"
+              ]
+            },
+            {
+              "heading": "列表（List）",
+              "points": [
+                "列表是可变序列，使用方括号 [] 表示，元素可以是任意类型。",
+                "支持添加、删除、修改元素等操作，例如 append()、insert()、remove() 等方法。",
+                "适用于需要频繁修改数据集合的场合，如动态数据管理。"
+              ]
+            },
+            {
+              "heading": "元组（Tuple）",
+              "points": [
+                "元组是不可变序列，使用圆括号 () 表示，元素一旦创建不可修改。",
+                "元组通常用于存储不希望被改变的数据，如常量集合或函数返回的多个值。",
+                "由于不可变性，元组可以作为字典的键，而列表则不能。"
+              ]
+            },
+            {
+              "heading": "列表与元组的选择",
+              "points": [
+                "根据数据是否需要修改来决定：需要修改则用列表，无需修改则用元组。",
+                "元组在性能上略优于列表，且更安全（防止意外修改）。",
+                "在存储固定信息（如坐标、配置项）或作为字典键时，优先使用元组。"
+              ]
+            }
+          ]
+        }
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "wordCount": 2060,
+        "sectionCount": 4
+      }
+    },
+    {
+      "id": "12361a861211",
+      "type": "text",
+      "status": "ready",
+      "params": {
+        "depth": "basic",
+        "focus": "详细讲解列表的创建方式（方括号、list()函数）以及使用索引和切片访问元素，包括正负索引和切片语法。"
+      },
+      "payload": {
+        "content": "列表（List）是Python中最常用的数据结构之一，它是一个有序、可变、可重复的元素集合。元组（Tuple）则与列表类似，但它是不可变的。本章先深入探讨列表的创建与访问。\n\n### 列表的创建方式\n\n列表可以使用两种主要方式创建：方括号 `[]` 和 `list()` 函数。\n\n**1. 使用方括号 `[]`**  \n这是最直接的方式。在方括号内，元素之间用逗号分隔。例如：  \n```python\nfruits = ['apple', 'banana', 'cherry']\nnumbers = [1, 2, 3, 4, 5]\nmixed = [1, 'hello', 3.14, True]\nempty = []  # 空列表\n```\n\n**2. 使用 `list()` 函数**  \n`list()` 可以将其他可迭代对象（如字符串、元组、范围对象等）转换为列表。例如：  \n```python\nstring_to_list = list(\"Python\")       # ['P', 'y', 't', 'h', 'o', 'n']\ntuple_to_list = list((1, 2, 3))      # [1, 2, 3]\nrange_to_list = list(range(1, 6))    # [1, 2, 3, 4, 5]\nno_arg = list()                      # [] 空列表\n```\n\n两种方式等价，但方括号更常用。`list()` 在需要显式转换时非常有用。\n\n### 使用索引访问元素\n\n列表中的每个元素都有一个位置编号，称为索引（index）。索引从0开始，即第一个元素的索引为0，第二个为1，以此类推。\n\n**正索引**：从左到右，0、1、2、3……  \n```python\nmy_list = [10, 20, 30, 40, 50]\nprint(my_list[0])   # 10\nprint(my_list[2])   # 30\n```\n\n**负索引**：从右到左，最后一个元素的索引为-1，倒数第二个为-2，以此类推。  \n```python\nprint(my_list[-1])  # 50\nprint(my_list[-3])  # 30\n```\n\n注意：索引不能超出范围，否则会引发 `IndexError`。\n\n### 使用切片访问子列表\n\n切片（Slice）允许从列表中提取一个子列表，语法为 `list[start:stop:step]`，其中 `start` 是起始索引（包含），`stop` 是结束索引（不包含），`step` 是步长。\n\n**基本切片**：  \n```python\nmy_list = [0, 1, 2, 3, 4, 5, 6]\nprint(my_list[1:4])   # [1, 2, 3]  (从索引1到3)\nprint(my_list[:3])    # [0, 1, 2]  (从头到索引2)\nprint(my_list[4:])    # [4, 5, 6]  (从索引4到尾)\nprint(my_list[:])     # [0,1,2,3,4,5,6]  (完整复制)\n```\n\n**步长（step）**：可以跳过元素或反向提取。  \n```python\nprint(my_list[0:6:2]) # [0, 2, 4]  (每隔一个取一个)\nprint(my_list[::2])   # [0, 2, 4, 6]\nprint(my_list[::-1])  # [6,5,4,3,2,1,0]  (反转列表)\n```\n\n**负索引切片**：同样适用负索引作为 `start` 或 `stop`。  \n```python\nprint(my_list[-4:-1]) # [3, 4, 5]  (从倒数第4个到倒数第2个)\nprint(my_list[-1::-2])# [6, 4, 2, 0]  (从尾到头，步长为2)\n```\n\n切片永远不会引发 `IndexError`，即使 `start` 或 `stop` 超出范围，Python也会自动缩放到有效边界。切片返回的是新列表，原列表不变。\n\n### 小结\n\n- 创建列表：使用 `[元素]` 或 `list(可迭代对象)`。\n- 元素访问：正索引 `0` 起始，负索引 `-1` 起始。\n- 切片：`[start:stop:step]` 灵活提取子集，支持正负索引和步长。"
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "wordCount": 1888,
+        "transitionIn": "首先，我们来看看如何创建列表并访问其中的元素。"
+      }
+    },
+    {
+      "id": "bc25c09ed409",
+      "type": "code",
+      "status": "ready",
+      "params": {
+        "language": "python",
+        "examples": [
+          "my_list = [1, 2, 3]",
+          "my_list.append(4)",
+          "my_list.pop()",
+          "my_list[0] = 10"
+        ],
+        "focus": "演示列表的常用修改操作：添加元素（append、insert、extend）、删除元素（pop、remove、del）、修改元素（直接赋值）。"
+      },
+      "payload": {
+        "language": "python",
+        "code": "# 演示列表的常用修改操作\n\n# 1. 添加元素\nprint(\"=== 添加元素 ===\")\nmy_list = [1, 2, 3]\nprint(\"初始列表:\", my_list)\n\n# append: 在末尾添加单个元素\nmy_list.append(4)\nprint(\"append(4) 后:\", my_list)\n\n# insert: 在指定索引位置插入元素\nmy_list.insert(1, 10)  # 在索引1处插入10\nprint(\"insert(1, 10) 后:\", my_list)\n\n# extend: 将一个可迭代对象的所有元素添加到列表末尾\nmy_list.extend([5, 6])\nprint(\"extend([5, 6]) 后:\", my_list)\n\n# 2. 删除元素\nprint(\"\\n=== 删除元素 ===\")\nmy_list = [1, 2, 3, 2, 4, 5]\nprint(\"初始列表:\", my_list)\n\n# pop: 删除并返回指定索引的元素（默认最后一个）\npopped = my_list.pop()      # 删除并返回最后一个元素\nprint(\"pop() 删除:\", popped, \"剩余:\", my_list)\n\npopped = my_list.pop(1)     # 删除并返回索引1的元素\nprint(\"pop(1) 删除:\", popped, \"剩余:\", my_list)\n\n# remove: 删除第一个匹配的值\nmy_list.remove(2)           # 删除第一个出现的2\nprint(\"remove(2) 后:\", my_list)\n\n# del: 根据索引或切片删除元素\ndel my_list[0]              # 删除索引0的元素\nprint(\"del my_list[0] 后:\", my_list)\n\ndel my_list[1:]             # 删除索引1及之后的所有元素\nprint(\"del my_list[1:] 后:\", my_list)\n\n# 3. 修改元素（直接赋值）\nprint(\"\\n=== 修改元素 ===\")\nmy_list = [10, 20, 30, 40]\nprint(\"初始列表:\", my_list)\n\n# 通过索引直接赋值修改\nmy_list[1] = 25\nprint(\"my_list[1] = 25 后:\", my_list)\n\n# 修改多个元素（通过切片）\nmy_list[1:3] = [21, 22]  # 将索引1到2的元素替换为21,22\nprint(\"my_list[1:3] = [21, 22] 后:\", my_list)\n\n# 也可以修改整个列表（但通常不推荐，会丢失引用）\n# 这里仅演示，实际中多用切片赋值\nprint(\"\\n列表常见操作演示完毕。\")",
+        "explanation": "该代码演示了Python列表的常用修改操作，包括添加元素（append、insert、extend）、删除元素（pop、remove、del）和修改元素（直接赋值）。每一步都有清晰的注释和输出，帮助初学者理解每个方法的作用和结果。"
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "transitionIn": "掌握了访问方式后，我们来学习如何修改列表。"
+      }
+    },
+    {
+      "id": "e626accfd2fc",
+      "type": "text",
+      "status": "ready",
+      "params": {
+        "depth": "intermediate",
+        "focus": "系统总结列表的常用方法：append, pop, sort, reverse, count, index等，并给出每个方法的用途和示例。"
+      },
+      "payload": {
+        "content": "在 Python 中，列表是一个非常灵活的数据结构，支持多种内置方法，让我们能够方便地对元素进行增删改查。下面系统总结几个最常用的列表方法，并给出具体用途和示例，帮助你快速掌握它们。\n\n### 1. `append(x)` —— 在列表末尾添加一个元素\n**用途**：向列表的最后追加一个元素，直接修改原列表，没有返回值。\n**示例**：\n```python\nfruits = ['苹果', '香蕉']\nfruits.append('橙子')\nprint(fruits)  # 输出：['苹果', '香蕉', '橙子']\n```\n\n### 2. `pop([i])` —— 删除并返回指定位置的元素\n**用途**：如果不指定索引 `i`，默认删除并返回最后一个元素；如果指定索引，则删除并返回该位置的元素。列表会因此缩短。\n**示例**：\n```python\nnums = [10, 20, 30, 40]\nlast = nums.pop()      # 删除最后一个，返回 40\nprint(last)            # 40\nprint(nums)            # [10, 20, 30]\n\nsecond = nums.pop(1)   # 删除索引 1 的元素（20）\nprint(second)          # 20\nprint(nums)            # [10, 30]\n```\n\n### 3. `sort(key=None, reverse=False)` —— 对列表进行原地排序\n**用途**：默认按升序排列列表中的元素，可以指定 `reverse=True` 实现降序。也可以传入 `key` 函数自定义排序规则。注意：该方法不返回新列表，而是直接修改原列表。\n**示例**：\n```python\nscores = [88, 72, 95, 60]\nscores.sort()\nprint(scores)  # [60, 72, 88, 95]\n\nscores.sort(reverse=True)\nprint(scores)  # [95, 88, 72, 60]\n\n# 按字符串长度排序\nnames = ['Tom', 'Jerry', 'Alice', 'Bob']\nnames.sort(key=len)\nprint(names)   # ['Tom', 'Bob', 'Jerry', 'Alice']\n```\n\n### 4. `reverse()` —— 原地反转列表元素的顺序\n**用途**：将列表中元素的排列顺序颠倒过来，直接修改原列表，无返回值。\n**示例**：\n```python\nlst = [1, 2, 3, 4]\nlst.reverse()\nprint(lst)  # [4, 3, 2, 1]\n```\n\n### 5. `count(x)` —— 统计元素 x 在列表中出现的次数\n**用途**：返回整数，表示 `x` 在列表中出现的次数。如果 `x` 不存在，返回 0。\n**示例**：\n```python\ngrades = ['A', 'B', 'A', 'C', 'A', 'B']\nprint(grades.count('A'))  # 3\nprint(grades.count('D'))  # 0\n```\n\n### 6. `index(x[, start[, end]])` —— 查找元素 x 第一次出现的位置\n**用途**：返回元素 `x` 的第一个匹配项的索引值。可以通过 `start` 和 `end` 参数限定查找范围。如果元素不存在，会引发 `ValueError` 异常。\n**示例**：\n```python\ncolors = ['red', 'blue', 'green', 'blue', 'yellow']\nidx = colors.index('blue')\nprint(idx)  # 1\n\n# 从索引 2 开始查找\nidx2 = colors.index('blue', 2)\nprint(idx2) # 3\n\n# 如果查找不存在的元素会报错\n# colors.index('purple')  # ValueError: 'purple' is not in list\n```\n\n掌握了这些方法，你就能高效地操作列表了。注意列表是可变的，所以这些方法大多直接修改原列表，而不会返回新列表（`count` 和 `index` 是查询方法，不修改原列表）。在需要保留原始数据时，可以先用 `copy()` 或切片 `[:]` 创建副本再操作。"
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "wordCount": 1931,
+        "transitionIn": "除了基本修改，列表还提供了许多实用的方法。"
+      }
+    },
+    {
+      "id": "7b02c757eb27",
+      "type": "callout",
+      "status": "ready",
+      "params": {
+        "calloutType": "info",
+        "title": "元组：不可变序列",
+        "focus": "强调元组的不可变性（创建后无法修改），并举例说明元组适用于哪些场景（如函数返回多个值、字典键、保护数据不被意外修改）。"
+      },
+      "payload": {
+        "content": "💡 **关键概念**：元组是不可变序列，创建后无法增删改元素。这一特性使其适用于**函数返回多个值**（如 `return x, y`）、作为**字典键**（因可哈希）以及**保护数据**不被意外修改的场景。",
+        "calloutType": "info"
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "transitionIn": "接下来，我们对比一下元组——一种不可变的序列类型。"
+      }
+    },
+    {
+      "id": "e0e08fcf49ea",
+      "type": "concept_graph",
+      "status": "ready",
+      "params": {
+        "comparisonType": "list_vs_tuple",
+        "depth": "intermediate",
+        "focus": "可视对比列表和元组的异同，包括：可变性、性能、可用方法、使用场景等，帮助学习者清晰区分。"
+      },
+      "payload": {
+        "mermaid": "graph TD\n  A[\"No concepts defined\"]\n",
+        "nodeCount": 0,
+        "edgeCount": 0
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "transitionIn": "为了更直观地理解两者的区别，我们来看一个对比表。"
+      }
+    },
+    {
+      "id": "6845d800b826",
+      "type": "quiz",
+      "status": "ready",
+      "params": {
+        "difficulty": "medium",
+        "questionCount": 3,
+        "topics": [
+          "列表操作",
+          "索引切片",
+          "元组不可变性"
+        ],
+        "focus": "综合测试列表创建、索引切片、列表方法、元组特性等知识点，包含2-3道选择题，难度适中。"
+      },
+      "payload": {
+        "question": "下列代码中，哪一项的输出结果与其他三项不同？",
+        "options": [
+          "A) print(tuple([1, 2, 3]) == (1, 2, 3))",
+          "B) print([1, 2, 3] == list((1, 2, 3)))",
+          "C) print((1, 2, 3) == tuple([1, 2, 3]))",
+          "D) print([1, 2, 3] == list(tuple([1, 2, 3])))"
+        ],
+        "correctIndex": 0,
+        "explanation": "选项A输出False，因为tuple([1,2,3])返回(1,2,3)，但比较的是tuple和list，类型不同导致False。其他选项都是比较相同类型的对象（列表与列表或元组与元组），因此输出True。"
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "difficulty": "medium",
+        "transitionIn": "现在，让我们通过一个小测验来巩固本节内容。"
+      }
+    }
+  ],
+  "links": [],
+  "metadata": {}
+}

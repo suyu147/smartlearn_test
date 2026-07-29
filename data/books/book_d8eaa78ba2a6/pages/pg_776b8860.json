@@ -1,0 +1,45 @@
+{
+  "id": "pg_776b8860",
+  "chapterOrder": -1,
+  "title": "Overview",
+  "status": "ready",
+  "blocks": [
+    {
+      "id": "pg_43ad70d3",
+      "type": "text",
+      "status": "ready",
+      "params": {},
+      "payload": {
+        "content": "# Python基础入门：从零开始学编程\n\nWelcome to this book. Use the chapter navigation to explore each topic."
+      },
+      "sourceAnchors": [],
+      "metadata": {}
+    },
+    {
+      "id": "pg_d0f277f3",
+      "type": "concept_graph",
+      "status": "ready",
+      "params": {},
+      "payload": {
+        "mermaid": "graph TD\n  environment[\"Python环境\"]\n  basic_syntax[\"基本语法\"]\n  first_program[\"第一个程序\"]\n  variable[\"变量\"]\n  int[\"整数类型\"]\n  float[\"浮点数类型\"]\n  string[\"字符串类型\"]\n  bool[\"布尔类型\"]\n  type_conversion[\"类型转换\"]\n  arithmetic_operator[\"算术运算符\"]\n  comparison_operator[\"比较运算符\"]\n  logical_operator[\"逻辑运算符\"]\n  assignment_operator[\"赋值运算符\"]\n  expression[\"表达式\"]\n  if_else[\"条件判断\"]\n  while_loop[\"while循环\"]\n  for_loop[\"for循环\"]\n  break_continue[\"break和continue\"]\n  list[\"列表\"]\n  tuple[\"元组\"]\n  indexing_slicing[\"索引与切片\"]\n  list_methods[\"列表方法\"]\n  dict[\"字典\"]\n  set[\"集合\"]\n  dict_methods[\"字典方法\"]\n  set_methods[\"集合方法\"]\n  function_definition[\"函数定义\"]\n  parameter[\"参数\"]\n  return_value[\"返回值\"]\n  scope[\"作用域\"]\n  builtin_functions[\"内置函数\"]\n  module[\"模块\"]\n  module_import[\"模块导入\"]\n  standard_library[\"标准库\"]\n  file_io[\"文件读写\"]\n  exception_handling[\"异常处理\"]\n  first_program --> environment\n  first_program --> basic_syntax\n  variable --> basic_syntax\n  int --> variable\n  float --> variable\n  string --> variable\n  bool --> variable\n  type_conversion --> int\n  type_conversion --> string\n  arithmetic_operator --> int\n  arithmetic_operator --> float\n  comparison_operator --> int\n  comparison_operator --> float\n  comparison_operator --> bool\n  logical_operator --> bool\n  assignment_operator --> variable\n  expression --> arithmetic_operator\n  expression --> comparison_operator\n  expression --> logical_operator\n  expression --> assignment_operator\n  if_else --> comparison_operator\n  if_else --> logical_operator\n  if_else --> expression\n  while_loop --> comparison_operator\n  while_loop --> logical_operator\n  while_loop --> expression\n  for_loop --> variable\n  for_loop --> int\n  for_loop --> expression\n  break_continue --> while_loop\n  break_continue --> for_loop\n  list --> variable\n  tuple --> variable\n  indexing_slicing --> list\n  indexing_slicing --> tuple\n  list_methods --> list\n  dict --> variable\n  set --> variable\n  dict_methods --> dict\n  set_methods --> set\n  function_definition --> variable\n  function_definition --> if_else\n  function_definition --> for_loop\n  parameter --> function_definition\n  return_value --> function_definition\n  scope --> function_definition\n  builtin_functions --> variable\n  module --> function_definition\n  module_import --> module\n  standard_library --> module_import\n  file_io --> string\n  file_io --> function_definition\n  exception_handling --> if_else\n  exception_handling --> for_loop\n  exception_handling --> function_definition\n",
+        "nodeCount": 36,
+        "edgeCount": 55
+      },
+      "sourceAnchors": [],
+      "metadata": {}
+    },
+    {
+      "id": "pg_cdaad0df",
+      "type": "text",
+      "status": "ready",
+      "params": {},
+      "payload": {
+        "content": "## Chapters\n\n1. **Python环境搭建与第一个程序** — 本章从零开始，指导读者完成Python的安装和环境配置，并通过编写第一个程序来熟悉print和input函数的用法，为后续学习打下坚实基础。\n2. **变量与数据类型** — 本章介绍变量和Python的基本数据类型，通过实例帮助读者掌握如何存储和转换不同类型的数据。\n3. **运算符与表达式** — 本章系统讲解Python中的各种运算符，帮助读者编写和求值表达式，为控制结构打下基础。\n4. **条件判断与循环** — 本章介绍条件判断和循环语句，使程序能够根据条件执行不同分支，并重复执行代码块，提升程序的灵活性。\n5. **列表与元组** — 本章讲解Python中最常用的序列类型——列表和元组，涵盖创建、访问、操作方法，为处理有序数据提供基础。\n6. **字典与集合** — 本章介绍字典和集合这两种无序数据类型，重点掌握键值对的存取和集合的数学运算，拓展数据组织能力。\n7. **函数** — 本章深入讲解函数的定义、参数、返回值和作用域，让读者能够编写可复用的代码模块，提高程序的组织性。\n8. **模块与文件操作** — 本章学习如何利用Python标准库扩展功能，进行文件读写操作，并掌握基本的异常处理机制，提升程序的健壮性。"
+      },
+      "sourceAnchors": [],
+      "metadata": {}
+    }
+  ],
+  "links": [],
+  "metadata": {}
+}
