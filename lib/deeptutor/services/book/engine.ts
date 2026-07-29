@@ -453,13 +453,27 @@ export class BookEngine {
       .join('\n');
 
     // Build Mermaid concept graph
+    // Sanitize node IDs: prefix with n_ and replace non-alphanumeric chars to avoid
+    // Mermaid reserved keywords (class, style, click, etc.) and parse errors
+    const mermaidIdMap = new Map<string, string>();
+    let nodeIdx = 0;
+    for (const node of spine.conceptGraph.nodes) {
+      const safeId = `n${nodeIdx}`;
+      mermaidIdMap.set(node.id, safeId);
+      nodeIdx++;
+    }
     let mermaid = 'graph TD\n';
     for (const node of spine.conceptGraph.nodes) {
-      mermaid += `  ${node.id}["${node.label}"]\n`;
+      const safeId = mermaidIdMap.get(node.id)!;
+      // Escape quotes in label to prevent Mermaid parse errors
+      const safeLabel = (node.label || '').replace(/"/g, "'").replace(/\[/g, '(').replace(/\]/g, ')');
+      mermaid += `  ${safeId}["${safeLabel}"]\n`;
     }
     for (const edge of spine.conceptGraph.edges) {
+      const safeSource = mermaidIdMap.get(edge.source) ?? edge.source;
+      const safeTarget = mermaidIdMap.get(edge.target) ?? edge.target;
       const arrow = edge.relation === 'depends_on' ? '-->' : edge.relation === 'extends' ? '-.->' : '---';
-      mermaid += `  ${edge.source} ${arrow} ${edge.target}\n`;
+      mermaid += `  ${safeSource} ${arrow} ${safeTarget}\n`;
     }
 
     const overviewBlocks: Block[] = [

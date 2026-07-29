@@ -151,7 +151,7 @@ export async function generatePptScenes(requirement: string, aiConfig?: { provid
   const stageId = `stage_${Date.now()}`;
   const scenes: Scene[] = [];
   for (const outline of outlineResult.data) {
-    const scene = await buildSceneFromOutline(outline, aiCall, stageId, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, generatedMediaMapping);
+    const scene = await buildSceneFromOutline(outline, aiCall, stageId, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, generatedMediaMapping, requirement);
     if (scene) {
       backfillGeneratedImages(scene, generatedMediaMapping);
       scenes.push(scene);

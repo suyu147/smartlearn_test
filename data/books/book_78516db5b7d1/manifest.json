@@ -1,0 +1,426 @@
+{
+  "id": "78516db5b7d1",
+  "status": "ready",
+  "proposal": {
+    "title": "Python编程入门指南",
+    "description": "本书从零开始系统讲解Python编程，涵盖基础语法、数据结构、函数、模块、面向对象编程及文件处理，帮助读者快速掌握实用编程技能。",
+    "scope": "包含：Python安装与环境配置，变量、数据类型、运算符，条件判断与循环结构，列表、元组、字典、集合，字符串处理，函数定义与参数，模块与包的导入，面向对象编程基础（类、对象、继承），文件读写与异常处理。不包含：网络爬虫、Web框架、数据分析、机器学习、并发编程及高级标准库深度解析。",
+    "targetLevel": "beginner",
+    "estimatedChapters": 8,
+    "rationale": "针对完全零基础的读者，先建立编程思维和语法基础，再逐步引入结构化编程和面向对象概念，最后通过文件操作和异常处理连接实际应用，章节递进平滑，为后续深入学习打下扎实根基。"
+  },
+  "inputs": {
+    "userIntent": "python",
+    "chatSelections": [],
+    "notebookRefs": [],
+    "knowledgeBases": [],
+    "questionCategories": [],
+    "questionEntries": [],
+    "createdAt": "2026-07-29T05:21:48.700Z"
+  },
+  "spine": {
+    "title": "Python编程入门指南",
+    "chapters": [
+      {
+        "order": 0,
+        "title": "Python入门与开发环境搭建",
+        "learningObjectives": [
+          "了解Python语言的特点与应用领域",
+          "完成Python解释器的安装与环境配置",
+          "编写并运行第一个Python程序",
+          "掌握交互式环境和脚本执行的基本方法"
+        ],
+        "contentType": "overview",
+        "sourceAnchors": [],
+        "prerequisites": [],
+        "pageIds": [
+          "pg_3af826ba"
+        ],
+        "summary": "本章引导读者认识Python编程语言，完成开发环境的安装与配置，并通过编写简单的程序体验代码的执行过程，为后续学习奠定操作基础。"
+      },
+      {
+        "order": 1,
+        "title": "Python基础：变量、数据类型与运算符",
+        "learningObjectives": [
+          "理解变量的概念及其命名规则",
+          "掌握整数、浮点数、字符串、布尔类型等基本数据类型",
+          "熟练使用算术、比较和逻辑运算符",
+          "能够进行简单的类型转换与输入输出操作"
+        ],
+        "contentType": "theory",
+        "sourceAnchors": [],
+        "prerequisites": [
+          "environment_setup"
+        ],
+        "pageIds": [
+          "pg_1ae06178"
+        ],
+        "summary": "本章介绍Python中最基本的构建块：变量与数据类型，以及用于计算和判断的运算符，通过丰富的示例帮助读者建立程序数据处理的基本能力。"
+      },
+      {
+        "order": 2,
+        "title": "控制程序流程：条件判断与循环",
+        "learningObjectives": [
+          "使用if-elif-else结构实现分支逻辑",
+          "运用for循环遍历序列和range对象",
+          "利用while循环处理重复任务",
+          "结合break、continue和else控制循环执行流程"
+        ],
+        "contentType": "practice",
+        "sourceAnchors": [],
+        "prerequisites": [
+          "variables",
+          "operators"
+        ],
+        "pageIds": [
+          "pg_1b5f8013"
+        ],
+        "summary": "本章详细讲解条件语句和循环结构，使读者能够根据不同的情况选择执行路径，并利用循环高效地处理重复性任务，写出灵活的程序。"
+      },
+      {
+        "order": 3,
+        "title": "序列数据结构：列表与元组",
+        "learningObjectives": [
+          "创建和操作列表，包括增删改查",
+          "理解元组的不可变特性及其使用场景",
+          "掌握列表切片、遍历与常见内置方法",
+          "应用序列解包简化代码"
+        ],
+        "contentType": "practice",
+        "sourceAnchors": [],
+        "prerequisites": [
+          "data_types",
+          "loops"
+        ],
+        "pageIds": [
+          "pg_3c50e1d4"
+        ],
+        "summary": "本章聚焦于Python中最常用的序列类型——列表和元组，讲解其特性、操作技巧及适用场景，为组织和管理批量数据打下基础。"
+      },
+      {
+        "order": 4,
+        "title": "字典、集合与字符串处理",
+        "learningObjectives": [
+          "使用字典存储键值对并高效查找",
+          "掌握集合的创建、运算及去重功能",
+          "深入字符串的格式化、分割、替换等常用操作",
+          "根据数据特性选择合适的数据结构"
+        ],
+        "contentType": "practice",
+        "sourceAnchors": [],
+        "prerequisites": [
+          "data_types",
+          "lists"
+        ],
+        "pageIds": [
+          "pg_e4a82a05"
+        ],
+        "summary": "本章继续探讨字典、集合和字符串这三种重要数据类型，通过实际案例演示如何运用它们解决常见的数据组织和文本处理问题。"
+      },
+      {
+        "order": 5,
+        "title": "函数与代码复用",
+        "learningObjectives": [
+          "定义带有参数和返回值的函数",
+          "区分位置参数、关键字参数和默认参数",
+          "理解变量的作用域与生命周期",
+          "使用lambda表达式编写简单匿名函数"
+        ],
+        "contentType": "concept",
+        "sourceAnchors": [],
+        "prerequisites": [
+          "variables",
+          "conditionals"
+        ],
+        "pageIds": [
+          "pg_22821eac"
+        ],
+        "summary": "本章引入函数这一关键抽象，教会读者如何将代码组织成可复用的块，并通过参数和返回值实现灵活的调用，提升代码的可读性和可维护性。"
+      },
+      {
+        "order": 6,
+        "title": "模块与包的导入",
+        "learningObjectives": [
+          "理解模块的概念及其优点",
+          "使用import和from语句导入标准库模块",
+          "创建自定义模块并组织成包",
+          "利用常用标准库模块（如math、random）扩展程序功能"
+        ],
+        "contentType": "concept",
+        "sourceAnchors": [],
+        "prerequisites": [
+          "functions"
+        ],
+        "pageIds": [
+          "pg_a081c9b7"
+        ],
+        "summary": "本章介绍Python的模块化编程思想，从导入现有模块到创建自定义包，帮助读者理解如何利用模块组织大型工程并复用他人代码。"
+      },
+      {
+        "order": 7,
+        "title": "面向对象编程入门",
+        "learningObjectives": [
+          "理解类和对象的基本概念",
+          "定义类并创建实例，掌握初始化方法",
+          "实现继承以扩展已有类的功能",
+          "区分实例属性、类属性与方法覆盖"
+        ],
+        "contentType": "concept",
+        "sourceAnchors": [],
+        "prerequisites": [
+          "functions",
+          "data_types"
+        ],
+        "pageIds": [
+          "pg_619f24f9"
+        ],
+        "summary": "本章带领读者进入面向对象编程的世界，从类与对象的定义开始，逐步讲解封装、继承等核心机制，为编写更结构化、更强大的程序奠定基础。"
+      },
+      {
+        "order": 8,
+        "title": "文件读写与异常处理",
+        "learningObjectives": [
+          "使用open()函数读取和写入文件",
+          "处理文本文件与二进制文件的基本差别",
+          "运用try-except-finally捕获并处理异常",
+          "利用with语句管理文件资源"
+        ],
+        "contentType": "practice",
+        "sourceAnchors": [],
+        "prerequisites": [
+          "data_types",
+          "conditionals"
+        ],
+        "pageIds": [
+          "pg_392587ef"
+        ],
+        "summary": "本章讲解如何让程序与外部文件交互，并引入异常处理机制提高程序的健壮性，使读者能够编写出能够处理文件数据并能优雅应对错误的实用脚本。"
+      }
+    ],
+    "conceptGraph": {
+      "nodes": [
+        {
+          "id": "environment_setup",
+          "label": "开发环境搭建",
+          "chapter": 0
+        },
+        {
+          "id": "variables",
+          "label": "变量",
+          "chapter": 1
+        },
+        {
+          "id": "data_types",
+          "label": "数据类型",
+          "chapter": 1
+        },
+        {
+          "id": "operators",
+          "label": "运算符",
+          "chapter": 1
+        },
+        {
+          "id": "conditionals",
+          "label": "条件判断",
+          "chapter": 2
+        },
+        {
+          "id": "loops",
+          "label": "循环",
+          "chapter": 2
+        },
+        {
+          "id": "lists",
+          "label": "列表",
+          "chapter": 3
+        },
+        {
+          "id": "tuples",
+          "label": "元组",
+          "chapter": 3
+        },
+        {
+          "id": "dictionaries",
+          "label": "字典",
+          "chapter": 4
+        },
+        {
+          "id": "sets",
+          "label": "集合",
+          "chapter": 4
+        },
+        {
+          "id": "strings",
+          "label": "字符串",
+          "chapter": 4
+        },
+        {
+          "id": "functions",
+          "label": "函数",
+          "chapter": 5
+        },
+        {
+          "id": "modules",
+          "label": "模块",
+          "chapter": 6
+        },
+        {
+          "id": "packages",
+          "label": "包",
+          "chapter": 6
+        },
+        {
+          "id": "classes",
+          "label": "类",
+          "chapter": 7
+        },
+        {
+          "id": "objects",
+          "label": "对象",
+          "chapter": 7
+        },
+        {
+          "id": "inheritance",
+          "label": "继承",
+          "chapter": 7
+        },
+        {
+          "id": "file_io",
+          "label": "文件读写",
+          "chapter": 8
+        },
+        {
+          "id": "exception_handling",
+          "label": "异常处理",
+          "chapter": 8
+        }
+      ],
+      "edges": [
+        {
+          "source": "variables",
+          "target": "data_types",
+          "relation": "depends_on"
+        },
+        {
+          "source": "data_types",
+          "target": "operators",
+          "relation": "related"
+        },
+        {
+          "source": "variables",
+          "target": "conditionals",
+          "relation": "depends_on"
+        },
+        {
+          "source": "operators",
+          "target": "conditionals",
+          "relation": "depends_on"
+        },
+        {
+          "source": "conditionals",
+          "target": "loops",
+          "relation": "related"
+        },
+        {
+          "source": "data_types",
+          "target": "lists",
+          "relation": "depends_on"
+        },
+        {
+          "source": "loops",
+          "target": "lists",
+          "relation": "related"
+        },
+        {
+          "source": "lists",
+          "target": "tuples",
+          "relation": "extends"
+        },
+        {
+          "source": "data_types",
+          "target": "dictionaries",
+          "relation": "depends_on"
+        },
+        {
+          "source": "data_types",
+          "target": "sets",
+          "relation": "depends_on"
+        },
+        {
+          "source": "lists",
+          "target": "strings",
+          "relation": "related"
+        },
+        {
+          "source": "variables",
+          "target": "functions",
+          "relation": "depends_on"
+        },
+        {
+          "source": "conditionals",
+          "target": "functions",
+          "relation": "related"
+        },
+        {
+          "source": "functions",
+          "target": "modules",
+          "relation": "depends_on"
+        },
+        {
+          "source": "modules",
+          "target": "packages",
+          "relation": "extends"
+        },
+        {
+          "source": "functions",
+          "target": "classes",
+          "relation": "related"
+        },
+        {
+          "source": "data_types",
+          "target": "classes",
+          "relation": "depends_on"
+        },
+        {
+          "source": "classes",
+          "target": "objects",
+          "relation": "depends_on"
+        },
+        {
+          "source": "classes",
+          "target": "inheritance",
+          "relation": "extends"
+        },
+        {
+          "source": "data_types",
+          "target": "file_io",
+          "relation": "depends_on"
+        },
+        {
+          "source": "conditionals",
+          "target": "exception_handling",
+          "relation": "depends_on"
+        },
+        {
+          "source": "file_io",
+          "target": "exception_handling",
+          "relation": "related"
+        }
+      ]
+    },
+    "explorationSummary": ""
+  },
+  "progress": {
+    "currentPageId": "",
+    "visitedPageIds": [],
+    "bookmarks": [],
+    "quizAttempts": [],
+    "weakChapters": [],
+    "score": 0
+  },
+  "kbFingerprints": [],
+  "stalePageIds": [],
+  "createdAt": "2026-07-29T05:21:58.424Z",
+  "updatedAt": "2026-07-29T05:48:31.094Z",
+  "metadata": {}
+}

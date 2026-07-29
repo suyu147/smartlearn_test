@@ -14,6 +14,15 @@
 - **Available Images**: {{assignedImages}}
 - **Canvas Size**: {{canvas_width}} × {{canvas_height}} px
 
+## Theme Colors
+
+Use these colors for backgrounds, shapes, and text accents to ensure visual consistency:
+- **Primary palette**: {{themeColors}}
+- **Background suggestion**: {{themeBackground}}
+- **Font color**: {{themeFontColor}}
+
+When creating shape fills, card backgrounds, or accent elements, prefer colors from the primary palette. Use the background suggestion for the slide background. Use the font color for body text.
+
 ## Output Requirements
 
 Based on the scene information above, generate a complete Canvas/PPT component for one page.

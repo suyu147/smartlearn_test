@@ -343,7 +343,7 @@ export class SpineSynthesizer {
         system,
         prompt,
         temperature: 0.6,
-        maxOutputTokens: 4096,
+        maxOutputTokens: 16384,
       },
       'spine-synthesizer',
     );

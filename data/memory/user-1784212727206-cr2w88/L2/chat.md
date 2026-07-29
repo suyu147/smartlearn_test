@@ -4,6 +4,8 @@
 
 - 用户有Python实战能力，能独立完成爬虫和数据处理 [^m_mrokbbjc4k7kcjyojd_0] <!--m_mrokbbjc4k7kcjyojd-->
 - 在掌握数据清洗（pandas）后计划学习机器学习（scikit-learn） [^m_mrry7fvjor9ydt39w3_0] <!--m_mrry7fvjor9ydt39w3-->
+- 用户决定现在开始学习机器学习，不再等待数据清洗完全掌握 [^m_ms5rz5rmtiqj9f5q84_0] <!--m_ms5rz5rmtiqj9f5q84-->
+- 正在实践scikit-learn的K近邻分类器模型 [^m_ms5rzb4k3qs0jdp4c3_0] <!--m_ms5rzb4k3qs0jdp4c3-->
 
 ## Learning Topics
 
@@ -26,6 +28,8 @@
 
 [^m_mrokbbjc4k7kcjyojd_0]: chat:profile-1784212783695
 [^m_mrry7fvjor9ydt39w3_0]: chat:session-1784474595144
+[^m_ms5rz5rmtiqj9f5q84_0]: chat:session-1785298649212
+[^m_ms5rzb4k3qs0jdp4c3_0]: chat:session-1785298649212
 [^m_mrokbbjcagum25c5uz_0]: chat:session-1784215644830
 [^m_mrokbbjcagum25c5uz_1]: chat:profile-1784212809033
 [^m_mrry7fvj3qychidrxu_0]: chat:session-1784474595144

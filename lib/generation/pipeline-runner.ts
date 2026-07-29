@@ -30,6 +30,7 @@ export async function runGenerationPipeline(
     visionEnabled?: boolean;
     agents?: import('./pipeline-types').AgentInfo[];
     userProfile?: string;
+    topic?: string;
   },
 ): Promise<GenerationResult<Scene[]>> {
   const totalScenes = outlines.length;
@@ -60,6 +61,8 @@ export async function runGenerationPipeline(
           options?.agents,
           undefined,
           options?.userProfile,
+          undefined,
+          options?.topic,
         );
 
         completedCount++;

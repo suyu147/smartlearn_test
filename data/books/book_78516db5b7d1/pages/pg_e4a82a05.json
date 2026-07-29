@@ -1,0 +1,192 @@
+{
+  "id": "pg_e4a82a05",
+  "chapterOrder": 4,
+  "title": "字典、集合与字符串处理",
+  "status": "ready",
+  "blocks": [
+    {
+      "id": "c83f719d06ec",
+      "type": "section",
+      "status": "ready",
+      "params": {
+        "includeSummary": true,
+        "summary": "字典适合键值对存储与快速查找，集合用于去重和数学运算，字符串处理提供丰富的文本操作方法。",
+        "focus": "字典、集合与字符串核心方法回顾"
+      },
+      "payload": {
+        "content": "## 字典核心方法回顾\n\n### 创建与初始化\n字典是 Python 中存储键值对的核心数据结构。最常用的创建方式是使用花括号 `{}` 或内置的 `dict()` 构造函数。空字典可以直接用 `{}` 或 `dict()` 产生，而带初始内容的字典则通过 `{'name': 'Alice', 'age': 25}` 这样的字面量快速定义。`dict()` 更灵活，支持从包含二元组的可迭代对象（如列表、元组）构建字典，也能通过关键字参数直接生成，例如 `dict(name='Bob', age=30)`。无论是哪种方式，都遵循键必须唯一且可哈希的基本规则，且可以通过 `len(d)` 获取键值对数量，使用 `d[key]` 进行值的存取。\n\n### 访问与安全取值\n直接使用 `d[key]` 索引是最直观的取值方式，但如果键不存在会抛出 `KeyError`。要避免这种异常，应使用 `get()` 方法：`d.get(key, default)` 会在键缺失时返回预设的默认值（默认为 `None`），这在处理不确定数据时非常安全。另一个实用的方法是 `setdefault()`，它兼具查询与插入的功能。当键存在时，它返回对应的值；当键不存在时，则插入该键并将值设为提供的默认值，同时返回该默认值。这一特性在初始化嵌套字典或统计计数时尤为高效。\n\n### 常用修改方法\n修改字典内容经常需要合并或删除操作。`update()` 方法可以将另一个字典或键值对可迭代对象的内容合并到当前字典中，对于同名键会用新值覆盖旧值。删除操作中，`pop(key[, default])` 移除指定键并返回其值，若键不存在且没有提供默认值则抛出 `KeyError`，否则返回默认值。`popitem()` 会随机删除并返回一个键值对（在 Python 3.7+ 中实际是 LIFO 顺序），适用于需要逐个处理并清空字典的场景。`clear()` 则直接清空所有键值对，使字典变为空。\n\n### 视图与遍历\n字典提供了三个动态视图方法：`keys()`、`values()` 和 `items()`。这些视图会随着原字典的变化而动态更新，且都支持迭代和成员检查。遍历字典时，`for key in d` 默认迭代键，而 `for value in d.values()` 直接获取值。最常用的是 `for key, value in d.items()`，配合解包语法可以同时处理键与值。如果需要按特定顺序遍历，可使用 `sorted()` 对视图进行排序。视图的这种动态特性保证了在数据变化时始终反映字典的最新状态。\n\n### 字典推导式与默认字典简介\n字典推导式提供了一种从可迭代对象快速构建字典的简洁语法，形如 `{key_expr: value_expr for item in iterable if condition}`。它可以在处理数据转换、过滤的同时建立映射关系。此外，`collections.defaultdict` 是对普通字典的增强，它在创建时指定一个默认值工厂函数，当访问不存在的键时，会自动生成默认值而不会引发 `KeyError`，这极大地简化了分组、计数等任务。\n\n## 集合核心方法回顾\n\n### 创建与可变性\n集合用于存储不重复、无序的元素。可变集合使用 `set()` 创建，可以从列表、元组或任何可迭代对象初始化，比如 `set([1, 2, 3])` 或使用花括号 `{1, 2, 3}`，但注意空花括号 `{}` 创建的是字典，要创建空集合必须写成 `set()`。不可变集合 `frozenset` 一旦创建便不能修改，因此可以作为字典的键或另一个集合的元素。两者的元素都必须可哈希。\n\n### 添加与删除\n向可变集合添加元素常用 `add(elem)`，一次只能添加一个元素；而 `update(iterable)` 可以批量添加多个元素。删除操作有多种选择：`remove(elem)` 在元素不存在时抛出 `KeyError`，若不确定元素是否存在则应使用 `discard(elem)`，它会在元素不存在时静默忽略，不会报错。`pop()` 随机移除并返回一个元素，但集合为空时抛出异常；`clear()` 则清空整个集合。\n\n### 集合运算\n集合支持丰富的数学集合运算。交集 `&` 或 `intersection()` 返回共同元素；并集 `|` 或 `union()` 返回所有不重复元素；差集 `-` 或 `difference()` 返回属于前者但不属于后者的元素；对称差 `^` 或 `symmetric_difference()` 返回仅属于其中一方的元素。这些运算对应的赋值版本（如 `intersection_update()` 等）会直接修改原集合，更节省内存。\n\n### 集合关系判断\n判断集合间关系的方法非常直观。`issubset(other)` 检查当前集合是否为另一个集合的子集；`issuperset(other)` 检查是否为超集；`isdisjoint(other)` 判断两个集合是否没有公共元素。这些方法在数据筛选、权限检查等场景中非常有用，而且集合运算和关系判断的性能优于手动循环比较。\n\n### 集合推导式与去重实战\n集合推导式与列表推导式类似，只是将花括号换成 `{}`，例如 `{x for x in iterable if condition}`。它常用于快速生成无重复元素的集合。集合最经典的应用就是去重：只需将包含重复元素的可迭代对象传入 `set()`，即可得到唯一元素的集合。此外，集合在成员检查、交集筛选、剔除重复数据等实战中表现出色，是数据处理流水线中的重要工具。\n\n## 字符串核心方法回顾\n\n### 查找与替换\n在字符串中定位子串，可以使用 `find()` 和 `rfind()`，它们返回子串首次或最后一次出现的索引，未找到时返回 `-1`；而 `index()` 与 `rindex()` 在未找到时会抛出 `ValueError`。替换操作通过 `replace(old, new[, count])` 实现，可以指定替换次数。对于复杂模式查找，需要借助正则表达式模块 `re`，通过 `re.search()`、`re.findall()` 等函数实现灵活匹配。\n\n### 分割与拼接\n`split(sep=None, maxsplit=-1)` 按指定分隔符将字符串拆分为列表，若不指定分隔符则按任意空白字符分割。`rsplit()` 从右侧开始分割。`splitlines()` 专门按行分割，适用于处理文本文件。相反，`join(iterable)` 能将可迭代对象中的字符串元素用调用字符串拼接成一个新字符串，是高效拼接的首选方式，比起 `+` 操作符在循环中使用更能节省内存和时间。\n\n### 大小写转换\n字符串大小写转换方法包括：`upper()` 全转大写，`lower()` 全转小写，`capitalize()` 将首字母转为大写其余小写，`title()` 将每个单词首字母大写，`swapcase()` 将大小写反转。这些方法在格式化输出、统一输入、标题处理等场景频繁出现，且都返回新字符串，原字符串不可变。\n\n### 字符判断系列\n判断字符串组成的方法很多，且全部返回布尔值。`isalpha()` 检测是否全为字母，`isdigit()` 检测全为数字，`isalnum()` 检测全为字母或数字，`isspace()` 检测全为空白字符。`startswith(prefix)` 和 `endswith(suffix)` 分别检查字符串是否以指定前缀开始或后缀结束，常用于文件类型判断、路径匹配等。\n\n### 格式化与空白处理\n去除首尾空白字符可以使用 `strip()`（去除两端）、`lstrip()`（仅左侧）和 `rstrip()`（仅右侧），可指定要去除的字符集合。字符串格式化的主要方式有两种：`format()` 方法和 f-string。`format()` 通过位置参数或关键字参数填充占位符 `{}`，而 f-string 以 `f'...'` 前缀直接在字符串内嵌入表达式，写法更简洁、可读性更高。两者都支持数字精确格式化、对齐等高级功能，是现代 Python 代码中构造输出字符串的首选。",
+        "outline": {
+          "sections": [
+            {
+              "heading": "字典核心方法回顾",
+              "points": [
+                "创建与初始化: 使用 {} 或 dict()，键值对基本操作",
+                "访问与安全取值: 直接索引, get() 方法防报错, setdefault()",
+                "常用修改方法: update() 合并, pop() 删除键并返回值, popitem() 随机删除, clear() 清空",
+                "视图与遍历: keys(), values(), items() 返回动态视图, 遍历技巧与解包",
+                "字典推导式与默认字典简介"
+              ]
+            },
+            {
+              "heading": "集合核心方法回顾",
+              "points": [
+                "创建与可变性: set() 创建可变集合，frozenset 不可变集合",
+                "添加与删除: add(), update(), remove() vs discard() 区别, pop(), clear()",
+                "集合运算: 交集 & / intersection(), 并集 | / union(), 差集 - / difference(), 对称差 ^ / symmetric_difference()",
+                "集合关系判断: 子集 issubset(), 超集 issuperset(), 不相交 isdisjoint()",
+                "集合推导式与去重实战"
+              ]
+            },
+            {
+              "heading": "字符串核心方法回顾",
+              "points": [
+                "查找与替换: find(), rfind(), index(), replace()，正则表达式简介",
+                "分割与拼接: split(), rsplit(), splitlines(), join() 拼接可迭代对象",
+                "大小写转换: upper(), lower(), capitalize(), title(), swapcase()",
+                "字符判断系列: isalpha(), isdigit(), isalnum(), isspace(), startswith(), endswith()",
+                "格式化与空白处理: strip(), lstrip(), rstrip(), format() 与 f-string 快速格式化"
+              ]
+            }
+          ]
+        }
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "wordCount": 3486,
+        "sectionCount": 3
+      }
+    },
+    {
+      "id": "894457972399",
+      "type": "callout",
+      "status": "ready",
+      "params": {
+        "calloutType": "info",
+        "title": "练习任务",
+        "content": "你手头有一份未经整理的联系人列表，包含重复的姓名、混乱的电话格式和杂乱的兴趣标签。请依次用字典、集合和字符串处理技术将其整理成结构化、可读性强的数据。",
+        "focus": "练习场景介绍：一个待处理的联系人列表数据"
+      },
+      "payload": {
+        "content": "你将处理一个模拟的联系人列表数据，其中包含姓名、电话和邮箱等信息，部分数据存在重复、格式错误等典型问题。练习将结合字典去重、集合运算和字符串清洗等技巧，完整演练数据清洗与整合的过程。",
+        "calloutType": "info"
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "transitionIn": "接下来，你将通过一个实际场景来练习这些数据结构。"
+      }
+    },
+    {
+      "id": "c76289376952",
+      "type": "code",
+      "status": "ready",
+      "params": {
+        "language": "python",
+        "exercise": true,
+        "starterCode": "contacts = {}\n# 请完成添加、查找和更新操作",
+        "instruction": "创建一个字典，以姓名为键，值为包含电话和邮箱的字典。实现根据姓名快速查找详细信息的功能。",
+        "focus": "使用字典存储联系人信息（姓名、电话、邮箱）并实现查找功能"
+      },
+      "payload": {
+        "language": "python",
+        "code": "# 使用字典存储联系人信息（姓名 -> 电话、邮箱）\n# 演示基本的添加、查找功能\n\n# 创建一个空字典作为联系人列表\ncontacts = {}\n\ndef add_contact(name: str, phone: str, email: str):\n    \"\"\"\n    添加联系人到字典中\n    参数：\n        name (str): 联系人姓名\n        phone (str): 电话号码\n        email (str): 电子邮箱\n    \"\"\"\n    # 以姓名为键，存储一个包含电话和邮箱的字典\n    contacts[name] = {\n        'phone': phone,\n        'email': email\n    }\n    print(f\"已添加联系人：{name}\")\n\ndef find_contact(name: str):\n    \"\"\"\n    根据姓名查找联系人信息\n    参数：\n        name (str): 要查找的姓名\n    返回：\n        dict 或 None: 如果找到返回联系方式字典，否则返回None\n    \"\"\"\n    # 使用字典的 get 方法，避免键不存在时出错\n    info = contacts.get(name)\n    if info:\n        print(f\"联系人 {name} 信息：\")\n        print(f\"  电话：{info['phone']}\")\n        print(f\"  邮箱：{info['email']}\")\n    else:\n        print(f\"未找到联系人：{name}\")\n    return info\n\n# 示例用法\nif __name__ == \"__main__\":\n    # 添加几个联系人\n    add_contact(\"张三\", \"13812345678\", \"zhangsan@example.com\")\n    add_contact(\"李四\", \"13987654321\", \"lisi@example.com\")\n    add_contact(\"王五\", \"13611112222\", \"wangwu@example.com\")\n\n    # 查找联系人\n    print(\"\\n--- 查找张三 ---\")\n    find_contact(\"张三\")\n\n    print(\"\\n--- 查找赵六（不存在） ---\")\n    find_contact(\"赵六\")\n\n    # 显示所有联系人\n    print(\"\\n所有联系人：\")\n    for name, data in contacts.items():\n        print(f\"{name}: 电话 {data['phone']}, 邮箱 {data['email']}\")",
+        "explanation": "该代码演示了如何使用Python字典存储和查找联系人信息。字典的键为姓名，值为包含电话和邮箱的嵌套字典。add_contact函数添加新联系人，find_contact函数通过get方法安全查找信息并打印。示例部分展示了添加、查找不存在联系人以及遍历所有联系人的操作。"
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "transitionIn": "首先，用字典来组织数据。"
+      }
+    },
+    {
+      "id": "06d53327a72d",
+      "type": "code",
+      "status": "ready",
+      "params": {
+        "language": "python",
+        "exercise": true,
+        "starterCode": "tags_alice = {'Python', 'AI', '旅游'}\ntags_bob = {'Java', '旅游', '美食'}\n# 请完成去重、并集和交集操作",
+        "instruction": "定义一个所有标签的集合，自动去除重复项；再找出两个联系人的共同兴趣（交集）和全部兴趣（并集）。",
+        "focus": "使用集合管理标签，进行去重和集合运算"
+      },
+      "payload": {
+        "language": "python",
+        "code": "# 集合：管理标签，去重和集合运算\n\n# 假设我们从用户输入或文章中获得了一些标签列表，可能包含重复项\nuser_tags_input = [\"Python\", \"编程\", \"AI\", \"Python\", \"机器学习\", \"AI\"]\narticle_tags_input = [\"数据科学\", \"Python\", \"深度学习\", \"AI\", \"数据科学\"]\n\n# 1. 使用 set() 进行去重\nuser_tags = set(user_tags_input)         # 转换为集合自动去重\narticle_tags = set(article_tags_input)\n\nprint(\"用户标签集合:\", user_tags)\nprint(\"文章标签集合:\", article_tags)\n\n# 2. 集合运算\n# 并集：所有不同的标签\nall_tags = user_tags | article_tags      # 或 user_tags.union(article_tags)\nprint(\"\\n并集（所有标签）:\", all_tags)\n\n# 交集：两者共有的标签\ncommon_tags = user_tags & article_tags   # 或 user_tags.intersection(article_tags)\nprint(\"交集（共有标签）:\", common_tags)\n\n# 差集：用户有而文章没有的标签\nuser_only = user_tags - article_tags     # 或 user_tags.difference(article_tags)\nprint(\"用户独有标签:\", user_only)\n\n# 对称差集：仅在一边出现的标签（非共有）\nsymmetric_diff = user_tags ^ article_tags # 或 user_tags.symmetric_difference(article_tags)\nprint(\"对称差集（非共有标签）:\", symmetric_diff)\n\n# 3. 添加新标签（集合去重，不重复添加）\nuser_tags.add(\"AI\")   # 已存在，不会添加\nuser_tags.add(\"深度学习\")  # 新标签\nprint(\"\\n添加标签后的用户集合:\", user_tags)\n\n# 4. 移除标签\nuser_tags.discard(\"编程\")  # discard 安全删除，即使不存在也不报错\nprint(\"移除'编程'后:\", user_tags)\n\n# 5. 标签子集检查\nrecommend_tags = {\"Python\", \"AI\"}\nif recommend_tags.issubset(user_tags):\n    print(f\"\\n推荐标签 {recommend_tags} 完全匹配用户兴趣\")\nelse:\n    print(f\"\\n推荐标签不匹配\")\n\n# 6. 标签数量统计\nprint(f\"\\n用户总标签数: {len(user_tags)}\")\nprint(f\"文章总标签数: {len(article_tags)}\")",
+        "explanation": "本示例展示如何使用Python的集合数据类型来管理标签：首先将包含重复项的标签列表转换为集合实现自动去重；然后通过集合运算符（|, &, -, ^）进行并集、交集、差集和对称差集运算，用于分析标签之间的关系；此外还演示了添加、删除标签及子集检查等操作，帮助理解集合在数据去重和关系运算中的实际应用。"
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "transitionIn": "现在，我们为每个联系人添加兴趣标签，需要去重并找出共同兴趣。"
+      }
+    },
+    {
+      "id": "ff04999acd32",
+      "type": "code",
+      "status": "ready",
+      "params": {
+        "language": "python",
+        "exercise": true,
+        "starterCode": "phone = '+86-138-1234-5678'\n# 请去除分隔符，格式化为13812345678，并生成一句简洁的联系信息",
+        "instruction": "将电话号码中的‘-’替换为空，并用f-string格式化输出‘姓名：xxx，电话：xxx，邮箱：xxx’的形式。",
+        "focus": "字符串处理：格式化输出联系人信息，分割和替换字符"
+      },
+      "payload": {
+        "language": "python",
+        "code": "# 存储联系人信息的字典列表，每个联系人包含姓名、电话和标签\ncontacts = [\n    {\"name\": \"张三\", \"phone\": \"123-456-7890\", \"tags\": [\"同事\", \"朋友\"]},\n    {\"name\": \"李四\", \"phone\": \"987-654-3210\", \"tags\": [\"家人\"]},\n    {\"name\": \"王五\", \"phone\": \"555-123-4567\", \"tags\": [\"朋友\", \"同学\"]}\n]\n\n# 使用集合收集所有独特的标签\nunique_tags = set()\nfor contact in contacts:\n    unique_tags.update(contact[\"tags\"])\nprint(\"所有标签:\", unique_tags)\n\n# 格式化输出联系人信息\nprint(\"\\n联系人列表（格式化输出）:\")\nprint(\"-\" * 40)\nfor contact in contacts:\n    # f-string 格式化，姓名左对齐，电话右对齐\n    print(f\"姓名: {contact['name']:<4}  电话: {contact['phone']:>12}\")\n\n# 字符串分割示例：将逗号分隔的标签字符串分割为列表\nsample_tags = \"同事,朋友,同学\"\nprint(\"\\n字符串分割:\")\ntag_list = sample_tags.split(',')\nprint(f\"原始字符串: {sample_tags}\")\nprint(f\"分割后: {tag_list}\")\n\n# 分割电话号码以获取各部分\nfor contact in contacts:\n    parts = contact['phone'].split('-')\n    area, city, number = parts\n    print(f\"{contact['name']} 的区号: {area}\")\n\n# 字符串替换示例：将电话号码中的 '-' 替换为 '.'\nprint(\"\\n电话号码替换:\")\nfor contact in contacts:\n    dotted_phone = contact['phone'].replace('-', '.')\n    print(f\"原始: {contact['phone']} -> 替换后: {dotted_phone}\")\n\n# 使用格式化与替换隐藏中间四位\nprint(\"\\n隐藏电话号码中间四位:\")\nfor contact in contacts:\n    parts = contact['phone'].split('-')\n    masked = f\"{parts[0]}-***-{parts[2]}\"\n    print(f\"{contact['name']}: {masked}\")\n\n# 字符串拼接构建描述\nprint(\"\\n构建描述字符串:\")\nfor contact in contacts:\n    desc = f\"{contact['name']} 是你的 {', '.join(contact['tags'])}\"\n    print(desc)\n",
+        "explanation": "This example demonstrates string processing techniques (formatting, splitting, replacing) in the context of a contact list stored as a list of dictionaries. It uses sets to collect unique tags, f-strings and .format() for formatted output, .split() to parse phone numbers and tag strings, .replace() for character substitution, and string joining to create descriptions. All comments are in Chinese."
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "transitionIn": "最后，用字符串处理技术美化输出的联系人列表。"
+      }
+    },
+    {
+      "id": "7d58da55d3d4",
+      "type": "quiz",
+      "status": "ready",
+      "params": {
+        "difficulty": "medium",
+        "questionCount": 3,
+        "topics": [
+          "字典vs列表的查找效率",
+          "集合去重与关系测试",
+          "字符串处理应用于数据清洗"
+        ],
+        "focus": "选择合适的数据结构：场景题，判断何时使用字典、集合或字符串处理"
+      },
+      "payload": {
+        "question": "在开发一个文本分析工具时，你需要统计一篇文章中每个单词出现的次数，并在后续操作中根据单词快速查询或更新其频率。此时，以下哪种数据结构最适合用来存储单词及其出现次数？",
+        "options": [
+          "A) 列表（List）",
+          "B) 集合（Set）",
+          "C) 字典（Dictionary）",
+          "D) 字符串（String）"
+        ],
+        "correctIndex": 2,
+        "explanation": "字典（Dictionary）是一种键值对数据结构，可以将单词作为键、出现次数作为值进行存储，能够方便地根据键快速查找、更新值。列表不能提供键值关联，集合只能存储不重复元素无法关联计数，字符串是文本类型不能存储结构化数据。因此字典最合适。"
+      },
+      "sourceAnchors": [],
+      "metadata": {
+        "difficulty": "medium",
+        "transitionIn": "检验你对数据结构的理解。"
+      }
+    },
+    {
+      "id": "dbcdf2c90224",
+      "type": "callout",
+      "status": "ready",
+      "params": {
+        "calloutType": "warning",
+        "title": "注意事项",
+        "content": "字典键必须不可变；集合元素必须可哈希；字符串不可变，所有修改操作都返回新字符串。根据数据是否有序、是否可重复、是否需要快速查找来选择结构。",
+        "focus": "常见错误与总结"
+      },
+      "payload": {
+        "content": "⚠️ 注意：字典键必须是不可变类型，集合元素同样不可哈希；字符串修改操作会返回新对象而非原地修改，忽略此特性易导致逻辑错误。遍历集合时若涉及增删操作，会引发运行时异常，务必先创建副本。",
+        "calloutType": "warning"
+      },
+      "sourceAnchors": [],
+      "metadata": {}
+    }
+  ],
+  "links": [],
+  "metadata": {}
+}

@@ -510,33 +510,54 @@ export default function BookPage() {
 
             {/* Content area: chapter nav + page viewer */}
             <div className="flex-1 flex overflow-hidden">
-              {/* Chapter nav */}
+              {/* Chapter nav — render from spine.chapters (available after confirmProposal) */}
               {activeBook.book.spine && (
                 <div className="w-56 border-r border-[var(--border)] overflow-y-auto p-3 space-y-1">
                   <div className="text-[11px] font-medium uppercase tracking-wide text-[var(--muted-foreground)] mb-2 px-2">
                     {t('book.chapters')}
                   </div>
-                  {activeBook.pages.map((page) => {
-                    const pageStatusColor = STATUS_COLORS[page.status] ?? ''
-                    return (
+                  {/* Overview page entry */}
+                  {(() => {
+                    const overviewPage = activeBook.pages.find((p) => p.chapterOrder === -1)
+                    return overviewPage ? (
                       <button
-                        key={page.id}
-                        onClick={() => setActivePageId(page.id)}
+                        onClick={() => setActivePageId(overviewPage.id)}
                         className={cn(
                           'w-full text-left px-3 py-2 rounded-lg transition-colors flex items-center gap-2 text-[13px]',
-                          activePageId === page.id
+                          activePageId === overviewPage.id
                             ? 'bg-[var(--primary)]/10 text-[var(--foreground)]'
                             : 'text-[var(--muted-foreground)] hover:bg-[var(--muted)] hover:text-[var(--foreground)]',
                         )}
                       >
+                        <BookOpen className="h-3.5 w-3.5 shrink-0 text-[var(--primary)]" />
+                        <span className="truncate">{t('book.overview') || 'Overview'}</span>
+                      </button>
+                    ) : null
+                  })()}
+                  {activeBook.book.spine.chapters.map((chapter) => {
+                    // Find the corresponding page for this chapter (may not exist yet)
+                    const page = activeBook.pages.find((p) => p.chapterOrder === chapter.order)
+                    return (
+                      <button
+                        key={chapter.order}
+                        onClick={() => { if (page) setActivePageId(page.id) }}
+                        disabled={!page}
+                        className={cn(
+                          'w-full text-left px-3 py-2 rounded-lg transition-colors flex items-center gap-2 text-[13px]',
+                          page && activePageId === page.id
+                            ? 'bg-[var(--primary)]/10 text-[var(--foreground)]'
+                            : 'text-[var(--muted-foreground)] hover:bg-[var(--muted)] hover:text-[var(--foreground)]',
+                          !page && 'opacity-60 cursor-default',
+                        )}
+                      >
                         <span className={cn('h-1.5 w-1.5 rounded-full shrink-0',
-                          page.status === 'ready' ? 'bg-[var(--success)]' :
-                          page.status === 'partial' ? 'bg-[var(--warning)]' :
-                          page.status === 'error' ? 'bg-[var(--destructive)]' :
-                          page.status === 'generating' ? 'bg-[var(--primary)]' :
-                          'bg-[var(--muted-foreground)]',
+                          page?.status === 'ready' ? 'bg-[var(--success)]' :
+                          page?.status === 'partial' ? 'bg-[var(--warning)]' :
+                          page?.status === 'error' ? 'bg-[var(--destructive)]' :
+                          page?.status === 'generating' ? 'bg-[var(--primary)]' :
+                          page ? 'bg-[var(--muted-foreground)]' : 'bg-[var(--border)]',
                         )} />
-                        <span className="truncate">{page.title}</span>
+                        <span className="truncate">{chapter.order + 1}. {chapter.title}</span>
                       </button>
                     )
                   })}

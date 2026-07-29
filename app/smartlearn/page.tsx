@@ -331,27 +331,24 @@ export default function SmartLearnPage() {
   // =========================================================================
 
   useEffect(() => {
-    // zustand persist rehydration is async — wait one tick to ensure
-    // localStorage data has been written into the store before reading.
-    const timer = setTimeout(() => {
-      const sid = useSessionsStore.getState().currentSessionId
-      if (!sid) return
+    // Wait for Zustand persist to finish rehydration before restoring.
+    // currentSessionId is only available after the sessions store has
+    // hydrated from localStorage, so we react to its change instead of
+    // using a brittle setTimeout(0) that may fire before hydration.
+    if (!currentSessionId) return
 
-      // Restore the active learning path for the current session
-      const currentPath = useLearningPathStore.getState().path
-      if (!currentPath) {
-        loadPathForSession(sid)
-      }
+    // Restore the active learning path for the current session
+    const currentPath = useLearningPathStore.getState().path
+    if (!currentPath) {
+      loadPathForSession(currentSessionId)
+    }
 
-      // Restore the active resources for the current session
-      const currentResources = useResourcesStore.getState().resources
-      if (currentResources.length === 0) {
-        loadResourcesForSession(sid)
-      }
-    }, 0)
-
-    return () => clearTimeout(timer)
-  }, [loadPathForSession, loadResourcesForSession])
+    // Restore the active resources for the current session
+    const currentResources = useResourcesStore.getState().resources
+    if (currentResources.length === 0) {
+      loadResourcesForSession(currentSessionId)
+    }
+  }, [currentSessionId, loadPathForSession, loadResourcesForSession])
 
   // =========================================================================
   // Fetch profile on mount

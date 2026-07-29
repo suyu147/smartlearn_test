@@ -26,6 +26,8 @@ import { buildPrompt, PROMPT_IDS } from './prompts';
 import { postProcessInteractiveHtml } from './interactive-post-processor';
 import { parseActionsFromStructuredOutput } from './action-parser';
 import { parseJsonResponse } from './json-repair';
+import { reviewSlideLayout } from './slide-reviewer';
+import { getThemeForTopic, getDefaultBackgroundForTopic, selectThemeForTopic } from './slide-themes';
 import {
   buildCourseContext,
   formatAgentsForPrompt,
@@ -63,6 +65,7 @@ export async function generateFullScenes(
   store: StageStore,
   aiCall: AICallFn,
   callbacks?: GenerationCallbacks,
+  topic?: string,
 ): Promise<GenerationResult<string[]>> {
   const api = createStageAPI(store);
   const totalScenes = sceneOutlines.length;
@@ -81,7 +84,7 @@ export async function generateFullScenes(
   const results = await Promise.all(
     sceneOutlines.map(async (outline, index) => {
       try {
-        const sceneId = await generateSingleScene(outline, api, aiCall);
+        const sceneId = await generateSingleScene(outline, api, aiCall, topic);
 
         // Update progress (not atomic, but sufficient for UI display)
         completedCount++;
@@ -125,6 +128,7 @@ async function generateSingleScene(
   outline: SceneOutline,
   api: ReturnType<typeof createStageAPI>,
   aiCall: AICallFn,
+  topic?: string,
 ): Promise<string | null> {
   // Step 3.1: Generate content
   log.info(`Step 3.1: Generating content for: ${outline.title}`);
@@ -140,7 +144,7 @@ async function generateSingleScene(
   log.info(`Generated ${actions.length} actions for: ${outline.title}`);
 
   // Create complete Scene
-  return createSceneWithActions(outline, content, actions, api);
+  return createSceneWithActions(outline, content, actions, api, topic);
 }
 
 /**
@@ -155,6 +159,7 @@ export async function generateSceneContent(
   visionEnabled?: boolean,
   generatedMediaMapping?: ImageMapping,
   agents?: AgentInfo[],
+  topic?: string,
 ): Promise<
   | GeneratedSlideContent
   | GeneratedQuizContent
@@ -188,6 +193,7 @@ export async function generateSceneContent(
         visionEnabled,
         generatedMediaMapping,
         agents,
+        topic,
       );
     case 'quiz':
       return generateQuizContent(outline, aiCall);
@@ -489,6 +495,7 @@ async function generateSlideContent(
   visionEnabled?: boolean,
   generatedMediaMapping?: ImageMapping,
   agents?: AgentInfo[],
+  topic?: string,
 ): Promise<GeneratedSlideContent | null> {
   const lang = outline.language || 'zh-CN';
 
@@ -558,6 +565,18 @@ async function generateSlideContent(
 
   const teacherContext = formatTeacherPersonaForPrompt(agents);
 
+  // Resolve dynamic theme colors for the prompt
+  const themePreset = topic ? selectThemeForTopic(topic) : null;
+  const themeColors = themePreset
+    ? themePreset.theme.themeColors.join(', ')
+    : '#5b9bd5, #ed7d31, #a5a5a5, #ffc000, #4472c4';
+  const themeBackground = themePreset
+    ? themePreset.defaultBackground.color || '#ffffff'
+    : '#ffffff';
+  const themeFontColor = themePreset
+    ? themePreset.theme.fontColor
+    : '#333333';
+
   const prompts = buildPrompt(PROMPT_IDS.SLIDE_CONTENT, {
     title: outline.title,
     description: outline.description,
@@ -567,6 +586,9 @@ async function generateSlideContent(
     canvas_width: canvasWidth,
     canvas_height: canvasHeight,
     teacherContext,
+    themeColors,
+    themeBackground,
+    themeFontColor,
   });
 
   if (!prompts) {
@@ -626,11 +648,22 @@ async function generateSlideContent(
   log.debug(`After image resolution: ${resolvedElements.length} elements`);
 
   // Process elements, assign unique IDs
-  const processedElements: PPTElement[] = resolvedElements.map((el) => ({
+  let processedElements: PPTElement[] = resolvedElements.map((el) => ({
     ...el,
     id: `${el.type}_${nanoid(8)}`,
     rotate: 0,
   })) as PPTElement[];
+
+  // Post-generation layout review: detect & fix overlaps, overflows, alignment
+  try {
+    const reviewResult = await reviewSlideLayout(processedElements, aiCall, outline.title);
+    if (reviewResult.fixed) {
+      log.info(`Slide "${outline.title}": Layout review applied fixes (${reviewResult.issues.length} issues found)`);
+      processedElements = reviewResult.elements;
+    }
+  } catch (reviewErr) {
+    log.warn(`Slide "${outline.title}": Layout review failed, proceeding with original elements:`, reviewErr);
+  }
 
   // Process background
   let background: SlideBackground | undefined;
@@ -1235,25 +1268,28 @@ export function createSceneWithActions(
     | GeneratedPBLContent,
   actions: Action[],
   api: ReturnType<typeof createStageAPI>,
+  topic?: string,
 ): string | null {
   if (outline.type === 'slide' && 'elements' in content) {
-    // Build complete Slide object
-    const defaultTheme: SlideTheme = {
+    // Build complete Slide object with dynamic theme
+    const theme = topic ? getThemeForTopic(topic) : {
       backgroundColor: '#ffffff',
       themeColors: ['#5b9bd5', '#ed7d31', '#a5a5a5', '#ffc000', '#4472c4'],
       fontColor: '#333333',
       fontName: 'Microsoft YaHei',
-      outline: { color: '#d14424', width: 2, style: 'solid' },
+      outline: { color: '#d14424', width: 2, style: 'solid' as const },
       shadow: { h: 0, v: 0, blur: 10, color: '#000000' },
     };
+
+    const background = content.background ?? (topic ? getDefaultBackgroundForTopic(topic) : undefined);
 
     const slide: Slide = {
       id: nanoid(),
       viewportSize: 1000,
       viewportRatio: 0.5625,
-      theme: defaultTheme,
+      theme,
       elements: content.elements,
-      background: content.background,
+      background,
     };
 
     const sceneResult = api.scene.create({

@@ -102,7 +102,7 @@ export class IdeationAgent {
           system: SYSTEM_PROMPT,
           prompt: userPrompt,
           temperature: 0.7,
-          maxOutputTokens: 2048,
+          maxOutputTokens: 4096,
         },
         'ideation-agent',
       );
