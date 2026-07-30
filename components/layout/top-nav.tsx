@@ -5,6 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import {
   Home,
   Network,
+  Share2,
   MessagesSquare,
   BookOpen,
   BookMarked,
@@ -44,6 +45,7 @@ const primaryNav = [
 ] as const;
 
 const moreNav = [
+  { href: '/knowledge-graph', label: '知识图谱', icon: Share2 },
   { href: '/knowledge', label: '知识库', icon: Network },
   { href: '/co-writer', label: '协作写作', icon: PenLine },
   { href: '/agents', label: '智能体', icon: Bot },

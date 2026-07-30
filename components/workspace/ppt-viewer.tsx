@@ -13,6 +13,8 @@ import type { Action } from '@/lib/types/action';
 import type { Scene, CodeButton } from '@/lib/types/stage';
 import type { PPTElement, SlideBackground, ConceptHotspot } from '@/lib/types/slides';
 import { CLASSROOM_SPEAKERS, getSpeakerById, type ClassroomSpeaker } from '@/lib/generation/speaker-roster';
+import { DigitalHumanPlayer } from '@/components/digital-human/digital-human-player';
+import { useDigitalHumanStore } from '@/lib/store/digital-human-store';
 
 const CANVAS_WIDTH = 1000;
 const CANVAS_HEIGHT = 562.5;
@@ -254,6 +256,18 @@ export function PPTViewer({ scenes, onHotspotClick, onCodeButtonClick }: Props) 
   const [captionText, setCaptionText] = useState('');
   const [playbackRate, setPlaybackRate] = useState(1);
   const [volume, setVolume] = useState(1);
+
+  // ── 数字人状态 ──
+  const digitalHumanEnabled = useDigitalHumanStore((s) => s.enabled);
+  const digitalHumanIsGenerating = useDigitalHumanStore((s) => s.isGenerating);
+  const digitalHumanTaskStatus = useDigitalHumanStore((s) => s.taskStatus);
+  const digitalHumanVideoUrl = useDigitalHumanStore((s) => s.videoUrl);
+  const digitalHumanLastError = useDigitalHumanStore((s) => s.lastError);
+  const digitalHumanGenerateVideo = useDigitalHumanStore((s) => s.generateVideo);
+  const digitalHumanSetEnabled = useDigitalHumanStore((s) => s.setEnabled);
+  const digitalHumanSetError = useDigitalHumanStore((s) => s.setError);
+  const digitalHumanStopPolling = useDigitalHumanStore((s) => s.stopPolling);
+  const digitalHumanClearAll = useDigitalHumanStore((s) => s.clearAll);
 
   const safeScenes = scenes ?? [];
   const clampedIndex = Math.min(currentIndex, Math.max(safeScenes.length - 1, 0));
@@ -530,9 +544,15 @@ export function PPTViewer({ scenes, onHotspotClick, onCodeButtonClick }: Props) 
         />
       )}
 
-      {/* 幻灯片预览 + 中央播放按钮 */}
+      {/* 幻灯片预览 + 中央播放按钮 + 数字人 */}
       <div className="relative">
         {scene ? <SlidePreview scene={scene} spotlight={spotlight} laser={laser} onHotspotClick={onHotspotClick} /> : null}
+        {/* 数字人播放器（画中画叠加） */}
+        {digitalHumanEnabled && (
+          <DigitalHumanPlayer
+            muted={volume === 0}
+          />
+        )}
         {engineState === 'idle' && canPlay && (
           <button
             onClick={handlePlayPause}
@@ -630,6 +650,123 @@ export function PPTViewer({ scenes, onHotspotClick, onCodeButtonClick }: Props) 
               className="h-1 w-20 cursor-pointer appearance-none rounded-full bg-[var(--muted)] accent-[var(--primary)]"
             />
           </div>
+          {/* 数字人视频生成 */}
+          {hasSpeech && (
+            <div className="flex items-center gap-1.5">
+              <button
+                onClick={() => {
+                  if (digitalHumanEnabled) {
+                    digitalHumanStopPolling();
+                    digitalHumanClearAll();
+                    digitalHumanSetEnabled(false);
+                  } else {
+                    digitalHumanSetEnabled(true);
+                    digitalHumanSetError(null);
+                  }
+                }}
+                className={`inline-flex h-7 items-center gap-1 rounded-md border px-2 text-xs transition-colors ${
+                  digitalHumanEnabled
+                    ? 'border-blue-300 bg-blue-50 text-blue-700 hover:bg-blue-100'
+                    : 'border-[var(--border)] bg-[var(--background)] text-[var(--muted-foreground)] hover:bg-[var(--muted)]'
+                }`}
+                aria-label={digitalHumanEnabled ? '关闭数字人' : '开启数字人'}
+              >
+                <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072M12 6a7 7 0 017 7M8.464 15.536a5 5 0 010-7.072M12 18a7 7 0 01-7-7" />
+                </svg>
+                数字人
+              </button>
+              {/* 生成视频按钮 */}
+              {digitalHumanEnabled && digitalHumanTaskStatus !== 'completed' && !digitalHumanIsGenerating && (
+                <button
+                  onClick={() => {
+                    // 从当前幻灯片的 speech actions 中提取文本作为 prompt
+                    // 注意: 讯飞 API prompt 硬限制 300 字符
+                    const speechList = (scene?.actions
+                      ?.filter((a) => a.type === 'speech' && a.text)
+                      .map((a) => a.text as string) ?? []);
+                    let prompt = speechList.join('\n');
+                    if (!prompt) prompt = scene?.title ?? '';
+
+                    if (prompt.length > 300) {
+                      // 优先保留第一条完整内容，后续内容截断
+                      if (speechList.length >= 1 && speechList[0].length <= 270) {
+                        prompt = speechList[0] + '\n' + speechList.slice(1).join(' ').slice(0, 300 - speechList[0].length - 2);
+                      } else {
+                        prompt = prompt.slice(0, 299) + '…';
+                      }
+                    }
+                    if (prompt) digitalHumanGenerateVideo(prompt);
+                  }}
+                  disabled={!scene?.actions?.some((a) => a.type === 'speech' && a.text)}
+                  className="inline-flex h-7 items-center gap-1 rounded-md bg-blue-600 px-2 text-xs text-white hover:bg-blue-700 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                  aria-label="生成数字人视频"
+                  title={(() => {
+                    const len = (scene?.actions
+                      ?.filter((a) => a.type === 'speech' && a.text)
+                      .map((a) => a.text) ?? []).join('\n').length;
+                    return len > 300 ? `当前内容 ${len} 字，将自动截取前 300 字` : undefined;
+                  })()}
+                >
+                  <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  生成视频
+                </button>
+              )}
+              {/* 生成中 */}
+              {digitalHumanIsGenerating && (
+                <span className="flex items-center gap-1 text-xs text-blue-500">
+                  <svg className="h-3 w-3 animate-spin" viewBox="0 0 24 24" fill="none">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                  </svg>
+                  生成中...
+                </span>
+              )}
+              {/* 已完成 */}
+              {digitalHumanEnabled && digitalHumanTaskStatus === 'completed' && digitalHumanVideoUrl && (
+                <span className="flex items-center gap-1 text-xs text-green-600">
+                  <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
+                  视频已就绪
+                </span>
+              )}
+              {/* 错误提示 */}
+              {digitalHumanLastError && !digitalHumanIsGenerating && (
+                <div className="flex items-center gap-1.5">
+                  <span className="text-xs text-red-500">{digitalHumanLastError}</span>
+                  <button
+                    onClick={() => digitalHumanSetError(null)}
+                    className="text-xs text-red-400 hover:text-red-600"
+                    aria-label="关闭错误"
+                  >
+                    &times;
+                  </button>
+                  <button
+                    onClick={() => {
+                      const speechList = (scene?.actions
+                        ?.filter((a) => a.type === 'speech' && a.text)
+                        .map((a) => a.text as string) ?? []);
+                      let prompt = speechList.join('\n') ?? '';
+                      if (prompt.length > 300) {
+                        if (speechList.length >= 1 && speechList[0].length <= 270) {
+                          prompt = speechList[0] + '\n' + speechList.slice(1).join(' ').slice(0, 300 - speechList[0].length - 2);
+                        } else {
+                          prompt = prompt.slice(0, 299) + '…';
+                        }
+                      }
+                      if (prompt) digitalHumanGenerateVideo(prompt);
+                    }}
+                    className="inline-flex h-6 items-center gap-1 rounded-md bg-blue-600 px-1.5 text-xs text-white hover:bg-blue-700 transition-colors"
+                    aria-label="重试生成"
+                  >
+                    重试
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
 

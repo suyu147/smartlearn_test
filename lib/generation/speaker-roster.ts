@@ -12,6 +12,8 @@ export interface ClassroomSpeaker {
   color: string;
   /** 该角色在 voice pool 中的偏移 */
   voiceIndex: number;
+  /** 浏览器 TTS 语音偏好标签 */
+  voiceLabel?: string;
 }
 
 /** 默认 4 人课堂 */

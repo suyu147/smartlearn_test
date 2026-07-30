@@ -21,6 +21,9 @@ import {
   Circle,
   Lightbulb,
   Clock,
+  Network,
+  Bot,
+  NotebookPen,
 } from 'lucide-react';
 import { useSessionStore } from '@/lib/store/session-store';
 import { useKnowledgeStore } from '@/lib/store/knowledge-store';
@@ -71,6 +74,62 @@ const quickCards: QuickCard[] = [
     desc: '讲义、试题、知识图谱、视频、扩展阅读和代码示例一站管理',
     href: '/book',
     icon: Library,
+    iconClass: 'bg-pastel-rose',
+  },
+];
+
+// ---------------------------------------------------------------------------
+// More features — 更多功能
+// ---------------------------------------------------------------------------
+
+interface MoreFeature {
+  key: string;
+  title: string;
+  desc: string;
+  href: string;
+  icon: React.ComponentType<{ className?: string }>;
+  iconClass: string;
+}
+
+const moreFeatures: MoreFeature[] = [
+  {
+    key: 'knowledge-graph',
+    title: '知识图谱',
+    desc: '可视化知识体系全景图',
+    href: '/knowledge-graph',
+    icon: Network,
+    iconClass: 'bg-pastel-violet',
+  },
+  {
+    key: 'knowledge',
+    title: '知识库',
+    desc: '管理文档和知识来源',
+    href: '/knowledge',
+    icon: Brain,
+    iconClass: 'bg-pastel-blue',
+  },
+  {
+    key: 'co-writer',
+    title: '协作写作',
+    desc: '与 AI 协同完成笔记',
+    href: '/co-writer',
+    icon: PenLine,
+    iconClass: 'bg-pastel-amber',
+  },
+  {
+    key: 'agents',
+    title: '智能体',
+    desc: '自定义 AI 助手',
+    href: '/agents',
+    icon: Bot,
+    iconClass: 'bg-pastel-cyan',
+  },
+  {
+    key: 'notebook',
+    title: '笔记本',
+    desc: '记录学习笔记',
+    href: '/notebook',
+    icon: NotebookPen,
     iconClass: 'bg-pastel-rose',
   },
 ];
@@ -290,6 +349,42 @@ export default function HomePage() {
                   </div>
                   <div className="flex items-center justify-end text-[var(--muted-foreground)] transition-all group-hover:text-blue-600">
                     <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* =================================================================
+            MORE FEATURES — 更多功能
+           ================================================================= */}
+        <section className="mt-6">
+          <div className="mb-3 flex items-center gap-2">
+            <h2 className="text-[15px] font-semibold text-[var(--foreground)]">更多功能</h2>
+            <span className="chip">MORE</span>
+          </div>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+            {moreFeatures.map((item) => {
+              const Icon = item.icon;
+              return (
+                <Link
+                  key={item.key}
+                  href={item.href}
+                  className="group surface-soft flex items-center gap-3 p-4 transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-blue-500/10"
+                >
+                  <div
+                    className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ${item.iconClass}`}
+                  >
+                    <Icon className="h-4 w-4" />
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="text-[13px] font-semibold text-[var(--foreground)]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-0.5 truncate text-[11px] text-[var(--muted-foreground)]">
+                      {item.desc}
+                    </p>
                   </div>
                 </Link>
               );

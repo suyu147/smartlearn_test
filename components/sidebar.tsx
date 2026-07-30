@@ -47,7 +47,7 @@ const navGroups = [
 ];
 
 const bottomItems = [
-  { href: '/profile', label: '个人资料', icon: User },
+  { href: '/profile', label: '学习画像', icon: User },
   { href: '/settings', label: '设置', icon: Settings },
 ];
 

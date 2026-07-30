@@ -20,6 +20,8 @@ export interface Scene {
   order: number;
   content: SceneContent;
   actions?: import('./action').Action[];
+  /** 数字人视频 URL（由讯飞数字人视频大模型异步生成后回填） */
+  digitalHumanVideoUrl?: string;
   createdAt: number;
   updatedAt: number;
 }
