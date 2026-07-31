@@ -189,6 +189,21 @@ export async function POST(req: NextRequest) {
           metadata: { language: language ?? 'en' },
         });
 
+        // Emit L1 trace for user message (fire-and-forget)
+        try {
+          const memSvc = getMemoryService();
+          memSvc.emitTrace(userId, {
+            surface: 'chat',
+            kind: 'user_message',
+            payload: {
+              summary: message.slice(0, 200),
+              capability: capability ?? 'chat',
+            },
+            sessionId,
+            turnId,
+          }).catch(() => {});
+        } catch { /* non-critical */ }
+
         // Execute turn via orchestrator (wrapped in AsyncLocalStorage for userId isolation)
         const orchestrator = getOrchestrator();
         const result = await runWithToolContext(
@@ -207,6 +222,21 @@ export async function POST(req: NextRequest) {
             capability: capability ?? undefined,
             turnId,
           });
+
+          // Emit L1 trace for assistant response (fire-and-forget)
+          try {
+            const memSvc = getMemoryService();
+            memSvc.emitTrace(userId, {
+              surface: 'chat',
+              kind: 'assistant_response',
+              payload: {
+                summary: assistantContent.slice(0, 200),
+                capability: capability ?? 'chat',
+              },
+              sessionId,
+              turnId,
+            }).catch(() => {});
+          } catch { /* non-critical */ }
         }
 
         // Update turn status

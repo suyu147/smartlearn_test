@@ -1,0 +1,6 @@
+{"id":"book:seed001","ts":"2026-07-10T10:03:40.616Z","surface":"book","kind":"book_created","payload":{"title":"深度学习入门到实践","pageCount":8,"summary":"创建了深度学习系统性学习书籍"},"sessionId":"book-action-001"}
+{"id":"book:seed002","ts":"2026-07-18T10:03:40.616Z","surface":"book","kind":"book_created","payload":{"title":"大语言模型技术解析","pageCount":12,"summary":"创建了LLM技术深度解析书籍"},"sessionId":"book-action-002"}
+{"id":"book:seed003","ts":"2026-07-25T10:03:40.616Z","surface":"book","kind":"book_progress","payload":{"title":"深度学习入门到实践","completedPages":6,"totalPages":8,"summary":"深度学习书籍阅读进度75%"},"sessionId":"book-action-003"}
+{"id":"book:seed001","ts":"2026-07-10T10:26:03.821Z","surface":"book","kind":"book_created","payload":{"title":"深度学习入门到实践","pageCount":8,"summary":"创建了深度学习系统性学习书籍"},"sessionId":"book-action-001"}
+{"id":"book:seed002","ts":"2026-07-18T10:26:03.821Z","surface":"book","kind":"book_created","payload":{"title":"大语言模型技术解析","pageCount":12,"summary":"创建了LLM技术深度解析书籍"},"sessionId":"book-action-002"}
+{"id":"book:seed003","ts":"2026-07-25T10:26:03.821Z","surface":"book","kind":"book_progress","payload":{"title":"深度学习入门到实践","completedPages":6,"totalPages":8,"summary":"深度学习书籍阅读进度75%"},"sessionId":"book-action-003"}

@@ -1,0 +1,6 @@
+{"id":"cowriter:seed001","ts":"2026-07-15T10:03:40.616Z","surface":"cowriter","kind":"doc_created","payload":{"title":"基于Transformer的文本分类系统设计","wordCount":3000,"summary":"撰写课程设计报告"},"sessionId":"cw-001"}
+{"id":"cowriter:seed002","ts":"2026-07-22T10:03:40.616Z","surface":"cowriter","kind":"doc_updated","payload":{"title":"RAG系统架构设计文档","wordCount":5000,"summary":"完善RAG系统架构设计"},"sessionId":"cw-002"}
+{"id":"cowriter:seed003","ts":"2026-07-28T10:03:40.616Z","surface":"cowriter","kind":"doc_created","payload":{"title":"LoRA微调实验报告","wordCount":4000,"summary":"撰写LoRA微调Llama-3的实验报告"},"sessionId":"cw-003"}
+{"id":"cowriter:seed001","ts":"2026-07-15T10:26:03.821Z","surface":"cowriter","kind":"doc_created","payload":{"title":"基于Transformer的文本分类系统设计","wordCount":3000,"summary":"撰写课程设计报告"},"sessionId":"cw-001"}
+{"id":"cowriter:seed002","ts":"2026-07-22T10:26:03.821Z","surface":"cowriter","kind":"doc_updated","payload":{"title":"RAG系统架构设计文档","wordCount":5000,"summary":"完善RAG系统架构设计"},"sessionId":"cw-002"}
+{"id":"cowriter:seed003","ts":"2026-07-28T10:26:03.821Z","surface":"cowriter","kind":"doc_created","payload":{"title":"LoRA微调实验报告","wordCount":4000,"summary":"撰写LoRA微调Llama-3的实验报告"},"sessionId":"cw-003"}

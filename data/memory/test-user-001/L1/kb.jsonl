@@ -1,0 +1,8 @@
+{"id":"kb:seed001","ts":"2026-07-08T10:03:40.616Z","surface":"kb","kind":"kb_created","payload":{"name":"Transformer论文集","docCount":5,"summary":"创建了Transformer相关论文知识库"},"sessionId":"kb-action-001"}
+{"id":"kb:seed002","ts":"2026-07-15T10:03:40.616Z","surface":"kb","kind":"kb_created","payload":{"name":"RAG实践指南","docCount":3,"summary":"创建了RAG系统构建实践文档知识库"},"sessionId":"kb-action-002"}
+{"id":"kb:seed003","ts":"2026-07-22T10:03:40.616Z","surface":"kb","kind":"kb_created","payload":{"name":"LLM微调笔记","docCount":4,"summary":"创建了LLM微调技术笔记知识库"},"sessionId":"kb-action-003"}
+{"id":"kb:seed004","ts":"2026-07-29T10:03:40.616Z","surface":"kb","kind":"kb_search","payload":{"query":"LoRA rank selection","kbName":"LLM微调笔记","resultCount":3,"summary":"搜索LoRA rank选择策略"},"sessionId":"kb-action-004"}
+{"id":"kb:seed001","ts":"2026-07-08T10:26:03.821Z","surface":"kb","kind":"kb_created","payload":{"name":"Transformer论文集","docCount":5,"summary":"创建了Transformer相关论文知识库"},"sessionId":"kb-action-001"}
+{"id":"kb:seed002","ts":"2026-07-15T10:26:03.821Z","surface":"kb","kind":"kb_created","payload":{"name":"RAG实践指南","docCount":3,"summary":"创建了RAG系统构建实践文档知识库"},"sessionId":"kb-action-002"}
+{"id":"kb:seed003","ts":"2026-07-22T10:26:03.821Z","surface":"kb","kind":"kb_created","payload":{"name":"LLM微调笔记","docCount":4,"summary":"创建了LLM微调技术笔记知识库"},"sessionId":"kb-action-003"}
+{"id":"kb:seed004","ts":"2026-07-29T10:26:03.821Z","surface":"kb","kind":"kb_search","payload":{"query":"LoRA rank selection","kbName":"LLM微调笔记","resultCount":3,"summary":"搜索LoRA rank选择策略"},"sessionId":"kb-action-004"}

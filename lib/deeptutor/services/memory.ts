@@ -24,6 +24,7 @@ import { readFile, writeFile, mkdir, rm } from 'fs/promises';
 import { join } from 'path';
 import { existsSync } from 'fs';
 import { runUpdateL2, runUpdateL3 } from '@/lib/deeptutor/services/memory/consolidator';
+import { toCleanMarkdown } from '@/lib/deeptutor/services/memory/document';
 
 const log = createLogger('MemoryService');
 
@@ -114,6 +115,14 @@ export class MemoryServiceImpl {
     return this.readMarkdown(this.userDir(userId, 'L2'), surface);
   }
 
+  /**
+   * Read L2 with internal markers stripped (for LLM prompt / UI).
+   */
+  async readL2Clean(userId: string, surface: string): Promise<string> {
+    const raw = await this.readL2(userId, surface);
+    return raw.trim() ? toCleanMarkdown(raw) : '';
+  }
+
   async writeL2(userId: string, surface: string, content: string): Promise<void> {
     const dir = this.userDir(userId, 'L2');
     await mkdir(dir, { recursive: true });
@@ -128,6 +137,14 @@ export class MemoryServiceImpl {
     return this.readMarkdown(this.userDir(userId, 'L3'), slot);
   }
 
+  /**
+   * Read a single L3 slot with internal markers stripped (for LLM prompt / UI).
+   */
+  async readL3Clean(userId: string, slot: L3Slot): Promise<string> {
+    const raw = await this.readL3(userId, slot);
+    return raw.trim() ? toCleanMarkdown(raw) : '';
+  }
+
   async writeL3(userId: string, slot: L3Slot, content: string): Promise<void> {
     const dir = this.userDir(userId, 'L3');
     await mkdir(dir, { recursive: true });
@@ -136,14 +153,19 @@ export class MemoryServiceImpl {
 
   /**
    * Read all L3 slots concatenated. Used by read_memory tool.
+   * Strips internal markers (footnote refs, HTML comments, footnote defs)
+   * so the output is clean for LLM prompt injection and UI display.
    */
   async readAllL3(userId: string): Promise<string> {
     const parts: string[] = [];
 
     for (const slot of L3_SLOTS) {
-      const content = await this.readL3(userId, slot);
-      if (content.trim()) {
-        parts.push(`## ${slot.charAt(0).toUpperCase() + slot.slice(1)}\n\n${content}`);
+      const rawContent = await this.readL3(userId, slot);
+      if (rawContent.trim()) {
+        const cleanContent = toCleanMarkdown(rawContent);
+        if (cleanContent.trim()) {
+          parts.push(`## ${slot.charAt(0).toUpperCase() + slot.slice(1)}\n\n${cleanContent}`);
+        }
       }
     }
 

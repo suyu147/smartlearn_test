@@ -1,15 +1,74 @@
 {
   "seenL2EntryIds": {
     "chat": [
-      "m_mrokbbjc4k7kcjyojd",
-      "m_mrry7fvjor9ydt39w3",
-      "m_mrokbbjcagum25c5uz",
-      "m_mrry7fvj3qychidrxu",
-      "m_mrokbbjcemmxq0e06x",
-      "m_mrokbbjcwj0su7a7hf",
-      "m_mrokbbjcyej2btrmnt",
-      "m_mrsned0dv2r6weotlv"
+      "m_seed_l2_001",
+      "m_seed_l2_002",
+      "m_seed_l2_003",
+      "m_seed_l2_004",
+      "m_seed_l2_005",
+      "m_seed_l2_006",
+      "m_seed_l2_007",
+      "m_seed_l2_008",
+      "m_seed_l2_009",
+      "m_seed_l2_010",
+      "m_seed_l2_011",
+      "m_seed_l2_012",
+      "m_seed_l2_013",
+      "m_seed_l2_014",
+      "m_seed_l2_015",
+      "m_seed_l2_016",
+      "m_seed_l2_017",
+      "m_seed_l2_018",
+      "m_seed_l2_019",
+      "m_seed_l2_020",
+      "m_seed_l2_021",
+      "m_seed_l2_022",
+      "m_seed_l2_023",
+      "m_seed_l2_024",
+      "m_seed_l2_025"
+    ],
+    "quiz": [
+      "m_seed_quiz_001",
+      "m_seed_quiz_002",
+      "m_seed_quiz_003",
+      "m_seed_quiz_004",
+      "m_seed_quiz_005",
+      "m_seed_quiz_006",
+      "m_seed_quiz_007",
+      "m_seed_quiz_008",
+      "m_seed_quiz_009",
+      "m_seed_quiz_010",
+      "m_seed_quiz_011"
+    ],
+    "notebook": [
+      "m_seed_nb_001",
+      "m_seed_nb_002",
+      "m_seed_nb_003",
+      "m_seed_nb_004",
+      "m_seed_nb_005",
+      "m_seed_nb_006",
+      "m_seed_nb_007",
+      "m_seed_nb_008"
+    ],
+    "kb": [
+      "m_seed_kb_001",
+      "m_seed_kb_002",
+      "m_seed_kb_003",
+      "m_seed_kb_004"
+    ],
+    "book": [
+      "m_seed_book_001",
+      "m_seed_book_002",
+      "m_seed_book_003"
+    ],
+    "cowriter": [
+      "m_seed_cw_001",
+      "m_seed_cw_002",
+      "m_seed_cw_003",
+      "m_seed_cw_004",
+      "m_seed_cw_005",
+      "m_seed_cw_006"
     ]
   },
-  "lastUpdateAt": "2026-07-20T03:11:31.041Z"
+  "lastUpdateAt": "2026-07-30T10:26:04.277Z"
 }

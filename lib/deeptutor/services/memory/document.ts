@@ -244,3 +244,46 @@ export function getAllEntryIds(doc: Document): string[] {
 export function getAllEntries(doc: Document): Entry[] {
   return doc.sections.flatMap((s) => s.entries);
 }
+
+// ---------------------------------------------------------------------------
+// Clean output — Strip internal markers for LLM / UI consumption
+// ---------------------------------------------------------------------------
+
+/**
+ * Strip internal markers from serialized document markdown.
+ *
+ * Removes:
+ * - Footnote reference markers: [^id_0] [^id_1] from text lines
+ * - HTML comment entry IDs: <!--id--> from text lines
+ * - Footnote definition block at the bottom: [^id_0]: value
+ *
+ * The raw serialized format is needed for deserializeDocument() round-trip,
+ * but should NOT be exposed to LLM prompts or UI display.
+ */
+export function toCleanMarkdown(rawMarkdown: string): string {
+  const lines = rawMarkdown.split('\n');
+  const footnoteDefRegex = /^\[\^(.+?)_(\d+)\]:\s/;
+  const cleaned: string[] = [];
+
+  for (const line of lines) {
+    // Skip footnote definition lines entirely
+    if (footnoteDefRegex.test(line)) continue;
+
+    let clean = line;
+    // Strip HTML comment entry IDs: <!--id-->
+    clean = clean.replace(/\s*<!--[^>]+-->\s*$/g, '');
+    // Strip footnote reference markers: [^id_0] [^id_1]
+    clean = clean.replace(/\s*\[\^.+?_\d+\]\s*/g, ' ');
+    // Trim trailing whitespace left by removals
+    clean = clean.replace(/\s+$/g, '');
+
+    cleaned.push(clean);
+  }
+
+  // Remove trailing blank lines
+  while (cleaned.length > 0 && cleaned[cleaned.length - 1].trim() === '') {
+    cleaned.pop();
+  }
+
+  return cleaned.join('\n');
+}

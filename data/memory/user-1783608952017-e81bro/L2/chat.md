@@ -2,63 +2,71 @@
 
 ## Learning Topics
 
-- 用户在Python学习中请求迭代算法的例子 [^m_mrqm0a2w98t7rf0fry_0] <!--m_mrqm0a2w98t7rf0fry-->
-- 在学习 Python 数据清洗，使用 pandas 处理脏数据 [^m_mrqm0cbl5g4adu5zs2_0] <!--m_mrqm0cbl5g4adu5zs2-->
-- 正在学习处理缺失值、重复值和异常值等脏数据问题 [^m_mrqm0cblz8z4y1zkop_0] <!--m_mrqm0cblz8z4y1zkop-->
-- 正在学习数据处理流程，包括重复值处理、异常值处理和数据格式标准化 [^m_mrqm0dvm2t5alry67a_0] <!--m_mrqm0dvm2t5alry67a-->
-- 学习了用中位数替换年龄和月薪的异常值 [^m_mrqm0dvmkv1wln0tvr_0] <!--m_mrqm0dvmkv1wln0tvr-->
-- 在学习数据标准化，包括性别字段映射和日期格式统一 [^m_mrqm0dvmaotqo7diky_0] <!--m_mrqm0dvmaotqo7diky-->
-- 学习了验证手机号和邮箱格式的方法 [^m_mrqm0dvmkwrecjgagq_0] <!--m_mrqm0dvmkwrecjgagq-->
-- 学习了添加数据质量标记字段来处理无效数据 [^m_mrqm0dvm6gudersrco_0] <!--m_mrqm0dvm6gudersrco-->
-- 在学习如何检测并处理数据集中的自定义缺失值 [^m_mrqm0fn4x8ebr7946t_0] <!--m_mrqm0fn4x8ebr7946t-->
-- 正在学习缺失矩阵、删除高缺失率行/列的策略 [^m_mrqm0fn4by3vuwur4w_0] <!--m_mrqm0fn4by3vuwur4w-->
-- 正在学习用固定值、中位数、前向/后向填充等方式处理缺失值 [^m_mrqm0fn49drbayy6nq_0] <!--m_mrqm0fn49drbayy6nq-->
-- 在学习二分查找算法的流程图和实现逻辑 [^m_mrqm0h4fwm4pcsghcp_0] <!--m_mrqm0h4fwm4pcsghcp-->
-- 在学习数据清洗，包括处理8种常见脏数据场景（缺失值、异常值、格式不一致等） [^m_mrqm0h4fuw342u4vpk_0] <!--m_mrqm0h4fuw342u4vpk-->
-- 正在学习使用Python的pandas和numpy库进行数据清洗 [^m_mrqm0h4ftfwc6b6g9m_0] <!--m_mrqm0h4ftfwc6b6g9m-->
-- 正在学习使用Pandas进行数据清洗，包括缺失值填充、重复值删除、异常值处理和格式标准化 [^m_mrqm0ieo2jt4eu0hel_0] <!--m_mrqm0ieo2jt4eu0hel-->
-- 月薪字段清洗：将逗号、'k'单位、中文数字转换为数值，缺失值用中位数填充 [^m_mrqm0ieojh64k2ogwz_0] <!--m_mrqm0ieojh64k2ogwz-->
-- 正在学习Python数据清洗代码，包括性别、部门、日期标准化，以及手机号和邮箱校验 [^m_mrqm0jodkfr9qlyqmx_0] <!--m_mrqm0jodkfr9qlyqmx-->
-- 看到了为数据添加质量标签的方法，根据手机号、邮箱、日期异常标记数据质量 [^m_mrqm0jodk9qnzocyfj_0] <!--m_mrqm0jodk9qnzocyfj-->
-- 询问机器学习基本概念，包括监督学习、无监督学习、核心术语和流程 [^m_mrqoes92ochpmjmv7w_0] <!--m_mrqoes92ochpmjmv7w-->
-- 收到迭代二分查找的Python代码示例 [^m_mrqq27cx2onbi7hyar_0] <!--m_mrqq27cx2onbi7hyar-->
-- 看到迭代与递归的对比，了解迭代内存开销低适合大数据 [^m_mrqq27cx9sov0emds8_0] <!--m_mrqq27cx9sov0emds8-->
-- 看到用pandas风格迭代更新DataFrame清洗数据的示例 [^m_mrqq27cxow9fei7t5b_0] <!--m_mrqq27cxow9fei7t5b-->
+- 学习Transformer架构原理，包括自注意力机制、多头注意力、位置编码 [^m_seed_l2_001_0] <!--m_seed_l2_001-->
+- 研究RAG检索增强生成系统，包括向量数据库选型和Embedding模型对比 [^m_seed_l2_002_0] [^m_seed_l2_002_1] <!--m_seed_l2_002-->
+- 学习RLHF人类反馈强化学习，包括PPO算法和Reward Model训练 [^m_seed_l2_003_0] <!--m_seed_l2_003-->
+- 学习LLM参数高效微调技术，重点掌握LoRA和QLoRA [^m_seed_l2_004_0] <!--m_seed_l2_004-->
+- 开始研究多模态大模型架构，关注GPT-4V和LLaVA [^m_seed_l2_005_0] <!--m_seed_l2_005-->
+- 学习使用PyTorch为CIFAR-10实现三层神经网络分类器 [^m_seed_l2_006_0] <!--m_seed_l2_006-->
 
-## Progress
+## Difficulties
 
-- 在教程中看到用中位数填充年龄和月薪缺失值的做法 [^m_mrqm0cblq2hw0sovme_0] <!--m_mrqm0cblq2hw0sovme-->
-- 在资料中遇到删除关键字段为空的记录、统一日期格式等清洗操作 [^m_mrqm0cblmd2wtl633t_0] <!--m_mrqm0cblmd2wtl633t-->
-- 在数据清洗学习中接触到机器学习流程，理解数据清洗是建模前关键步骤 [^m_mrqoes935tvvj2uc26_0] <!--m_mrqoes935tvvj2uc26-->
+- 正弦位置编码的相对位置表示机制难以理解，需要更多直觉解释 [^m_seed_l2_007_0] <!--m_seed_l2_007-->
+- PPO的clip机制和KL散度惩罚概念混淆，导致RLHF测验不及格 [^m_seed_l2_008_0] <!--m_seed_l2_008-->
+- RAG中chunking策略和reranking的选择缺乏经验 [^m_seed_l2_009_0] <!--m_seed_l2_009-->
+- DPO和PPO在LLM对齐中的适用场景区分不清 [^m_seed_l2_010_0] <!--m_seed_l2_010-->
+
+## Questions
+
+- Multi-Head Attention中Q/K/V的维度变换计算流程是什么？ [^m_seed_l2_011_0] <!--m_seed_l2_011-->
+- text-embedding-ada-002和bge-large-zh在实际检索效果上有何差异？ [^m_seed_l2_012_0] <!--m_seed_l2_012-->
+- LoRA中rank参数如何选择？alpha参数如何影响微调效果？ [^m_seed_l2_013_0] <!--m_seed_l2_013-->
+- DPO和PPO在LLM对齐中的优劣对比如何？ [^m_seed_l2_014_0] <!--m_seed_l2_014-->
 
 ## Preferences
 
-- 选择用'未知客户'/'待补充'填充姓名、邮箱、手机号缺失值 [^m_mrqm0ieozszzyqer3w_0] <!--m_mrqm0ieozszzyqer3w-->
+- 偏好使用代码示例解释数学概念 [^m_seed_l2_015_0] <!--m_seed_l2_015-->
+- 学习新概念时希望先看直觉解释再看数学推导 [^m_seed_l2_016_0] <!--m_seed_l2_016-->
+- 对模型轻量化和移动端部署感兴趣 [^m_seed_l2_017_0] <!--m_seed_l2_017-->
+
+## Progress
+
+- 成功使用Pinecone搭建了向量检索原型 [^m_seed_l2_018_0] <!--m_seed_l2_018-->
+- 用LangChain搭建了完整的RAG管道并跑通了评估 [^m_seed_l2_019_0] <!--m_seed_l2_019-->
+- 成功用LoRA对Llama-3-8B进行了中文微调 [^m_seed_l2_020_0] <!--m_seed_l2_020-->
+- Transformer基础测验从70分提升到90分，位置编码已掌握 [^m_seed_l2_021_0] <!--m_seed_l2_021-->
+- 尝试将约10K参数模型部署到Android移动设备 [^m_seed_l2_022_0] <!--m_seed_l2_022-->
+
+## Context
+
+- 计算机科学大三学生，主修人工智能方向 [^m_seed_l2_023_0] <!--m_seed_l2_023-->
+- 具有Python和PyTorch编程基础，熟悉Linux开发环境 [^m_seed_l2_024_0] <!--m_seed_l2_024-->
+- 正在进行课程设计项目，需要完成Transformer文本分类系统 [^m_seed_l2_025_0] <!--m_seed_l2_025-->
 
 
-[^m_mrqm0a2w98t7rf0fry_0]: chat:session-1783556896641
-[^m_mrqm0cbl5g4adu5zs2_0]: chat:session-1783556896641
-[^m_mrqm0cblz8z4y1zkop_0]: chat:session-1783556896641
-[^m_mrqm0dvm2t5alry67a_0]: chat:session-1783556896641
-[^m_mrqm0dvmkv1wln0tvr_0]: chat:session-1783556896641
-[^m_mrqm0dvmaotqo7diky_0]: chat:session-1783556896641
-[^m_mrqm0dvmkwrecjgagq_0]: chat:session-1783556896641
-[^m_mrqm0dvm6gudersrco_0]: chat:session-1783556896641
-[^m_mrqm0fn4x8ebr7946t_0]: chat:session-1783556896641
-[^m_mrqm0fn4by3vuwur4w_0]: chat:session-1783556896641
-[^m_mrqm0fn49drbayy6nq_0]: chat:session-1783556896641
-[^m_mrqm0h4fwm4pcsghcp_0]: chat:session-1783556896641
-[^m_mrqm0h4fuw342u4vpk_0]: chat:session-1783556896641
-[^m_mrqm0h4ftfwc6b6g9m_0]: chat:session-1783556896641
-[^m_mrqm0ieo2jt4eu0hel_0]: chat:session-1783556896641
-[^m_mrqm0ieojh64k2ogwz_0]: chat:session-1783556896641
-[^m_mrqm0jodkfr9qlyqmx_0]: chat:session-1783556896641
-[^m_mrqm0jodk9qnzocyfj_0]: chat:session-1783556896641
-[^m_mrqoes92ochpmjmv7w_0]: chat:cmrqn092b0007u3c0h9ddkbie
-[^m_mrqq27cx2onbi7hyar_0]: chat:cmrqogzyg0003u3gck2fx0ino
-[^m_mrqq27cx9sov0emds8_0]: chat:cmrqogzyg0003u3gck2fx0ino
-[^m_mrqq27cxow9fei7t5b_0]: chat:cmrqogzyg0003u3gck2fx0ino
-[^m_mrqm0cblq2hw0sovme_0]: chat:session-1783556896641
-[^m_mrqm0cblmd2wtl633t_0]: chat:session-1783556896641
-[^m_mrqoes935tvvj2uc26_0]: chat:cmrqn092b0007u3c0h9ddkbie
-[^m_mrqm0ieozszzyqer3w_0]: chat:session-1783556896641
+[^m_seed_l2_001_0]: chat:sess-chat-001
+[^m_seed_l2_002_0]: chat:sess-chat-003
+[^m_seed_l2_002_1]: chat:sess-chat-004
+[^m_seed_l2_003_0]: chat:sess-chat-005
+[^m_seed_l2_004_0]: chat:sess-chat-008
+[^m_seed_l2_005_0]: chat:sess-chat-010
+[^m_seed_l2_006_0]: chat:final-001
+[^m_seed_l2_007_0]: chat:sess-chat-001
+[^m_seed_l2_008_0]: chat:sess-chat-005
+[^m_seed_l2_009_0]: chat:sess-chat-003
+[^m_seed_l2_010_0]: chat:sess-chat-009
+[^m_seed_l2_011_0]: chat:sess-chat-001
+[^m_seed_l2_012_0]: chat:sess-chat-004
+[^m_seed_l2_013_0]: chat:sess-chat-008
+[^m_seed_l2_014_0]: chat:sess-chat-009
+[^m_seed_l2_015_0]: chat:sess-chat-002
+[^m_seed_l2_016_0]: chat:sess-chat-007
+[^m_seed_l2_017_0]: chat:test-mem-007
+[^m_seed_l2_018_0]: chat:sess-chat-003
+[^m_seed_l2_019_0]: chat:sess-chat-006
+[^m_seed_l2_020_0]: chat:sess-chat-008
+[^m_seed_l2_021_0]: quiz:sess-quiz-001
+[^m_seed_l2_022_0]: chat:test-mem-003
+[^m_seed_l2_023_0]: chat:sess-chat-001
+[^m_seed_l2_024_0]: chat:sess-chat-001
+[^m_seed_l2_025_0]: cowriter:cw-001

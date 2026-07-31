@@ -1,0 +1,12 @@
+[
+  {
+    "type": "note",
+    "title": "注意力机制（Attention）从零实现 - NumPy版",
+    "summary": "# 注意力机制（Attention）从零实现\n\n## 1. Scaled Dot-Product Attention\n\n```python\nimport numpy as np\n\ndef scaled_dot_product_attention(Q, K, V, mask=None):\n    d_k = Q.shape[-1]\n    scores = Q @ K.T              ",
+    "content": "# 注意力机制（Attention）从零实现\n\n## 1. Scaled Dot-Product Attention\n\n```python\nimport numpy as np\n\ndef scaled_dot_product_attention(Q, K, V, mask=None):\n    d_k = Q.shape[-1]\n    scores = Q @ K.T                # 点积相似度\n    scores = scores / np.sqrt(d_k)  # 缩放\n    if mask is not None:\n        scores = scores + mask      # 掩码\n    exp_scores = np.exp(scores - np.max(scores, axis=-1, keepdims=True))\n    attention_weights = exp_scores / np.sum(exp_scores, axis=-1, keepdims=True)\n    output = attention_weights @ V\n    return output, attention_weights\n```\n\n**公式**: $\\text{Attention}(Q,K,V) = \\text{softmax}\\left(\\frac{QK^T}{\\sqrt{d_k}}\\right)V$\n\n## 2. 核心概念\n- **Q (Query)**: 问问题的人\n- **K (Key)**: 回答标签\n- **V (Value)**: 实际内容\n- 每个词用 Q 去匹配所有 K，得到权重，再用权重加权 V\n\n## 3. 多头注意力\n- 将 d_model 拆成 n_heads 个 d_k，每个头独立学不同的关系模式\n- 最后合并 + 输出投影\n- 头1学语法关系，头2学语义相似，头3学位置距离...\n\n## 4. Masked Attention\n- Decoder 中使用，因果掩码确保位置 i 只能看到 j ≤ i\n- 上三角设为 -inf，softmax 后为 0\n\n## 5. 数值例子\n2个词\"我\"[1,0,1]和\"你\"[0,1,1]：\n- 注意力权重: 自己0.641, 对方0.359\n- 输出融合了对方信息\n",
+    "metadata": {},
+    "id": "ms7e5pejoe7ewo",
+    "createdAt": "2026-07-30T10:49:19.579Z",
+    "updatedAt": "2026-07-30T10:49:19.580Z"
+  }
+]

@@ -33,7 +33,7 @@ import type {
 const log = createLogger('vms-provider');
 
 // ── API 路径 ────────────────────────────────────────────
-// 签名路径 = 实际请求路径（经实测验证，使用文档的 /api/v1/ 会导致 401）
+// 实际请求路径和签名路径完全一致（经实测验证）
 
 const API_PATHS = {
   generate: '/v1/private/video/generate',
@@ -94,20 +94,19 @@ export async function generateVideo(request: VideoGenerateRequest): Promise<Vide
   }
 
   // ═══════════════════════════════════════════════════
-  // TEST MODE: 取前 20 字 + 最小 wordCount=50，减少额度消耗
-  // 5 字太短会导致 AI 无法扩写，任务永远停在 status=1
-  // 测试完成后删除此块即可恢复
+  // TEST MODE: 测试期间只取前 5 个字符，避免消耗额度
+  // 测试完成后，删除以下 2 行即可恢复正常
   // ═══════════════════════════════════════════════════
-  const TEST_PROMPT_MIN = 20;
-  prompt = prompt.slice(0, TEST_PROMPT_MIN);
-  log.warn(`TEST MODE: prompt 截断为前 ${TEST_PROMPT_MIN} 字 → "${prompt}"`);
+  prompt = prompt.slice(0, 5);
+  log.warn(`TEST MODE: prompt 被截断为前 5 字 → "${prompt}"`);
 
   const truncatedPrompt =
     prompt.length > PROMPT_MAX_LENGTH
       ? prompt.slice(0, PROMPT_MAX_LENGTH - 1) + '…'
       : prompt;
 
-  const wordCount: number = 50; // API 下限
+  // TEST MODE: 使用最小字数
+  const wordCount: number = WORD_COUNT_MIN;
 
   const body: XfyunVideoGenerateRequest = {
     header: {

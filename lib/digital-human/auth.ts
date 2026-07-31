@@ -30,7 +30,7 @@ export function resolveVmsConfig(): VmsAuthConfig {
   const appId = process.env.XFYUN_VMS_APP_ID ?? '';
   const apiKey = process.env.XFYUN_VMS_API_KEY ?? '';
   const apiSecret = process.env.XFYUN_VMS_API_SECRET ?? '';
-  const baseUrl = process.env.XFYUN_VMS_BASE_URL ?? 'http://vms.cn-huadong-1.xf-yun.com';
+  const baseUrl = process.env.XFYUN_VMS_BASE_URL ?? 'https://vms.cn-huadong-1.xf-yun.com';
 
   return { appId, apiKey, apiSecret, baseUrl };
 }
@@ -47,13 +47,13 @@ export function isVmsConfigured(): boolean {
  * 鉴权参数通过 URL query string 传递，而非 Header。
  *
  * 经实测验证：签名路径 = 实际请求路径 = /v1/private/video/{generate|query}
- * 官方文档写的签名路径 /api/v1/video/{generate|query} 实际会导致 401 签名不匹配
+ * 与官方文档中写的 /api/v1/video/{generate|query} 不符，以实测为准。
  *
  * @param apiKey - 讯飞 APIKey
  * @param apiSecret - 讯飞 APISecret (直接用原始字符串，无需 base64 解码)
  * @param method - HTTP 方法 (POST)
  * @param baseUrl - API 基础 URL (如 http://vms.cn-huadong-1.xf-yun.com)
- * @param path - API 路径 (如 /v1/private/video/generate)，签名和请求使用相同路径
+ * @param path - API 路径 (如 /v1/private/video/generate)
  * @returns 带鉴权参数的完整 URL
  */
 export function generateVmsAuthUrl(
@@ -68,7 +68,7 @@ export function generateVmsAuthUrl(
   // RFC1123 格式，UTC/GMT 时区
   const date = new Date().toUTCString();
 
-  // 1. 签名原串（签名路径 = 实际请求路径）
+  // 1. 签名原串
   const signatureOrigin = `host: ${host}\ndate: ${date}\n${method} ${path} HTTP/1.1`;
 
   // 2. hmac-sha256 签名 → base64

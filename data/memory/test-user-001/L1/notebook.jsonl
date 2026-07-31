@@ -1,0 +1,8 @@
+{"id":"notebook:seed001","ts":"2026-07-05T10:03:40.616Z","surface":"notebook","kind":"session_completed","payload":{"topic":"深度学习基础","masteryLevel":0.85,"summary":"完成深度学习基础mastery session，掌握反向传播和梯度下降"},"sessionId":"nb-001"}
+{"id":"notebook:seed002","ts":"2026-07-12T10:03:40.616Z","surface":"notebook","kind":"session_completed","payload":{"topic":"NLP基础","masteryLevel":0.7,"summary":"NLP基础session，词嵌入和序列模型基本掌握"},"sessionId":"nb-002"}
+{"id":"notebook:seed003","ts":"2026-07-20T10:03:40.616Z","surface":"notebook","kind":"session_completed","payload":{"topic":"Transformer架构","masteryLevel":0.75,"summary":"Transformer架构session，自注意力机制理解深入"},"sessionId":"nb-003"}
+{"id":"notebook:seed004","ts":"2026-07-27T10:03:40.616Z","surface":"notebook","kind":"session_started","payload":{"topic":"LLM训练与对齐","masteryLevel":0.4,"summary":"开始LLM训练对齐session，RLHF部分尚在攻坚"},"sessionId":"nb-004"}
+{"id":"notebook:seed001","ts":"2026-07-05T10:26:03.821Z","surface":"notebook","kind":"session_completed","payload":{"topic":"深度学习基础","masteryLevel":0.85,"summary":"完成深度学习基础mastery session，掌握反向传播和梯度下降"},"sessionId":"nb-001"}
+{"id":"notebook:seed002","ts":"2026-07-12T10:26:03.821Z","surface":"notebook","kind":"session_completed","payload":{"topic":"NLP基础","masteryLevel":0.7,"summary":"NLP基础session，词嵌入和序列模型基本掌握"},"sessionId":"nb-002"}
+{"id":"notebook:seed003","ts":"2026-07-20T10:26:03.821Z","surface":"notebook","kind":"session_completed","payload":{"topic":"Transformer架构","masteryLevel":0.75,"summary":"Transformer架构session，自注意力机制理解深入"},"sessionId":"nb-003"}
+{"id":"notebook:seed004","ts":"2026-07-27T10:26:03.821Z","surface":"notebook","kind":"session_started","payload":{"topic":"LLM训练与对齐","masteryLevel":0.4,"summary":"开始LLM训练对齐session，RLHF部分尚在攻坚"},"sessionId":"nb-004"}

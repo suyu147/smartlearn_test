@@ -1,9 +1,29 @@
 {
   "fingerprints": {
-    "session-1785298649212": "6416a88708d81d5da32c9b119b4990c3c8ce608d"
+    "session-1785298649212": "6416a88708d81d5da32c9b119b4990c3c8ce608d",
+    "sess-chat-001": "fp_sess-chat-001",
+    "sess-chat-002": "fp_sess-chat-002",
+    "sess-chat-003": "fp_sess-chat-003",
+    "sess-chat-004": "fp_sess-chat-004",
+    "sess-chat-005": "fp_sess-chat-005",
+    "sess-chat-006": "fp_sess-chat-006",
+    "sess-chat-007": "fp_sess-chat-007",
+    "sess-chat-008": "fp_sess-chat-008",
+    "sess-chat-009": "fp_sess-chat-009",
+    "sess-chat-010": "fp_sess-chat-010"
   },
   "labels": {
-    "session-1785298649212": "New Chat"
+    "session-1785298649212": "New Chat",
+    "sess-chat-001": "sess-chat-001",
+    "sess-chat-002": "sess-chat-002",
+    "sess-chat-003": "sess-chat-003",
+    "sess-chat-004": "sess-chat-004",
+    "sess-chat-005": "sess-chat-005",
+    "sess-chat-006": "sess-chat-006",
+    "sess-chat-007": "sess-chat-007",
+    "sess-chat-008": "sess-chat-008",
+    "sess-chat-009": "sess-chat-009",
+    "sess-chat-010": "sess-chat-010"
   },
-  "lastRefresh": "2026-07-29T07:40:27.288Z"
+  "lastRefresh": "2026-07-30T10:26:04.287Z"
 }

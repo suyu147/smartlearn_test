@@ -40,10 +40,10 @@ export async function GET(req: NextRequest) {
         data = await svc.readTrace(userId, surface as Surface, limit);
         break;
       case 'l2':
-        data = await svc.readL2(userId, surface);
+        data = await svc.readL2Clean(userId, surface);
         break;
       case 'l3':
-        data = await svc.readL3(userId, slot as L3Slot);
+        data = await svc.readL3Clean(userId, slot as L3Slot);
         break;
       case 'all_l3':
         data = await svc.readAllL3(userId);
